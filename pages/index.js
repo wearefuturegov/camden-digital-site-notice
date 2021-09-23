@@ -1,10 +1,28 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/PlanningApplication.module.css'
 
-export default function Home() {
+export async function getServerSideProps(context) {
+  const res = await fetch(process.env.API_URL)
+  const data = await res.json()
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: data[0],
+  }
+}
+
+export default function PlanningApplication(props) {
+  console.log(props)
+  const { development_address, development_description } = props;
+
   return (
-    <div className={styles.container}>
+    <div className={styles.page}>
       <Head>
         <title>Camden Planning</title>
         <meta name="description" content="Camden Digital Site Notice" />
@@ -12,17 +30,26 @@ export default function Home() {
 
       <main className={styles.main}>
         <span className={styles.logo}>
-          <Image src="/Camden_Logo_Blk.svg" alt="Camden Logo" width={127} height={39} />
+          <Image src="/Camden_Logo_White.svg" alt="Camden Logo" width={127} height={39} />
         </span>
 
-        <div className={styles.header}>
-          <h1 className={styles.title}>
-            Find planning applications near you
-          </h1>
+        <div>
+          <span>Planning Applications</span>
+          <span> &gt; </span>
+          <span className={styles.highlight}>Overview</span>
+        </div>
 
-          <p className={styles.description}>
-            Find, review and leave feedback on open planning applications in Camden.
-          </p>
+        <div className={styles.header}>
+          <h2 className={styles.title}>
+            { development_address }
+          </h2>
+
+          <div className={styles.highlight}>
+            <h3 className={styles.descriptionHeader}>What's the plan?</h3>
+            <p className={styles.description}>
+              { development_description }
+            </p>
+          </div>
         </div>
       </main>
 

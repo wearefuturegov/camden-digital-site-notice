@@ -18,7 +18,6 @@ export async function getServerSideProps(context) {
 }
 
 export default function PlanningApplication(props) {
-  console.log(props)
   const { development_address, development_description } = props;
 
   return (

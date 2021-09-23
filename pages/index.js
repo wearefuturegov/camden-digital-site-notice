@@ -45,7 +45,7 @@ export default function PlanningApplication(props) {
           </h2>
 
           <div className={styles.highlight}>
-            <h3 className={styles.descriptionHeader}>What's the plan?</h3>
+            <h3 className={styles.descriptionHeader}>What&apos;s the plan?</h3>
             <p className={styles.description}>
               { development_description }
             </p>

@@ -54,7 +54,6 @@
 }
 
 .description p {
-  color: #E9FD57;
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.5;
@@ -67,9 +66,51 @@
 }
 
 .progress h4 {
+  color: #EC6331;
+  font-size: 1.75rem;
   font-weight: 400;
+  margin: 2rem 0 1rem;
 }
 
-.progress p {
+.progress a {
+  text-decoration: underline;
+}
+
+.solidLine {
+  margin-left: 1rem;
+  height: 25px;
+  border-left: 2px solid #ec6331;
+  padding-left: 1.5rem;
+}
+
+.point {
+  border-radius: 100px;
+  border: 7px solid #ec6331;
+  display: inline-block;
+  height: 21px;
+  width: 21px;
+  position: absolute;
+  top: 0px;
+  left: -10px;
+}
+
+.progressItem {
+  position: relative;
+  margin-left: 1rem;
+}
+
+.status {
+  color: #EC6331;
   font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0;
+  padding-left: 1.5rem;
+  line-height: 21px;
+}
+
+.statusDetail {
+  border-left: 1px dashed #2B1F2E;
+  padding-left: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-top: 0.25rem;
 }

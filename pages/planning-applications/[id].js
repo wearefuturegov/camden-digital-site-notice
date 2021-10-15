@@ -10,7 +10,7 @@ export async function getServerSideProps(context) {
   const res = await fetch(`${process.env.API_URL}.json?application_number=${appNumber}`)
   const data = await res.json()
 
-  if (!data) {
+  if (!data || data.length == 0) {
     return {
       notFound: true,
     }
@@ -32,7 +32,6 @@ export default function PlanningApplication(props) {
       </Head>
 
       <main className={styles.main}>
-
         <div className={styles.header}>
           <div className={styles.logo}>
             <Image src="/Camden_Logo_White.svg" alt="Camden Logo" width={127} height={39} />
@@ -54,6 +53,7 @@ export default function PlanningApplication(props) {
               { development_address }
             </p>
           </div>
+
         </div>
 
         <div className={styles.mapSpacer}></div>
@@ -63,12 +63,27 @@ export default function PlanningApplication(props) {
           <p>
             { development_description }
           </p>
+
         </div>
 
         <section className={styles.progress}>
           <h4>Where we are in the process</h4>
-          <p>{ props.system_status } { props.decision_type ? `- ${props.decision_type}` : null }</p>
+          <div className={styles.timeline}>
+            <div className={styles.solidLine}></div>
+            <div className={styles.progressItem}>
+              <span className={styles.point}></span>
+              <p className={styles.status}>
+                { props.system_status }
+              </p>
+              { props.decision_type ? <p className={styles.statusDetail}>{props.decision_type}</p> : null }
+            </div>
+          </div>
+
+          <a href={props.full_application.url} target='_blank' rel='noreferrer'>
+            <small>DEBUG: View in Camden&apos;s Planning Explorer</small>
+          </a>
         </section>
+
       </main>
 
     </div>

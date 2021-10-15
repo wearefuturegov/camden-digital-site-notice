@@ -4,7 +4,9 @@ import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`${process.env.API_URL}.json`)
+  const limit = 25;
+
+  const res = await fetch(`${process.env.API_URL}.json?$limit=${limit}`)
   const data = await res.json()
 
   if (!data) {

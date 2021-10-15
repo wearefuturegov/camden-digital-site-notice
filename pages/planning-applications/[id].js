@@ -4,7 +4,10 @@ import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`${process.env.API_URL}/${context.query.id}.json`)
+  // Put the app number back into the way Camden store it
+  const appNumber = context.query.id.replace(/_/g, '/');
+
+  const res = await fetch(`${process.env.API_URL}.json?application_number=${appNumber}`)
   const data = await res.json()
 
   if (!data) {
@@ -14,7 +17,7 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: data,
+    props: data[0],
   }
 }
 

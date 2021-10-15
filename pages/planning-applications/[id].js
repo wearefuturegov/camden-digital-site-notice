@@ -47,7 +47,7 @@ export default function PlanningApplication(props) {
 
           <div>
             <h2 className={styles.title}>
-              Not available
+              { props.application_type }
             </h2>
             <p className={styles.address}>
               { development_address }

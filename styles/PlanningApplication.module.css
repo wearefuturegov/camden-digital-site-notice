@@ -1,18 +1,16 @@
 .page {
-  padding: 0 1rem;
   background-color: #2D4E4B;
   color: white;
 }
 
 .main {
-  padding: 3rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.highlight {
-  color: #E9FD57;
+.header {
+  padding: 3rem 1rem 0.5rem;
 }
 
 .logo {
@@ -20,14 +18,59 @@
   margin-bottom: 1rem;
 }
 
-.descriptionHeader {
-  font-size: 1.75rem;
-  font-weight: normal;
+.title {
+  font-weight: 400;
+  font-size: 32px;
+  color: #E9FD57;
+  margin-bottom: 1rem;
+}
+
+.breadcrumbs {
+  font-size: 16px;
+}
+
+.breadcrumbs a {
+  text-decoration: underline;
+}
+
+.address {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.mapSpacer {
+  height: 180px;
+  background: white;
 }
 
 .description {
+  padding: 0 1rem 0.5rem;
+}
+
+.descriptionHeader {
+  color: #E9FD57;
+  font-weight: 400;
+  font-size: 1.75rem;
+  margin: 1.5rem 0 1.5rem;
+}
+
+.description p {
+  color: #E9FD57;
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.5;
 }
 
+.progress {
+  padding: 0 1rem 0.5rem;
+  background: white;
+  color: #2B1F2E;
+}
+
+.progress h4 {
+  font-weight: 400;
+}
+
+.progress p {
+  font-weight: 600;
+}

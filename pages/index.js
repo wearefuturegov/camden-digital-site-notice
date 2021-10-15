@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/PlanningApplication.module.css'
+import Link from 'next/link'
+import styles from '../styles/Home.module.css'
 
 export async function getServerSideProps(context) {
-  const res = await fetch(process.env.API_URL)
+  const res = await fetch(`${process.env.API_URL}.json`)
   const data = await res.json()
 
   if (!data) {
@@ -13,43 +14,61 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: data[0],
+    props: {
+      developments: data
+    }
   }
 }
 
-export default function PlanningApplication(props) {
-  const { development_address, development_description } = props;
+const PlanningListItem = (props) => {
+  const { development } = props;
 
   return (
-    <div className={styles.page}>
+    <Link href={`/planning-applications/${development.socrata_id}`}>
+      <a>
+        <div className={styles.planningListItem} >
+          <div className={styles.imageSpacer}></div>
+          <div className={styles.listItemDetails}>
+            <h2 className={styles.listItemHeading}>{ development.development_description }</h2>
+            { development.development_address }
+          </div>
+        </div>
+      </a>
+    </Link>
+  )
+}
+
+export default function Home(props) {
+  const { developments } = props;
+
+  return (
+    <div className={styles.container}>
       <Head>
         <title>Camden Planning</title>
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
 
       <main className={styles.main}>
-        <span className={styles.logo}>
-          <Image src="/Camden_Logo_White.svg" alt="Camden Logo" width={127} height={39} />
-        </span>
 
-        <div>
-          <span>Planning Applications</span>
-          <span> &gt; </span>
-          <span className={styles.highlight}>Overview</span>
-        </div>
+        <div className={styles.searchWrapper}>
+          <div className={styles.logo}>
+            <Image src="/Camden_Logo_Blk.svg" alt="Camden Logo" width={127} height={39} />
+          </div>
 
-        <div className={styles.header}>
-          <h2 className={styles.title}>
-            { development_address }
-          </h2>
+          <div>
+            <h1 className={styles.title}>
+              Find planning applications near you
+            </h1>
 
-          <div className={styles.highlight}>
-            <h3 className={styles.descriptionHeader}>What&apos;s the plan?</h3>
             <p className={styles.description}>
-              { development_description }
+              Find, review and leave feedback on open planning applications in Camden.
             </p>
           </div>
         </div>
+
+        <section className={styles.results}>
+          { developments.map((d) => <PlanningListItem key={d.pk} development={d}/>) }
+        </section>
       </main>
 
     </div>

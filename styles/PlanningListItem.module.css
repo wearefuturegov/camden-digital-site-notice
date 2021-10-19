@@ -25,3 +25,21 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.listItemLocation {
+  display: flex;
+  align-items: top;
+}
+
+.listItemLocation p {
+  margin: 0 0.5rem 0;
+  width: 90%;
+}
+
+.spacer {
+  margin: 0 0.25rem;
+}
+
+.locationMarkerWrapper {
+  width: 12px;
+}

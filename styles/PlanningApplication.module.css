@@ -76,6 +76,10 @@
   text-decoration: underline;
 }
 
+.timeline {
+  margin-bottom: 2rem;
+}
+
 .solidLine {
   margin-left: 1rem;
   height: 25px;

@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npx netlify-cms-proxy-server & next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "netlify-cms-app": "^2.15.52",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"

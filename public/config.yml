@@ -1,0 +1,19 @@
+local_backend: true
+backend:
+  name: git-gateway
+  branch: main
+publish_mode: editorial_workflow
+media_folder: "public/images"
+public_folder: "/images"
+collections:
+  - name: "planning applications"
+    label: "Planning applications"
+    folder: "planning-applications"
+    slug: ""
+    file: "planning-applications/.mdx"
+    create: true
+    extension: mdx
+    format: frontmatter
+    fields:
+      - { label: "Id", name: "id", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }

@@ -8,7 +8,26 @@ const limit = 50;
 const distance = 500;
 
 export async function getServerSideProps(context) {
-  const whereQuery = `system_status not in('Final Decision', 'Withdrawn')`;
+  let whereQuery = `system_status not in('Final Decision', 'Withdrawn')`;
+  let postcode;
+
+  if (context.query.postcode) {
+    const postcodeRes = await fetch(`https://api.postcodes.io/postcodes/${context.query.postcode}`)
+    const postcodeData = await postcodeRes.json()
+
+    if (postcodeData.error) {
+      return {
+        props: {
+          error: postcodeData.error,
+          currentPostcode: context.query.postcode
+        }
+      }
+    }
+
+    postcode = postcodeData.result;
+    whereQuery += ` and within_circle(location, ${postcodeData.result.latitude}, ${postcodeData.result.longitude}, ${distance})`;
+  }
+
 
   const res = await fetch(`${process.env.API_URL}.json?$limit=${limit}&$where=${whereQuery}`)
   const data = await res.json()
@@ -21,8 +40,9 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      apiUrl: process.env.API_URL,
-      developments: data
+      developments: data,
+      currentPostcode: postcode ? postcode.postcode : '',
+      currentLocation: postcode ? { latitude: postcode.latitude, longitude: postcode.longitude } : null
     }
   }
 }
@@ -36,36 +56,9 @@ const PlanningList = (props) => {
 }
 
 export default function Home(props) {
-  const [developments, setDevelopments] = useState(props.developments);
-  const [postcode, setPostcode] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [currentLocation, setCurrentLocation] = useState();
+  const { developments, error, currentPostcode, currentLocation } = props;
 
-  const postcodeLookup = async (e) => {
-    e.preventDefault();
-
-    const postcodeRes = await fetch(`https://api.postcodes.io/postcodes/${postcode}`)
-    const postcodeData = await postcodeRes.json()
-
-    setError(postcodeData.error);
-
-    if (postcodeData.error) {
-      return
-    }
-
-    setLoading(true);
-    setPostcode(postcodeData.result.postcode);
-
-    const whereQuery = `system_status not in('Final Decision', 'Withdrawn') and within_circle(location, ${postcodeData.result.latitude}, ${postcodeData.result.longitude}, ${distance})`;
-
-    const res = await fetch(`${props.apiUrl}.json?$limit=${limit}&$where=${whereQuery}`)
-    const data = await res.json()
-
-    setCurrentLocation({ latitude: postcodeData.result.latitude, longitude: postcodeData.result.longitude });
-    setDevelopments(data);
-    setLoading(false);
-  }
+  const [postcode, setPostcode] = useState(currentPostcode);
 
   return (
     <div className={styles.container}>
@@ -90,7 +83,7 @@ export default function Home(props) {
               Find, review and leave feedback on open planning applications in Camden.
             </p>
 
-            <form onSubmit={postcodeLookup}>
+            <form>
               <label htmlFor='postcode' className={styles.searchLabel}>Enter your postcode</label>
               <input type='text' id='postcode' name='postcode' value={postcode} onChange={e => setPostcode(e.target.value)} className={styles.searchInput} />
               { error ? <p>{ error }</p> : null }
@@ -100,7 +93,7 @@ export default function Home(props) {
         </div>
 
         <section className={styles.results}>
-          { loading ? <p>Loading...</p> :  <PlanningList developments={developments} currentLocation={currentLocation} /> }
+          { developments && <PlanningList developments={developments} currentLocation={currentLocation} /> }
         </section>
       </main>
 

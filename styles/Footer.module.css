@@ -1,0 +1,21 @@
+.footer {
+  background-color: #2B1F2E;
+  padding: 2rem 1rem 3rem;
+}
+
+.footer h5 {
+  font-size: 2rem;
+  margin: 0 0 1.5rem;
+  font-weight: normal;
+}
+
+.footer ul {
+  padding: 0;
+  list-style: none;
+}
+
+.footerItem {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}

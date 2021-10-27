@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
+import Footer from '../../components/Footer'
 
 export async function getServerSideProps(context) {
   // Put the app number back into the way Camden store it
@@ -86,6 +87,7 @@ export default function PlanningApplication(props) {
 
       </main>
 
+      <Footer />
     </div>
   )
 }

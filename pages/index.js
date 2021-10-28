@@ -1,12 +1,35 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
+import PlanningList from '../components/PlanningList'
 import styles from '../styles/Home.module.css'
+import { useState } from 'react';
+
+const limit = 50;
+const distance = 500;
 
 export async function getServerSideProps(context) {
-  const limit = 50;
+  let whereQuery = `system_status not in('Final Decision', 'Withdrawn')`;
+  let postcode;
 
-  const res = await fetch(`${process.env.API_URL}.json?$limit=${limit}`)
+  if (context.query.postcode) {
+    const postcodeRes = await fetch(`https://api.postcodes.io/postcodes/${context.query.postcode}`)
+    const postcodeData = await postcodeRes.json()
+
+    if (postcodeData.error) {
+      return {
+        props: {
+          error: postcodeData.error,
+          currentPostcode: context.query.postcode
+        }
+      }
+    }
+
+    postcode = postcodeData.result;
+    whereQuery += ` and within_circle(location, ${postcodeData.result.latitude}, ${postcodeData.result.longitude}, ${distance})`;
+  }
+
+
+  const res = await fetch(`${process.env.API_URL}.json?$limit=${limit}&$where=${whereQuery}`)
   const data = await res.json()
 
   if (!data) {
@@ -17,35 +40,17 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      developments: data
+      developments: data,
+      currentPostcode: postcode ? postcode.postcode : '',
+      currentLocation: postcode ? { latitude: postcode.latitude, longitude: postcode.longitude } : null
     }
   }
 }
 
-const PlanningListItem = (props) => {
-  const { development } = props;
-
-  // The app numbers contain forward slashes, so we replace those with underscores
-  // here so it's URL compatible
-  const appId = development.application_number.replace(/\//g, "_")
-
-  return (
-    <Link href={`/planning-applications/${appId}`}>
-      <a>
-        <div className={styles.planningListItem} >
-          <div className={styles.imageSpacer}></div>
-          <div className={styles.listItemDetails}>
-            <h2 className={styles.listItemHeading}>{ development.development_description }</h2>
-            { development.development_address }
-          </div>
-        </div>
-      </a>
-    </Link>
-  )
-}
-
 export default function Home(props) {
-  const { developments } = props;
+  const { developments, error, currentPostcode, currentLocation } = props;
+
+  const [postcode, setPostcode] = useState(currentPostcode);
 
   return (
     <div className={styles.container}>
@@ -69,11 +74,18 @@ export default function Home(props) {
             <p className={styles.description}>
               Find, review and leave feedback on open planning applications in Camden.
             </p>
+
+            <form>
+              <label htmlFor='postcode' className={styles.searchLabel}>Enter your postcode</label>
+              <input type='text' id='postcode' name='postcode' value={postcode} onChange={e => setPostcode(e.target.value)} className={styles.searchInput} />
+              { error ? <p>{ error }</p> : null }
+              <button>Search</button>
+            </form>
           </div>
         </div>
 
         <section className={styles.results}>
-          { developments.map((d) => <PlanningListItem key={d.pk} development={d}/>) }
+          { developments && <PlanningList developments={developments} currentLocation={currentLocation} /> }
         </section>
       </main>
 

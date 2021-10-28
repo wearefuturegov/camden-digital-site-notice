@@ -26,6 +26,7 @@
 }
 
 .breadcrumbs {
+  font-family: Museo Sans;
   font-size: 16px;
 }
 
@@ -42,8 +43,23 @@
   background: white;
 }
 
+.greenSection {
+  padding: 0 1rem 3rem;
+}
+
+.greenSection p {
+  font-family: Museo Sans;
+}
+
+.greenSection a {
+  color: #E9FD57;
+  text-decoration: underline;
+}
+
+
 .description {
-  padding: 0 1rem 0.5rem;
+  border-bottom: 1px dashed #E9FD57;
+  margin-bottom: 2.5rem;
 }
 
 .descriptionHeader {
@@ -53,7 +69,14 @@
   margin: 1.5rem 0 1.5rem;
 }
 
+.descriptionHeaderSmall {
+  color: #E9FD57;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
 .description p {
+  font-family: Museo Sans;
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.5;
@@ -74,6 +97,10 @@
 
 .progress a {
   text-decoration: underline;
+}
+
+.timeline {
+  margin-bottom: 2rem;
 }
 
 .solidLine {

@@ -10,16 +10,18 @@
 }
 
 .title {
-  margin: 0;
+  margin: 2rem 0 0;
   line-height: 1.15;
   font-size: 2rem;
   font-weight: normal;
 }
 
 .description {
-  line-height: 1.5;
+  font-family: Museo Sans;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-bottom: 2rem;
 }
 
 .logo {
@@ -27,35 +29,23 @@
   margin-bottom: 1rem;
 }
 
+.searchLabel {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.searchInput {
+  font-size: 1.25rem;
+  background: #FFFFFF;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 100%;
+}
+
 .results {
   padding: 1.5rem 1rem 2rem;
   background: white;
-}
-
-.planningListItem {
-  border-radius: 8px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 1.5rem;
-}
-
-.imageSpacer {
-  height: 200px;
-  border-radius: 8px 8px 0 0;
-  background-color: #AACAC8;
-}
-
-.listItemDetails {
-  padding: 1rem;
-  font-weight: 400;
-  font-size: 12px;
-}
-
-.listItemHeading {
-  font-weight: 500;
-  font-size: 18px;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

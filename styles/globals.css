@@ -1,9 +1,51 @@
+@font-face {
+  font-family: 'Museo';
+  src: url('../public/fonts/Museo300-Regular.otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo';
+  src: url('../public/fonts/Museo500-Regular.otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo';
+  src: url('../public/fonts/Museo700-Regular.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo';
+  src: url('../public/fonts/Museo700-Regular.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('../public/fonts/MuseoSans_500.otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('../public/fonts/MuseoSans_500_Italic.otf');
+  font-weight: 500;
+  font-style: italic;
+}
+
+
 html,
 body {
+  font-family: 'Museo';
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -13,4 +55,20 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+input {
+  font-family: Museo Sans;
+}
+
+button {
+  font-family: 'Museo';
+  font-size: 1.5rem;
+  background: #2B1F2E;
+  border-radius: 4px;
+  color: #E9FD57;
+  border: none;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
 }

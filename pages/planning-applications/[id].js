@@ -59,15 +59,23 @@ export default function PlanningApplication(props) {
 
         <div className={styles.mapSpacer}></div>
 
-        <div className={styles.description}>
-          <h3 className={styles.descriptionHeader}>What&apos;s the plan?</h3>
-          <p>
-            { development_description }
-          </p>
+        <section className={styles.greenSection}>
+          <div className={styles.description}>
+            <h3 className={styles.descriptionHeader}>What&apos;s the plan?</h3>
+            <p>
+              { development_description }
+            </p>
+          </div>
 
-        </div>
+          <h3 className={styles.descriptionHeaderSmall}>Application type</h3>
+          <p>
+            <span>{ props.application_type }</span>
+          </p>
+          <a href="#">What are other types of permission?</a>
+        </section>
 
         <section className={styles.progress}>
+
           <h4>Where we are in the process</h4>
           <div className={styles.timeline}>
             <div className={styles.solidLine}></div>

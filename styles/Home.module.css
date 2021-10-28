@@ -10,16 +10,18 @@
 }
 
 .title {
-  margin: 0;
+  margin: 2rem 0 0;
   line-height: 1.15;
   font-size: 2rem;
   font-weight: normal;
 }
 
 .description {
-  line-height: 1.5;
+  font-family: Museo Sans;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-bottom: 2rem;
 }
 
 .logo {

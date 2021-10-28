@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import PlanningListItem from '../components/PlanningListItem'
+import PlanningList from '../components/PlanningList'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react';
 
@@ -45,14 +45,6 @@ export async function getServerSideProps(context) {
       currentLocation: postcode ? { latitude: postcode.latitude, longitude: postcode.longitude } : null
     }
   }
-}
-
-const PlanningList = (props) => {
-  const { developments, currentLocation } = props;
-
-  return (
-    developments.map((d) => <PlanningListItem key={d.pk} development={d} currentLocation={currentLocation} />)
-  )
 }
 
 export default function Home(props) {

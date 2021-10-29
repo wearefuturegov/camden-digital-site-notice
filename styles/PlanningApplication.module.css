@@ -1,9 +1,6 @@
-.page {
+.main {
   background-color: #2D4E4B;
   color: white;
-}
-
-.main {
   flex: 1;
   display: flex;
   flex-direction: column;

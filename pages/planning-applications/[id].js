@@ -55,7 +55,7 @@ export default function PlanningApplication(props) {
   const { development, frontMatter } = props;
 
   return (
-    <div className={styles.page}>
+    <>
       <Head>
         <title>Camden Planning</title>
         <meta name="description" content="Camden Digital Site Notice" />
@@ -117,14 +117,15 @@ export default function PlanningApplication(props) {
             </div>
           </div>
 
-          <a href={development.full_application.url} target='_blank' rel='noreferrer'>
-            <small>DEBUG: View in Camden&apos;s Planning Explorer</small>
-          </a>
         </section>
 
       </main>
 
       <Footer />
-    </div>
+
+      <a href={development.full_application.url} target='_blank' rel='noreferrer'>
+        <small>DEBUG: View in Camden&apos;s Planning Explorer</small>
+      </a>
+    </>
   )
 }

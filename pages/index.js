@@ -3,6 +3,7 @@ import Image from 'next/image'
 import PlanningList from '../components/PlanningList'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react';
+import Script from 'next/script'
 
 const limit = 50;
 const distance = 500;
@@ -59,6 +60,8 @@ export default function Home(props) {
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
 
+      <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
+
       <main className={styles.main}>
 
         <div className={styles.searchWrapper}>
@@ -89,17 +92,19 @@ export default function Home(props) {
         </section>
       </main>
 
-      <script>
-        if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", user => {
-            if (!user) {
-              window.netlifyIdentity.on("login", () => {
-                document.location.href = "/admin/";
-              });
-            }
-          })
-        }
-      </script>
+      <Script
+        id='netlify-auth'
+        dangerouslySetInnerHTML={{
+          __html: `if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+              if (!user) {
+                window.netlifyIdentity.on("login", () => {
+                  document.location.href = "/admin/";
+                });
+              }
+            })
+          }`
+        }} />
     </div>
   )
 }

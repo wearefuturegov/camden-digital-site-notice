@@ -71,7 +71,9 @@ export default function PlanningApplication(props) {
             <Link href='/'>
               <a>Planning Applications</a>
             </Link>
-            <span> &gt; </span>
+            <span className={styles.arrow}>
+              <Image src="/icons/arrow-right-white.svg" alt="" width={8} height={12} />
+            </span>
             <span className={styles.highlight}>Overview</span>
           </div>
 

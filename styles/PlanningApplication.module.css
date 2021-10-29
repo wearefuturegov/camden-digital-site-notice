@@ -27,8 +27,16 @@
   font-size: 16px;
 }
 
+.breadcrumbs .arrow {
+  margin: 0 0.5rem;
+}
+
 .breadcrumbs a {
   text-decoration: underline;
+}
+
+.breadcrumbs .highlight {
+  color: #E9FD57;
 }
 
 .address {

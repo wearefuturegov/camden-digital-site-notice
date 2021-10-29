@@ -21,7 +21,7 @@ const PlanningListItem = (props) => {
             <h2 className={styles.listItemHeading}>{ development.development_description }</h2>
             <div className={styles.listItemLocation}>
               <div className={styles.locationMarkerWrapper}>
-                <Image src="/location-marker.svg" alt="Distance" width={16} height={25} />
+                <Image src="/icons/location-marker.svg" alt="Distance" width={16} height={25} />
               </div>
               <p>
                 { distance &&

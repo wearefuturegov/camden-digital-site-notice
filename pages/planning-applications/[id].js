@@ -6,19 +6,13 @@ import Footer from '../../components/Footer'
 import path from 'path'
 import fs from 'fs'
 import matter from 'gray-matter'
-import { serialize } from 'next-mdx-remote/serialize'
 
 const POSTS_PATH = path.join(process.cwd(), 'content/planning-applications')
 
 const fetchMdxData = async (filePath) => {
   try {
     const source = fs.readFileSync(postFilePath)
-
     const { content, data } = matter(source)
-    const mdxSource = await serialize(content, {
-      scope: data
-    });
-
     return data
   } catch (err) {
     console.log(`No .mdx file found at ${filePath}`);

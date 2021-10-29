@@ -8,7 +8,7 @@ const limit = 50;
 const distance = 500;
 
 export async function getServerSideProps(context) {
-  let whereQuery = `system_status not in('Final Decision', 'Withdrawn')`;
+  let whereQuery = `system_status not in('Final Decision', 'Withdrawn') and decision_type is null`;
   let postcode;
 
   if (context.query.postcode) {

@@ -3,27 +3,56 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
 import Footer from '../../components/Footer'
+import path from 'path'
+import fs from 'fs'
+import matter from 'gray-matter'
+import { serialize } from 'next-mdx-remote/serialize'
+
+const POSTS_PATH = path.join(process.cwd(), 'content/planning-applications')
+
+const fetchMdxData = async (filePath) => {
+  try {
+    const source = fs.readFileSync(postFilePath)
+
+    const { content, data } = matter(source)
+    const mdxSource = await serialize(content, {
+      scope: data
+    });
+
+    return data
+  } catch (err) {
+    console.log(`No .mdx file found at ${filePath}`);
+    return null
+  }
+}
 
 export async function getServerSideProps(context) {
   // Put the app number back into the way Camden store it
-  const appNumber = context.query.id.replace(/_/g, '/');
+  const appNumber = context.query.id.replace(/-/g, '/').toUpperCase();
 
   const res = await fetch(`${process.env.API_URL}.json?application_number=${appNumber}`)
-  const data = await res.json()
+  const apiData = await res.json()
 
-  if (!data || data.length == 0) {
+  const postFilePath = path.join(POSTS_PATH, `${context.query.id}.mdx`)
+  const frontMatter = await fetchMdxData(postFilePath);
+
+  if (!apiData || apiData.length == 0) {
     return {
       notFound: true,
     }
   }
 
   return {
-    props: data[0],
+    props: {
+      development: apiData[0],
+      frontMatter: frontMatter
+    }
   }
 }
 
+
 export default function PlanningApplication(props) {
-  const { development_address, development_description } = props;
+  const { development, frontMatter } = props;
 
   return (
     <div className={styles.page}>
@@ -48,10 +77,10 @@ export default function PlanningApplication(props) {
 
           <div>
             <h2 className={styles.title}>
-              { props.application_type }
+              { frontMatter?.name || development.application_type }
             </h2>
             <p className={styles.address}>
-              { development_address }
+              { development.development_address }
             </p>
           </div>
 
@@ -63,13 +92,13 @@ export default function PlanningApplication(props) {
           <div className={styles.description}>
             <h3 className={styles.descriptionHeader}>What&apos;s the plan?</h3>
             <p>
-              { development_description }
+              { development.development_description }
             </p>
           </div>
 
           <h3 className={styles.descriptionHeaderSmall}>Application type</h3>
           <p>
-            <span>{ props.application_type }</span>
+            <span>{ development.application_type }</span>
           </p>
           <a href="#">What are other types of permission?</a>
         </section>
@@ -82,13 +111,13 @@ export default function PlanningApplication(props) {
             <div className={styles.progressItem}>
               <span className={styles.point}></span>
               <p className={styles.status}>
-                { props.system_status }
+                { development.system_status }
               </p>
-              { props.decision_type ? <p className={styles.statusDetail}>{props.decision_type}</p> : null }
+              { development.decision_type ? <p className={styles.statusDetail}>{development.decision_type}</p> : null }
             </div>
           </div>
 
-          <a href={props.full_application.url} target='_blank' rel='noreferrer'>
+          <a href={development.full_application.url} target='_blank' rel='noreferrer'>
             <small>DEBUG: View in Camden&apos;s Planning Explorer</small>
           </a>
         </section>

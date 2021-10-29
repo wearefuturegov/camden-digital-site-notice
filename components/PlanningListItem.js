@@ -8,7 +8,7 @@ const PlanningListItem = (props) => {
 
   // The app numbers contain forward slashes, so we replace those with underscores
   // here so it's URL compatible
-  const appId = development.application_number.replace(/\//g, "_")
+  const appId = development.application_number.replace(/\//g, "-")
 
   const distance = currentLocation ? distanceInMiles(currentLocation, development.location) : null;
 

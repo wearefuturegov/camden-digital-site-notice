@@ -15,6 +15,7 @@ const CMS = dynamic(
   { ssr: false, loading: Loading }
 )
 
+
 const Admin = () => <CMS />
 
 export default Admin

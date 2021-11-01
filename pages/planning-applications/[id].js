@@ -11,11 +11,12 @@ const PLAN_APPS_PATH = path.join(process.cwd(), 'content/planning-applications')
 
 const fetchMdxData = async (filePath) => {
   try {
-    const source = fs.readFileSync(postFilePath)
+    const source = fs.readFileSync(filePath)
     const { content, data } = matter(source)
     return data
   } catch (err) {
     console.log(`No .mdx file found at ${filePath}`);
+    console.log(err)
     return null
   }
 }

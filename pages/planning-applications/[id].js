@@ -3,11 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
 import Footer from '../../components/Footer'
-import client, {
-  getClient,
-  usePreviewSubscription,
-  PortableText,
-} from "@lib/sanity";
+import client, { getClient } from "@lib/sanity";
 import { groq } from "next-sanity";
 
 export async function getServerSideProps(context) {

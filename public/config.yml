@@ -6,7 +6,7 @@ publish_mode: editorial_workflow
 media_folder: "public/images"
 public_folder: "/images"
 collections:
-  - name: "planning applications"
+  - name: "planning-applications"
     label: "Planning applications"
     folder: "content/planning-applications"
     slug: ""

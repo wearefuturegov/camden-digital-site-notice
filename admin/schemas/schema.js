@@ -49,7 +49,8 @@ export default createSchema({
       ],
       preview: {
         select: {
-          title: 'applicationNumber'
+          title: 'applicationNumber',
+          subtitle: 'name'
         }
       }
     }

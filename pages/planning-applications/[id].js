@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
   console.log(appNumber)
 
   const query = groq`
-    *[_type == "planning-application" && application_number == "${appNumber}"] | order(_createdAt desc) [0] {
+    *[_type == "planning-application" && applicationNumber == "${appNumber}"] | order(_createdAt desc) [0] {
       ...
     }
   `;

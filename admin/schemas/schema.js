@@ -20,7 +20,7 @@ export default createSchema({
         {
           title: 'Application number',
           description: 'Make sure this exactly matches the Camden application number, e.g. 2021/1000/P',
-          name: 'application_number',
+          name: 'applicationNumber',
           type: 'string',
           required: true
         },
@@ -46,7 +46,12 @@ export default createSchema({
             {field: 'application_number', direction: 'asc'}
           ]
         }
-      ]
+      ],
+      preview: {
+        select: {
+          title: 'applicationNumber'
+        }
+      }
     }
   ]),
 })

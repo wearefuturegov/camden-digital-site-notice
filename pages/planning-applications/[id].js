@@ -7,7 +7,7 @@ import path from 'path'
 import fs from 'fs'
 import matter from 'gray-matter'
 
-const POSTS_PATH = path.join(process.cwd(), 'content/planning-applications')
+const PLAN_APPS_PATH = path.join(process.cwd(), 'content/planning-applications')
 
 const fetchMdxData = async (filePath) => {
   try {
@@ -27,8 +27,8 @@ export async function getServerSideProps(context) {
   const res = await fetch(`${process.env.API_URL}.json?application_number=${appNumber}`)
   const apiData = await res.json()
 
-  const postFilePath = path.join(POSTS_PATH, `${context.query.id}.mdx`)
-  const frontMatter = await fetchMdxData(postFilePath);
+  const filePath = path.join(PLAN_APPS_PATH, `${context.query.id.toLowerCase()}.mdx`)
+  const frontMatter = await fetchMdxData(filePath);
 
   if (!apiData || apiData.length == 0) {
     return {

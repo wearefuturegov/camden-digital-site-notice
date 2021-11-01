@@ -3,23 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
 import Footer from '../../components/Footer'
-import path from 'path'
-import fs from 'fs'
-import matter from 'gray-matter'
-
-const PLAN_APPS_PATH = path.join(process.cwd(), 'content/planning-applications')
-
-const fetchMdxData = async (filePath) => {
-  try {
-    const source = fs.readFileSync(filePath)
-    const { content, data } = matter(source)
-    return data
-  } catch (err) {
-    console.log(`No .mdx file found at ${filePath}`);
-    console.log(err)
-    return err.toString()
-  }
-}
+import client, {
+  getClient,
+  usePreviewSubscription,
+  PortableText,
+} from "@lib/sanity";
+import { groq } from "next-sanity";
 
 export async function getServerSideProps(context) {
   // Put the app number back into the way Camden store it
@@ -27,10 +16,16 @@ export async function getServerSideProps(context) {
 
   const res = await fetch(`${process.env.API_URL}.json?application_number=${appNumber}`)
   const apiData = await res.json()
+  console.log(appNumber)
 
-  const filePath = path.join(PLAN_APPS_PATH, `${context.query.id.toLowerCase()}.mdx`)
-  const frontMatter = await fetchMdxData(filePath);
+  const query = groq`
+    *[_type == "planning-application" && application_number == "${appNumber}"] | order(_createdAt desc) [0] {
+      ...
+    }
+  `;
+  const planningApp = await getClient().fetch(query);
 
+  console.log(planningApp)
   if (!apiData || apiData.length == 0) {
     return {
       notFound: true,
@@ -40,15 +35,15 @@ export async function getServerSideProps(context) {
   return {
     props: {
       development: apiData[0],
-      frontMatter: frontMatter
+      sanity: planningApp
     }
   }
 }
 
 
 export default function PlanningApplication(props) {
-  const { development, frontMatter } = props;
-  console.log(frontMatter);
+  const { development, sanity } = props;
+  console.log(sanity);
 
   return (
     <>
@@ -75,7 +70,7 @@ export default function PlanningApplication(props) {
 
           <div>
             <h2 className={styles.title}>
-              { frontMatter?.name || development.application_type }
+              { sanity?.name || development.application_type }
             </h2>
             <p className={styles.address}>
               { development.development_address }

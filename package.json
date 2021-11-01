@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npx netlify-cms-proxy-server & next dev",
+    "dev": "next dev",
+    "prebuild": "echo 'Building Sanity to public/admin' && cd admin && yarn && npx @sanity/cli build ../public/admin -y && echo 'Done'",
     "build": "next build",
     "start": "next start",
+    "sanity": "cd admin && sanity start",
     "lint": "next lint"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
-    "netlify-cms-app": "^2.15.52",
     "next": "11.1.2",
+    "next-sanity": "^0.4.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },

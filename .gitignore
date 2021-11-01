@@ -32,3 +32,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# sanity
+/admin/node_modules
+/admin/dist

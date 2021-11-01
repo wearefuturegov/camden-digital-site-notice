@@ -30,6 +30,22 @@ export default createSchema({
           name: 'name',
           type: 'string'
         }
+      ],
+      orderings: [
+        {
+          title: 'Application No, descending',
+          name: 'applicationNumberDesc',
+          by: [
+            {field: 'application_number', direction: 'desc'}
+          ]
+        },
+        {
+          title: 'Application No, ascending',
+          name: 'applicationNumberDesc',
+          by: [
+            {field: 'application_number', direction: 'asc'}
+          ]
+        }
       ]
     }
   ]),

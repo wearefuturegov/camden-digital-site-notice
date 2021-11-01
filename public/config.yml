@@ -10,7 +10,6 @@ collections:
     label: "Planning applications"
     folder: "content/planning-applications"
     slug: ""
-    file: "planning-applications/.mdx"
     create: true
     extension: mdx
     format: frontmatter

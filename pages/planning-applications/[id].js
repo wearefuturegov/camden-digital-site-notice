@@ -17,7 +17,7 @@ const fetchMdxData = async (filePath) => {
   } catch (err) {
     console.log(`No .mdx file found at ${filePath}`);
     console.log(err)
-    return null
+    return err.toString()
   }
 }
 
@@ -48,6 +48,7 @@ export async function getServerSideProps(context) {
 
 export default function PlanningApplication(props) {
   const { development, frontMatter } = props;
+  console.log(frontMatter);
 
   return (
     <>

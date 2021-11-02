@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
+import ApplicationDetail from '../../components/ApplicationDetail'
 import Footer from '../../components/Footer'
 import client, { getClient } from "@lib/sanity";
 import { groq } from "next-sanity";
@@ -19,9 +20,9 @@ export async function getServerSideProps(context) {
       ...
     }
   `;
-  const planningApp = await getClient().fetch(query);
+  const cmsData = await getClient().fetch(query);
 
-  console.log(planningApp)
+  console.log(cmsData)
   if (!apiData || apiData.length == 0) {
     return {
       notFound: true,
@@ -31,15 +32,14 @@ export async function getServerSideProps(context) {
   return {
     props: {
       development: apiData[0],
-      sanity: planningApp
+      cmsData: cmsData
     }
   }
 }
 
-
 export default function PlanningApplication(props) {
-  const { development, sanity } = props;
-  console.log(sanity);
+  const { development, cmsData } = props;
+  console.log(cmsData);
 
   return (
     <>
@@ -66,7 +66,7 @@ export default function PlanningApplication(props) {
 
           <div>
             <h2 className={styles.title}>
-              { sanity?.name || development.application_type }
+              { cmsData?.name || development.application_type }
             </h2>
             <p className={styles.address}>
               { development.development_address }
@@ -89,7 +89,25 @@ export default function PlanningApplication(props) {
           <p>
             <span>{ development.application_type }</span>
           </p>
-          <a href="#">What are other types of permission?</a>
+          <a href="#">Learn more about application types</a>
+
+          { cmsData?.proposedLandUse &&
+            <ApplicationDetail
+              heading='How will the site be used'
+              value={cmsData.proposedLandUse} />
+          }
+
+          { cmsData?.height &&
+            <ApplicationDetail
+              heading='Height'
+              value={cmsData.height} />
+          }
+
+          { cmsData?.constructionTime &&
+            <ApplicationDetail
+              heading='Construction time'
+              value={cmsData.constructionTime} />
+          }
         </section>
 
         <section className={styles.progress}>

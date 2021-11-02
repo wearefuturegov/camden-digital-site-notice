@@ -29,6 +29,21 @@ export default createSchema({
           description: 'Use a short title that describes this development',
           name: 'name',
           type: 'string'
+        },
+        {
+          title: 'Proposed land use',
+          name: 'proposedLandUse',
+          type: 'string'
+        },
+        {
+          title: 'Height',
+          name: 'height',
+          type: 'string'
+        },
+        {
+          title: 'Estimated construction time',
+          name: 'constructionTime',
+          type: 'string'
         }
       ],
       orderings: [

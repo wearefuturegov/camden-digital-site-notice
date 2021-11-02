@@ -79,7 +79,7 @@ export default function PlanningApplication(props) {
 
         <section className={styles.greenSection}>
           <div className={styles.description}>
-            <h3 className={styles.descriptionHeader}>What&apos;s the plan?</h3>
+            <h3 className={styles.descriptionHeader}>About this development</h3>
             <p>
               { development.development_description }
             </p>

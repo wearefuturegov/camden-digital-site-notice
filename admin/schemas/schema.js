@@ -44,6 +44,16 @@ export default createSchema({
           title: 'Estimated construction time',
           name: 'constructionTime',
           type: 'string'
+        },
+        {
+          title: 'Residential units',
+          name: 'residentialUnits',
+          type: 'number'
+        },
+        {
+          title: 'Affordable residential units',
+          name: 'affordableResidentialUnits',
+          type: 'number'
         }
       ],
       orderings: [

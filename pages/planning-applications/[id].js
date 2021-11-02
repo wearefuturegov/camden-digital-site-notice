@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
 import ApplicationDetail from '../../components/ApplicationDetail'
+import ImpactData from '../../components/ImpactData'
 import Footer from '../../components/Footer'
 import client, { getClient } from "@lib/sanity";
 import { groq } from "next-sanity";
@@ -49,7 +50,7 @@ export default function PlanningApplication(props) {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.header}>
+        <section className={styles.header}>
           <div className={styles.logo}>
             <Image src="/Camden_Logo_White.svg" alt="Camden Logo" width={127} height={39} />
           </div>
@@ -65,21 +66,21 @@ export default function PlanningApplication(props) {
           </div>
 
           <div>
-            <h2 className={styles.title}>
+            <h1 className={styles.title}>
               { cmsData?.name || development.application_type }
-            </h2>
+            </h1>
             <p className={styles.address}>
               { development.development_address }
             </p>
           </div>
 
-        </div>
+        </section>
 
         <div className={styles.mapSpacer}></div>
 
         <section className={styles.greenSection}>
           <div className={styles.description}>
-            <h3 className={styles.descriptionHeader}>About this development</h3>
+            <h2 className={styles.descriptionHeader}>About this development</h2>
             <p>
               { development.development_description }
             </p>
@@ -109,6 +110,30 @@ export default function PlanningApplication(props) {
               value={cmsData.constructionTime} />
           }
         </section>
+
+        <div>
+          <div className={styles.impactDecoration}></div>
+          <section className={styles.impact}>
+            <h2>How could this affect you?</h2>
+            <p className={styles.subtitle}>This development could impact your local community in the following ways</p>
+
+            { cmsData?.residentialUnits &&
+              <div className={styles.impactArea}>
+                <h3>New homes</h3>
+
+                <ImpactData
+                  value={cmsData.residentialUnits}
+                  label='new homes'
+                />
+
+                <ImpactData
+                  value={(cmsData.affordableResidentialUnits / cmsData.residentialUnits * 100) + '%'}
+                  label='affordable housing'
+                />
+              </div>
+            }
+          </section>
+        </div>
 
         <section className={styles.progress}>
 

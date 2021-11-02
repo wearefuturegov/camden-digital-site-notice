@@ -1,0 +1,9 @@
+.impactData {
+  display: flex;
+  align-items: center;
+}
+
+.number {
+  font-size: 2rem;
+  margin-right: 1rem;
+}

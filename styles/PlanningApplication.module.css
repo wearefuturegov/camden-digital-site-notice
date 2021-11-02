@@ -1,12 +1,16 @@
 .main {
-  background-color: #2D4E4B;
-  color: white;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.header {
+.main section {
+  padding: 2rem 1rem 0.5rem;
+}
+
+section.header {
+  background-color: #2D4E4B;
+  color: white;
   padding: 3rem 1rem 0.5rem;
 }
 
@@ -49,6 +53,8 @@
 }
 
 .greenSection {
+  background-color: #2D4E4B;
+  color: white;
   padding: 0 1rem 3rem;
 }
 
@@ -145,4 +151,36 @@
   padding-left: 1.5rem;
   padding-bottom: 1.5rem;
   margin-top: 0.25rem;
+}
+
+section.impact {
+  border-bottom: 1px solid #AACAC8;
+  padding: 2rem 0.5rem 4rem;
+  margin: 0 0.5rem;
+}
+
+.impactDecoration {
+  background-color: #E9FD57;
+  width: 135px;
+  height: 17px;
+}
+
+.impact h2 {
+  font-weight: 400;
+  font-size: 2rem;
+  margin-right: 2rem;
+}
+
+.impact h3 {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.impactArea {
+  border-top: 1px solid #AACAC8;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 2rem;
 }

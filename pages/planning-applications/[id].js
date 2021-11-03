@@ -90,29 +90,31 @@ export default function PlanningApplication(props) {
             </p>
           </div>
 
-          <h3 className={styles.descriptionHeaderSmall}>Application type</h3>
-          <p>
-            <span>{ development.application_type }</span>
-          </p>
-          <a href="#">Learn more about application types</a>
+          <div className={styles.applicationDetails}>
+            <h3 className={styles.descriptionHeaderSmall}>Application type</h3>
+            <p>
+              <span>{ development.application_type }</span>
+            </p>
+            <a href="#">Learn more about application types</a>
 
-          { cmsData?.proposedLandUse &&
-            <ApplicationDetail
-              heading='How will the site be used'
-              value={cmsData.proposedLandUse} />
-          }
+            { cmsData?.proposedLandUse &&
+              <ApplicationDetail
+                heading='How will the site be used'
+                value={cmsData.proposedLandUse} />
+            }
 
-          { cmsData?.height &&
-            <ApplicationDetail
-              heading='Height'
-              value={cmsData.height} />
-          }
+            { cmsData?.height &&
+              <ApplicationDetail
+                heading='Height'
+                value={cmsData.height} />
+            }
 
-          { cmsData?.constructionTime &&
-            <ApplicationDetail
-              heading='Construction time'
-              value={cmsData.constructionTime} />
-          }
+            { cmsData?.constructionTime &&
+              <ApplicationDetail
+                heading='Construction time'
+                value={cmsData.constructionTime} />
+            }
+          </div>
         </section>
 
         { showImpactSection &&

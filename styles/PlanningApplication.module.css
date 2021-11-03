@@ -67,7 +67,6 @@ section.header {
   text-decoration: underline;
 }
 
-
 .description {
   border-bottom: 1px dashed #E9FD57;
   margin-bottom: 2.5rem;
@@ -91,6 +90,10 @@ section.header {
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.5;
+}
+
+.applicationDetails {
+  margin-bottom: 2.5rem;
 }
 
 .progress {

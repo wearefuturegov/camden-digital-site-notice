@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
 import ApplicationDetail from '../../components/ApplicationDetail'
+import ImpactDataHeader from '../../components/ImpactDataHeader'
 import ImpactData from '../../components/ImpactData'
 import Footer from '../../components/Footer'
 import client, { getClient } from "@lib/sanity";
@@ -41,6 +42,9 @@ export async function getServerSideProps(context) {
 export default function PlanningApplication(props) {
   const { development, cmsData } = props;
   console.log(cmsData);
+
+  const showImpactSection = !!cmsData && (cmsData.showHousing || cmsData.showOpenSpace ||
+    cmsData.showJobs || cmsData.showCarbon);
 
   return (
     <>
@@ -111,29 +115,84 @@ export default function PlanningApplication(props) {
           }
         </section>
 
-        <div>
-          <div className={styles.impactDecoration}></div>
-          <section className={styles.impact}>
-            <h2>How could this affect you?</h2>
-            <p className={styles.subtitle}>This development could impact your local community in the following ways</p>
+        { showImpactSection &&
+          <div>
+            <div className={styles.impactDecoration}></div>
+            <section className={styles.impact}>
+              <h2>How could this affect you?</h2>
+              <p className={styles.subtitle}>This development could impact your local community in the following ways</p>
 
-            { cmsData?.residentialUnits &&
-              <div className={styles.impactArea}>
-                <h3>New homes</h3>
+              { cmsData.showHousing &&
+                <div className={styles.impactArea}>
+                  <ImpactDataHeader header='New homes' image='housing' />
 
-                <ImpactData
-                  value={cmsData.residentialUnits}
-                  label='new homes'
-                />
+                  <ImpactData
+                    value={cmsData.housing.residentialUnits.toLocaleString()}
+                    label='new homes'
+                  />
 
-                <ImpactData
-                  value={(cmsData.affordableResidentialUnits / cmsData.residentialUnits * 100) + '%'}
-                  label='affordable housing'
-                />
-              </div>
-            }
-          </section>
-        </div>
+                  <ImpactData
+                    value={(cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString() + '%'}
+                    label='affordable housing'
+                  />
+                </div>
+              }
+
+              { cmsData.showHousing &&
+                <div className={styles.impactArea}>
+                  <ImpactDataHeader header='Healthcare' image='healthcare' />
+
+                  <ImpactData
+                    value={cmsData.housing.healthcareDemand.toLocaleString() + '%'}
+                    label='additional demand on GPs and hospitals'
+                  />
+                </div>
+              }
+
+              { cmsData.showOpenSpace &&
+                <div className={styles.impactArea}>
+                  <ImpactDataHeader
+                    header={`${ cmsData.openSpace.accessType == 'unrestricted' ? 'Public' : 'Private'} open spaces`}
+                    image='open-spaces' />
+
+                  <ImpactData
+                    value={cmsData.openSpace.area.toLocaleString()}
+                    label='square metres'
+                  />
+                </div>
+              }
+
+              { cmsData.showJobs &&
+                <div className={styles.impactArea}>
+                  <ImpactDataHeader header='New jobs' image='jobs' />
+
+                  <ImpactData
+                    value={[cmsData.jobs.min.toLocaleString(), cmsData.jobs.max.toLocaleString()].join(' - ')}
+                    label='new roles'
+                  />
+                </div>
+              }
+
+              { cmsData.showCarbon &&
+                <div className={styles.impactArea}>
+                  <ImpactDataHeader header='Carbon emissions' image='co2' />
+
+                  <ImpactData
+                    value={cmsData.carbonEmissions.toLocaleString() + '%'}
+                    label='more CO2 emissions'
+                  />
+                </div>
+              }
+
+              { cmsData.showAccess &&
+                <div className={styles.impactArea}>
+                  <ImpactDataHeader header='Pedestrian and vehicle access' image='access' />
+                  <p className={styles.impactCopy}>{cmsData.access}</p>
+                </div>
+              }
+            </section>
+          </div>
+        }
 
         <section className={styles.progress}>
 

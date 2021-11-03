@@ -46,15 +46,108 @@ export default createSchema({
           type: 'string'
         },
         {
-          title: 'Residential units',
-          name: 'residentialUnits',
-          type: 'number'
+          title: 'Housing impact',
+          name: 'showHousing',
+          type: 'boolean'
         },
         {
-          title: 'Affordable residential units',
-          name: 'affordableResidentialUnits',
-          type: 'number'
-        }
+          title: 'Housing',
+          name: 'housing',
+          type: 'object',
+          hidden: ({document}) => !document?.showHousing,
+          fields: [
+            {
+              title: 'New residential units',
+              name: 'residentialUnits',
+              type: 'number'
+            },
+            {
+              title: 'Affordable residential units',
+              name: 'affordableResidentialUnits',
+              type: 'number'
+            },
+            {
+              title: 'Additional healthcare demand',
+              description: 'As a percentage',
+              name: 'healthcareDemand',
+              type: 'number'
+            },
+          ]
+        },
+        {
+          title: 'Open space impact',
+          name: 'showOpenSpace',
+          type: 'boolean'
+        },
+        {
+          title: 'Open space',
+          name: 'openSpace',
+          type: 'object',
+          hidden: ({document}) => !document?.showOpenSpace,
+          fields: [
+            {
+              title: 'Area in square metres',
+              name: 'area',
+              type: 'number'
+            },
+            {
+              title: 'Access type',
+              name: 'accessType',
+              type: 'string',
+              options: {
+                list: [
+                  {title: 'Restricted', value: 'restricted'},
+                  {title: 'Unrestricted', value: 'unrestricted'}
+                ]
+              }
+            }
+          ]
+        },
+        {
+          title: 'Jobs impact',
+          name: 'showJobs',
+          type: 'boolean'
+        },
+        {
+          title: 'New jobs',
+          name: 'jobs',
+          type: 'object',
+          hidden: ({document}) => !document?.showJobs,
+          fields: [
+            {
+              title: 'Minimum',
+              name: 'min',
+              type: 'number'
+            },
+            {
+              title: 'Maximum',
+              name: 'max',
+              type: 'number'
+            }
+          ]
+        },
+        {
+          title: 'Carbon impact',
+          name: 'showCarbon',
+          type: 'boolean'
+        },
+        {
+          title: 'Percentage change in CO2 emissions',
+          name: 'carbonEmissions',
+          type: 'number',
+          hidden: ({document}) => !document?.showCarbon,
+        },
+        {
+          title: 'Pedestrian and vehicle access',
+          name: 'showAccess',
+          type: 'boolean'
+        },
+        {
+          title: 'Pedestrian and vehicle access',
+          name: 'access',
+          type: 'text',
+          hidden: ({document}) => !document?.showAccess,
+        },
       ],
       orderings: [
         {

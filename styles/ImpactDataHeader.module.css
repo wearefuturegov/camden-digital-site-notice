@@ -1,0 +1,16 @@
+.impactData {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.impactHeader {
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-right: 2rem;
+}
+
+.impactIcon {
+  min-width: 65px;
+}

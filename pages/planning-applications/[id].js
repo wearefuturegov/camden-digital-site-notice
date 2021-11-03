@@ -5,6 +5,7 @@ import styles from '../../styles/PlanningApplication.module.css'
 import ApplicationDetail from '../../components/ApplicationDetail'
 import ImpactDataHeader from '../../components/ImpactDataHeader'
 import ImpactData from '../../components/ImpactData'
+import PlanningAlertSignup from '../../components/PlanningAlertSignup'
 import Footer from '../../components/Footer'
 import client, { getClient } from "@lib/sanity";
 import { groq } from "next-sanity";
@@ -198,7 +199,7 @@ export default function PlanningApplication(props) {
 
         <section className={styles.progress}>
 
-          <h4>Where we are in the process</h4>
+          <h2>Where we are in the process</h2>
           <div className={styles.timeline}>
             <div className={styles.solidLine}></div>
             <div className={styles.progressItem}>
@@ -212,6 +213,7 @@ export default function PlanningApplication(props) {
 
         </section>
 
+        <PlanningAlertSignup />
       </main>
 
       <Footer />

@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 
-.main section {
+.mainSection {
   padding: 2rem 1rem 0.5rem;
 }
 
@@ -102,7 +102,7 @@ section.header {
   color: #2B1F2E;
 }
 
-.progress h4 {
+.progress h2 {
   color: #EC6331;
   font-size: 1.75rem;
   font-weight: 400;

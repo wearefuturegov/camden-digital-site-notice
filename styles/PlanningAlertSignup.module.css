@@ -1,0 +1,39 @@
+.container {
+  border-top: 1px dashed #AACAC8;
+  padding: 2rem 0;
+}
+
+.headerWrapper {
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
+}
+
+.decoration {
+  position: absolute;
+  width: 12px;
+  height: 65px;
+  background-color: #AACAC8;
+}
+
+.centered {
+  margin: 0 auto;
+}
+
+.header {
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+.button {
+  background: #2B1F2E;
+  color: #E9FD57;
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  max-width: 300px;
+}

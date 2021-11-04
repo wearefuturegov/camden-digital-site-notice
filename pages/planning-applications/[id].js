@@ -9,6 +9,7 @@ import PlanningAlertSignup from '../../components/PlanningAlertSignup'
 import Footer from '../../components/Footer'
 import client, { getClient } from "@lib/sanity";
 import { groq } from "next-sanity";
+import { useNextSanityImage } from 'next-sanity-image';
 
 export async function getServerSideProps(context) {
   // Put the app number back into the way Camden store it
@@ -26,6 +27,7 @@ export async function getServerSideProps(context) {
   const cmsData = await getClient().fetch(query);
 
   console.log(cmsData)
+
   if (!apiData || apiData.length == 0) {
     return {
       notFound: true,
@@ -46,6 +48,11 @@ export default function PlanningApplication(props) {
 
   const showImpactSection = !!cmsData && (cmsData.showHousing || cmsData.showOpenSpace ||
     cmsData.showJobs || cmsData.showCarbon);
+
+  const imageProps = useNextSanityImage(
+    client,
+    cmsData.massings
+  );
 
   return (
     <>
@@ -81,7 +88,9 @@ export default function PlanningApplication(props) {
 
         </section>
 
-        <div className={styles.mapSpacer}></div>
+        <div className={styles.massingsImage}>
+          <Image {...imageProps} alt="Image showing the proposed massings for the development" layout='responsive' />
+        </div>
 
         <section className={styles.greenSection}>
           <div className={styles.description}>
@@ -96,7 +105,6 @@ export default function PlanningApplication(props) {
             <p>
               <span>{ development.application_type }</span>
             </p>
-            <a href="#">Learn more about application types</a>
 
             { cmsData?.proposedLandUse &&
               <ApplicationDetail

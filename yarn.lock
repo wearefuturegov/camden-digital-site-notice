@@ -2305,6 +2305,13 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
+next-sanity-image@^3.1.7:
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/next-sanity-image/-/next-sanity-image-3.1.7.tgz#3b57bcecd6987aadc85d2761d0164b21fe243947"
+  integrity sha512-mk842380HwDrlUSmyyx54MGcGcbz847c2rCTj9c75lkO+VSpuJ00+uaiJE3arktrnHAUV4XCZ+OVxJ6C1mqtBw==
+  dependencies:
+    "@sanity/image-url" "^0.140.22"
+
 next-sanity@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/next-sanity/-/next-sanity-0.4.0.tgz#497bb4f07c14de5903707da4b3831c388c65b308"

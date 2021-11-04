@@ -31,6 +31,11 @@ export default createSchema({
           type: 'string'
         },
         {
+          title: 'Massings image',
+          name: 'massings',
+          type: 'image'
+        },
+        {
           title: 'Proposed land use',
           name: 'proposedLandUse',
           type: 'string'

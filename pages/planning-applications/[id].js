@@ -51,7 +51,7 @@ export default function PlanningApplication(props) {
 
   const imageProps = useNextSanityImage(
     client,
-    cmsData.massings
+    cmsData?.massings
   );
 
   return (
@@ -88,9 +88,11 @@ export default function PlanningApplication(props) {
 
         </section>
 
-        <div className={styles.massingsImage}>
-          <Image {...imageProps} alt="Image showing the proposed massings for the development" layout='responsive' />
-        </div>
+        { cmsData?.massings &&
+          <div className={styles.massingsImage}>
+            <Image {...imageProps} alt="Image showing the proposed massings for the development" layout='responsive' />
+          </div>
+        }
 
         <section className={styles.greenSection}>
           <div className={styles.description}>

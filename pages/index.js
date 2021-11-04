@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import CamdenLogo from '../components/CamdenLogo'
 import PlanningList from '../components/PlanningList'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react';
@@ -65,9 +65,7 @@ export default function Home(props) {
       <main className={styles.main}>
 
         <div className={styles.searchWrapper}>
-          <div className={styles.logo}>
-            <Image src="/Camden_Logo_Blk.svg" alt="Camden Logo" width={127} height={39} />
-          </div>
+          <CamdenLogo colour='black' />
 
           <div>
             <h1 className={styles.title}>

@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
+import CamdenLogo from '../../components/CamdenLogo'
+import BreadcrumbArrow from '../../components/BreadcrumbArrow'
 import ApplicationDetail from '../../components/ApplicationDetail'
 import ImpactDataHeader from '../../components/ImpactDataHeader'
 import ImpactData from '../../components/ImpactData'
@@ -63,17 +65,13 @@ export default function PlanningApplication(props) {
 
       <main className={styles.main}>
         <section className={styles.header}>
-          <div className={styles.logo}>
-            <Image src="/Camden_Logo_White.svg" alt="Camden Logo" width={127} height={39} />
-          </div>
+          <CamdenLogo colour='white' />
 
           <div className={styles.breadcrumbs}>
             <Link href='/'>
               <a>Planning Applications</a>
             </Link>
-            <span className={styles.arrow}>
-              <Image src="/icons/arrow-right-white.svg" alt="" width={8} height={12} />
-            </span>
+            <BreadcrumbArrow />
             <span className={styles.highlight}>Overview</span>
           </div>
 

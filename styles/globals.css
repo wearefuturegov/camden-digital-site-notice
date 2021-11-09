@@ -40,25 +40,29 @@
   font-style: italic;
 }
 
-
-html,
-body {
-  font-family: 'Museo';
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
 }
 
+html,
+body {
+  font-family: 'Museo Sans';
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Museo';
+}
+
+a {
+  font-family: 'Museo';
+  color: inherit;
+  text-decoration: none;
+}
+
 input {
-  font-family: Museo Sans;
+  font-family: 'Museo Sans';
 }
 
 button {

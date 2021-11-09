@@ -22,11 +22,11 @@ section.header {
 }
 
 .breadcrumbs {
-  font-family: Museo Sans;
   font-size: 16px;
 }
 
 .breadcrumbs a {
+  font-family: 'Museo Sans';
   text-decoration: underline;
 }
 
@@ -49,10 +49,6 @@ section.header {
   background-color: #2D4E4B;
   color: white;
   padding: 0 1rem 3rem;
-}
-
-.greenSection p {
-  font-family: Museo Sans;
 }
 
 .greenSection a {
@@ -79,7 +75,6 @@ section.header {
 }
 
 .description p {
-  font-family: Museo Sans;
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.5;
@@ -130,6 +125,7 @@ section.header {
 
 .progressItem {
   position: relative;
+  font-family: 'Museo';
   margin-left: 1rem;
 }
 

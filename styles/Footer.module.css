@@ -15,6 +15,10 @@
   list-style: none;
 }
 
+.footer a {
+  font-family: 'Museo Sans';
+}
+
 .footerItem {
   margin-bottom: 1rem;
   display: flex;

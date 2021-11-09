@@ -5,8 +5,8 @@ import styles from '../../styles/PlanningApplication.module.css'
 import CamdenLogo from '../../components/CamdenLogo'
 import BreadcrumbArrow from '../../components/BreadcrumbArrow'
 import ApplicationDetail from '../../components/ApplicationDetail'
-import ImpactDataHeader from '../../components/ImpactDataHeader'
-import ImpactData from '../../components/ImpactData'
+import ImpactArea from '../../components/ImpactArea'
+import ImpactStat from '../../components/ImpactStat'
 import PlanningAlertSignup from '../../components/PlanningAlertSignup'
 import Footer from '../../components/Footer'
 import client, { getClient } from "@lib/sanity";
@@ -134,72 +134,62 @@ export default function PlanningApplication(props) {
               <p className={styles.subtitle}>This development could impact your local community in the following ways</p>
 
               { cmsData.showHousing &&
-                <div className={styles.impactArea}>
-                  <ImpactDataHeader header='New homes' image='housing' />
-
-                  <ImpactData
+                <ImpactArea header='New homes' image='housing'>
+                  <ImpactStat
                     value={cmsData.housing.residentialUnits.toLocaleString()}
                     label='new homes'
                   />
-
-                  <ImpactData
+                  <ImpactStat
                     value={(cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString() + '%'}
                     label='affordable housing'
                   />
-                </div>
+                </ImpactArea>
               }
 
               { cmsData.showHousing &&
-                <div className={styles.impactArea}>
-                  <ImpactDataHeader header='Healthcare' image='healthcare' />
-
-                  <ImpactData
+                <ImpactArea header='Healthcare' image='healthcare'>
+                  <ImpactStat
                     value={cmsData.housing.healthcareDemand.toLocaleString() + '%'}
                     label='additional demand on GPs and hospitals'
                   />
-                </div>
+                </ImpactArea>
               }
 
               { cmsData.showOpenSpace &&
-                <div className={styles.impactArea}>
-                  <ImpactDataHeader
-                    header={`${ cmsData.openSpace.accessType == 'unrestricted' ? 'Public' : 'Private'} open spaces`}
-                    image='open-spaces' />
+                <ImpactArea
+                  header={`${ cmsData.openSpace.accessType == 'unrestricted' ? 'Public' : 'Private'} open spaces`}
+                  image='open-spaces'
+                >
 
-                  <ImpactData
+                  <ImpactStat
                     value={cmsData.openSpace.area.toLocaleString()}
                     label='square metres'
                   />
-                </div>
+                </ImpactArea>
               }
 
               { cmsData.showJobs &&
-                <div className={styles.impactArea}>
-                  <ImpactDataHeader header='New jobs' image='jobs' />
-
-                  <ImpactData
+                <ImpactArea header='New jobs' image='jobs'>
+                  <ImpactStat
                     value={[cmsData.jobs.min.toLocaleString(), cmsData.jobs.max.toLocaleString()].join(' - ')}
                     label='new roles'
                   />
-                </div>
+                </ImpactArea>
               }
 
               { cmsData.showCarbon &&
-                <div className={styles.impactArea}>
-                  <ImpactDataHeader header='Carbon emissions' image='co2' />
-
-                  <ImpactData
+                <ImpactArea header='Carbon emissions' image='co2' >
+                  <ImpactStat
                     value={cmsData.carbonEmissions.toLocaleString() + '%'}
                     label='more CO2 emissions'
                   />
-                </div>
+                </ImpactArea>
               }
 
               { cmsData.showAccess &&
-                <div className={styles.impactArea}>
-                  <ImpactDataHeader header='Pedestrian and vehicle access' image='access' />
+                <ImpactArea header='Pedestrian and vehicle access' image='access' >
                   <p className={styles.impactCopy}>{cmsData.access}</p>
-                </div>
+                </ImpactArea>
               }
             </section>
           </div>

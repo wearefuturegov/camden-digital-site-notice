@@ -6,7 +6,7 @@ const PlanningAlertSignup = () => {
       <div className={styles.decoration}></div>
       <div className={styles.headerWrapper}>
         <h2 className={styles.header}>Sign up for alerts on applications near you</h2>
-        <a href='https://accountforms.camden.gov.uk/planning-alerts/#/subscribe'>
+        <a href='https://accountforms.camden.gov.uk/planning-alerts/#/subscribe' target="_blank" rel='noreferrer'>
           <div className={styles.button}>
             Sign up now
           </div>

@@ -10,6 +10,7 @@ const distance = 500;
 
 export async function getServerSideProps(context) {
   let whereQuery = `system_status not in('Final Decision', 'Withdrawn') and decision_type is null`;
+  let orderQuery = `registered_date DESC, last_uploaded DESC`;
   let postcode;
 
   if (context.query.postcode) {
@@ -27,10 +28,11 @@ export async function getServerSideProps(context) {
 
     postcode = postcodeData.result;
     whereQuery += ` and within_circle(location, ${postcodeData.result.latitude}, ${postcodeData.result.longitude}, ${distance})`;
+    orderQuery = `distance_in_meters(location, 'POINT (${postcodeData.result.longitude} ${postcodeData.result.latitude})')`
   }
 
 
-  const res = await fetch(`${process.env.API_URL}.json?$limit=${limit}&$where=${whereQuery}`)
+  const res = await fetch(`${process.env.API_URL}.json?$limit=${limit}&$where=${whereQuery}&$order=${orderQuery}`)
   const data = await res.json()
 
   if (!data) {

@@ -19,7 +19,7 @@ export async function getServerSideProps(context) {
 
   const res = await fetch(`${process.env.API_URL}.json?application_number=${appNumber}`)
   const apiData = await res.json()
-  console.log(appNumber)
+  console.log(apiData)
 
   const query = groq`
     *[_type == "planning-application" && applicationNumber == "${appNumber}"] | order(_createdAt desc) [0] {

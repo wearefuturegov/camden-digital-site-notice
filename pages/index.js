@@ -7,9 +7,13 @@ import Script from 'next/script'
 
 const limit = 50;
 const distance = 500;
+const ignoredSystemStatus = ['Final Decision', 'Withdrawn'];
+const ignoredApplicationTypes = ['Notification of Intended Works to Tree(s) in a Conservation Area'];
+
+const arrayToSoqlString = (arr) => arr.map(s => JSON.stringify(s)).join()
 
 export async function getServerSideProps(context) {
-  let whereQuery = `system_status not in('Final Decision', 'Withdrawn') and decision_type is null`;
+  let whereQuery = `system_status not in(${arrayToSoqlString(ignoredSystemStatus)}) and decision_type is null and application_type not in(${arrayToSoqlString(ignoredApplicationTypes)})`;
   let orderQuery = `registered_date DESC, last_uploaded DESC`;
   let postcode;
 

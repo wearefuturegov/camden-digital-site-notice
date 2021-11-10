@@ -1,0 +1,15 @@
+.button {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 1rem;
+  text-align: center;
+  color: #E9FD57;
+  background-color: rgba(43, 31, 46, 0.9);
+  font-size: 1.25rem;
+}
+
+.arrow {
+  float: right;
+  padding-top: 2px;
+}

@@ -8,10 +8,11 @@ import ApplicationDetail from '../../components/ApplicationDetail'
 import ImpactArea from '../../components/ImpactArea'
 import ImpactStat from '../../components/ImpactStat'
 import PlanningAlertSignup from '../../components/PlanningAlertSignup'
+import FeedbackCTA from '../../components/FeedbackCTA'
 import Footer from '../../components/Footer'
-import client, { getClient } from "@lib/sanity";
-import { groq } from "next-sanity";
-import { useNextSanityImage } from 'next-sanity-image';
+import client, { getClient } from "@lib/sanity"
+import { groq } from "next-sanity"
+import { useNextSanityImage } from 'next-sanity-image'
 
 export async function getServerSideProps(context) {
   // Put the app number back into the way Camden store it
@@ -38,6 +39,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
+      id: context.query.id,
       development: apiData[0],
       cmsData: cmsData
     }
@@ -45,7 +47,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function PlanningApplication(props) {
-  const { development, cmsData } = props;
+  const { id, development, cmsData } = props;
   console.log(cmsData);
 
   const showImpactSection = !!cmsData && (cmsData.showHousing || cmsData.showOpenSpace ||
@@ -214,6 +216,7 @@ export default function PlanningApplication(props) {
         <PlanningAlertSignup />
       </main>
 
+      { development.comment && <FeedbackCTA id={id} /> }
       <Footer />
 
       <a href={development.full_application.url} target='_blank' rel='noreferrer'>

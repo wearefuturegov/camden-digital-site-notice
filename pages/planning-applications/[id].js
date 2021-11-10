@@ -137,7 +137,7 @@ export default function PlanningApplication(props) {
                 <ImpactArea header='New homes' image='housing'>
                   <ImpactStat
                     value={cmsData.housing.residentialUnits.toLocaleString()}
-                    label='new homes'
+                    label={`new home${cmsData.housing.residentialUnits == 1 ? '' : 's'}`}
                   />
                   <ImpactStat
                     value={(cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString() + '%'}

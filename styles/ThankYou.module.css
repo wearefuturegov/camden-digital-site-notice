@@ -1,0 +1,41 @@
+.header {
+  background-color: #AACAC8;
+  padding: 3rem 1rem 0.5rem;
+}
+
+.breadcrumbs {
+  font-family: Museo Sans;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.breadcrumbs a {
+  text-decoration: underline;
+  color: #2D4E4B;
+}
+
+.breadcrumbs .highlight {
+  color: #2A2828;
+}
+
+.mainSection {
+  background-color: #AACAC8;
+  color: #2A2828;
+  padding: 3rem 1rem 4rem;
+}
+
+.mainSection h1 {
+  margin-top: 0;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.mainSection p {
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  line-height: 1.75rem;
+}
+
+.mainSection a {
+  text-decoration: underline;
+}

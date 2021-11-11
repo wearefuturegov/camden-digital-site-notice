@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import Link from 'next/link'
 import CamdenLogo from '../../../components/CamdenLogo'
 import BreadcrumbArrow from '../../../components/BreadcrumbArrow'

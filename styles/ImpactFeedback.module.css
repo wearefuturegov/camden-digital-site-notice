@@ -1,0 +1,67 @@
+.impactAreaWrapper {
+  margin-bottom: 0.5rem;
+}
+
+.impactArea {
+  transition: all 0.5s;
+  border-top: 1px solid #AACAC8;
+}
+
+.impactAreaActive {
+  transition: all 0.5s;
+  background-color: #E9FD57;
+}
+
+.impactDataButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem 0;
+}
+
+.headerWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin-left: 1rem;
+}
+
+.impactIcon {
+  min-width: 60px;
+}
+
+.inner {
+  padding: 0.5rem 1rem 1rem;
+}
+
+.inner p {
+  margin-top: 0;
+}
+
+.textInput {
+  display: block;
+  font-family: Museo Sans;
+  border: 1px solid #D5D8DE;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+
+.checkbox {
+  border-radius: 50px;
+  height: 30px;
+  flex: 0 0 30px;
+  border: 2px solid black;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.impactAreaActive .checkbox {
+  background-color: black;
+}

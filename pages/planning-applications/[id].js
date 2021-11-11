@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
 
   const res = await fetch(`${process.env.API_URL}.json?application_number=${appNumber}`)
   const apiData = await res.json()
-  console.log(appNumber)
+  console.log(apiData)
 
   const query = groq`
     *[_type == "planning-application" && applicationNumber == "${appNumber}"] | order(_createdAt desc) [0] {
@@ -139,7 +139,7 @@ export default function PlanningApplication(props) {
                 <ImpactArea header='New homes' image='housing'>
                   <ImpactStat
                     value={cmsData.housing.residentialUnits.toLocaleString()}
-                    label='new homes'
+                    label={`new home${cmsData.housing.residentialUnits == 1 ? '' : 's'}`}
                   />
                   <ImpactStat
                     value={(cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString() + '%'}

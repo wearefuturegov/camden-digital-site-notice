@@ -12,6 +12,7 @@ export default function Feedback(props) {
   const { id } = router.query
   const [feedbackEmotion, setFeedbackEmotion] = useState()
   const [feedback, setFeedback] = useState('')
+  const [error, setError] = useState()
 
   const emotions = ['love', 'happy', 'meh', 'concerned', 'angry'];
 
@@ -41,7 +42,8 @@ export default function Feedback(props) {
       router.push(`/planning-applications/${id}/thank-you`);
     } else {
       console.log(response);
-      // TODO: handle errors
+      // TODO better error handling
+      setError('Sorry, something went wrong submitting your feedback');
     }
   }
 
@@ -81,9 +83,11 @@ export default function Feedback(props) {
           </div>
 
           <textarea placeholder='Why do you feel this way?' rows='10' className={styles.textInput} value={feedback} onChange={(e)=>setFeedback(e.target.value)} />
+          { error && <p className={styles.error}>{error}</p> }
           <input className={styles.submitButton} type='submit' value='Submit your feedback' />
         </form>
       </section>
+
       <Footer />
     </>
 

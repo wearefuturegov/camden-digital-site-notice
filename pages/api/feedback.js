@@ -18,7 +18,8 @@ export default function handler(req, res) {
       to: process.env.GMAIL_USER,
       subject: `Camden Digital Site Notice: New feedback for planning application ${applicationNumber}`,
       html: `<h1>New feedback for planning application ${applicationNumber}</h1>
-            <h2>Feeling: <span style='font-weight: normal'>${feedbackEmotion}</span></h2>
+            <h2>Feeling</h2>
+            <p>${feedbackEmotion}</p>
             ${ feedback ? `<h2>Feedback</h2><p>${feedback}</p>` : ''}`
     }
 

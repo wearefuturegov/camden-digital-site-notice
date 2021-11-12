@@ -8,7 +8,7 @@ export default function FeedbackEmotion({emotion, handleSelect, selected}) {
 
       <Image
         src={`/icons/feedback/emotions/${emotion}${ selected ? '-selected' : ''}.svg`}
-        alt={emotion}
+        alt=''
         width='62'
         height='62'
         priority={true} />

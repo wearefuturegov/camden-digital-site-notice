@@ -22,7 +22,7 @@ export default createSchema({
           description: 'Make sure this exactly matches the Camden application number, e.g. 2021/1000/P',
           name: 'applicationNumber',
           type: 'string',
-          required: true
+          validation: Rule => Rule.required()
         },
         {
           title: 'Name of development',

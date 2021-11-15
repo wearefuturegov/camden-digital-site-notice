@@ -3,12 +3,12 @@ import { useRouter } from 'next/router'
 import { getClient } from "@lib/sanity";
 import { groq } from "next-sanity";
 import Link from 'next/link'
-import CamdenLogo from '../../../components/CamdenLogo'
-import BreadcrumbArrow from '../../../components/BreadcrumbArrow'
-import styles from '../../../styles/Feedback.module.css'
+import Head from 'next/head'
+import FeedbackHeader from '../../../components/FeedbackHeader'
 import ImpactStat from '../../../components/ImpactStat'
 import ImpactFeedback from '../../../components/ImpactFeedback'
 import Footer from '../../../components/Footer'
+import styles from '../../../styles/Feedback.module.css'
 
 export async function getServerSideProps(context) {
   // Put the app number back into the way Camden store it
@@ -96,21 +96,15 @@ export default function Feedback(props) {
 
   return (
     <>
-      <section className={styles.header}>
-        <CamdenLogo colour='white' />
+      <Head>
+        <title>Give feedback for planning application {appNumber} | Camden Planning</title>
+        <meta name="description" content="Camden Digital Site Notice" />
+      </Head>
 
-        <div className={styles.breadcrumbs}>
-          <Link href='/'>
-            <a>Planning Applications</a>
-          </Link>
-          <BreadcrumbArrow />
-          <Link href={`/planning-applications/${id}`}>
-            <a>Overview</a>
-          </Link>
-          <BreadcrumbArrow />
-          <span className={styles.highlight}>Submit your feedback</span>
-        </div>
-      </section>
+      <FeedbackHeader>
+        <h1>Tell us what you think</h1>
+        <p>Your feedback helps us improve developments so they meet the needs of people in Camden. It&apos;s important you let us know what you think.</p>
+      </FeedbackHeader>
 
       <div>
         <p className={styles.questionNumber}>Question 2/2</p>
@@ -144,14 +138,14 @@ export default function Feedback(props) {
                 </ImpactFeedback>
               }
 
-              { cmsData.showHousing &&
+              { cmsData.showHealthcare &&
                 <ImpactFeedback
                   header='Healthcare'
                   image='healthcare'
                   onChange={setHealthcareFeedback}
                 >
                   <ImpactStat
-                    value={cmsData.housing.healthcareDemand.toLocaleString() + '%'}
+                    value={cmsData.healthcareDemand.toLocaleString() + '%'}
                     label='additional demand on GPs and hospitals'
                   />
                 </ImpactFeedback>
@@ -159,12 +153,12 @@ export default function Feedback(props) {
 
               { cmsData.showOpenSpace &&
                 <ImpactFeedback
-                  header={`${ cmsData.openSpace.accessType == 'unrestricted' ? 'Public' : 'Private'} open spaces`}
+                  header='Open spaces'
                   image='open-spaces'
                   onChange={setOpenSpaceFeedback}
                 >
                   <ImpactStat
-                    value={cmsData.openSpace.area.toLocaleString()}
+                    value={cmsData.openSpaceArea.toLocaleString()}
                     label='square metres'
                   />
                 </ImpactFeedback>

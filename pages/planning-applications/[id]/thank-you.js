@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import Head from 'next/head'
 import CamdenLogo from '../../../components/CamdenLogo'
 import BreadcrumbArrow from '../../../components/BreadcrumbArrow'
 import PlanningAlertSignup from '../../../components/PlanningAlertSignup'
@@ -12,6 +13,11 @@ export default function ThankYou(props) {
 
   return (
     <>
+      <Head>
+        <title>Thank you for the feedback | Camden Planning</title>
+        <meta name="description" content="Camden Digital Site Notice" />
+      </Head>
+
       <section className={styles.header}>
         <CamdenLogo colour='black' />
 

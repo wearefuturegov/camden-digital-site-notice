@@ -2,9 +2,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { getClient } from "@lib/sanity";
 import { groq } from "next-sanity";
-import Link from 'next/link'
-import CamdenLogo from '../../../components/CamdenLogo'
-import BreadcrumbArrow from '../../../components/BreadcrumbArrow'
+import Head from 'next/head'
+import FeedbackHeader from '../../../components/FeedbackHeader'
 import FeedbackEmotion from '../../../components/FeedbackEmotion'
 import Footer from '../../../components/Footer'
 import styles from '../../../styles/Feedback.module.css'
@@ -84,27 +83,18 @@ export default function Feedback(props) {
 
   return (
     <>
-      <section className={styles.header}>
-        <CamdenLogo colour='white' />
+      <Head>
+        <title>Give feedback for planning application {appNumber} | Camden Planning</title>
+        <meta name="description" content="Camden Digital Site Notice" />
+      </Head>
 
-        <div className={styles.breadcrumbs}>
-          <Link href='/'>
-            <a>Planning Applications</a>
-          </Link>
-          <BreadcrumbArrow />
-          <Link href={`/planning-applications/${id}`}>
-            <a>Overview</a>
-          </Link>
-          <BreadcrumbArrow />
-          <span className={styles.highlight}>Submit your feedback</span>
-        </div>
-
+      <FeedbackHeader>
         <h1>Tell us what you think</h1>
         <p>Your feedback helps us improve developments so they meet the needs of people in Camden. It&apos;s important you let us know what you think.</p>
-      { goToImpact &&
-        <p>First, we&apos;re going to ask you how you feel the development will affect you. On the next page, we&apos;ll ask you how you think it could have a positive impact in your local area.</p>
-      }
-      </section>
+        { goToImpact &&
+          <p>First, we&apos;re going to ask you how you feel the development will affect you. On the next page, we&apos;ll ask you how you think it could have a positive impact in your local area.</p>
+        }
+      </FeedbackHeader>
 
       { goToImpact &&
         <div>

@@ -61,7 +61,7 @@ export default function PlanningApplication(props) {
   return (
     <>
       <Head>
-        <title>Camden Planning</title>
+        <title>Digital Site Notice for planning application {development.application_number} | Camden Planning</title>
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
 

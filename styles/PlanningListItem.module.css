@@ -1,4 +1,4 @@
-.planningListItem {
+.container {
   border-radius: 8px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 1.5rem;
@@ -10,14 +10,15 @@
   background-color: #AACAC8;
 }
 
-.listItemDetails {
+.details {
+  position: relative;
   padding: 1rem;
   font-weight: 400;
   font-size: 12px;
   font-family: 'Museo Sans';
 }
 
-.listItemHeading {
+.heading {
   font-weight: 500;
   font-size: 18px;
   margin-top: 0;
@@ -27,12 +28,12 @@
   text-overflow: ellipsis;
 }
 
-.listItemLocation {
+.location {
   display: flex;
   align-items: top;
 }
 
-.listItemLocation p {
+.location p {
   margin: 0 0.5rem 0;
   width: 90%;
 }
@@ -43,4 +44,21 @@
 
 .locationMarkerWrapper {
   width: 12px;
+}
+
+.feedbackTag {
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  font-family: 'Museo';
+  font-size: 14px;
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  color: #E9FD57;
+  background-color: #2B1F2E;
+  border-radius: 3px;
+}
+
+.feedbackTag .arrow {
+  margin-left: 7px;
 }

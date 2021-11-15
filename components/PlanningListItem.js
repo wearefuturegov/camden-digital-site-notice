@@ -15,11 +15,21 @@ const PlanningListItem = (props) => {
   return (
     <Link href={`/planning-applications/${appId}`}>
       <a>
-        <div className={styles.planningListItem} >
+        <div className={styles.container} >
           <div className={styles.imageSpacer}></div>
-          <div className={styles.listItemDetails}>
-            <h2 className={styles.listItemHeading}>{ development.development_description }</h2>
-            <div className={styles.listItemLocation}>
+          <div className={styles.details}>
+
+            { development.comment &&
+              <div className={styles.feedbackTag}>
+                We want your feedback!
+                <span className={styles.arrow}>
+                  <Image src="/icons/arrow-right-yellow-chunky.svg" alt="" width={10} height={12} />
+                </span>
+              </div>
+            }
+
+            <h2 className={styles.heading}>{ development.development_description }</h2>
+            <div className={styles.location}>
               <div className={styles.locationMarkerWrapper}>
                 <Image src="/icons/location-marker.svg" alt="Distance" width={16} height={25} />
               </div>

@@ -1,0 +1,124 @@
+.header {
+  background-color: #3A293E;
+  color: white;
+  padding: 3rem 1rem 1.5rem;
+}
+
+.header h1 {
+  font-weight: 400;
+  font-size: 2rem;
+  margin-right: 2rem;
+}
+
+.header p {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+}
+
+.breadcrumbs {
+  font-family: Museo Sans;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.breadcrumbs a {
+  text-decoration: underline;
+
+}
+
+.breadcrumbs .highlight {
+  color: #E9FD57;
+}
+
+.questionNumber {
+  background-color: #E9FD57;
+  padding: 0.25rem 1rem;
+  margin: 0;
+  display: inline-block;
+}
+
+.question {
+  font-weight: 400;
+  font-size: 1.75rem;
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.textInput {
+  display: block;
+  font-family: Museo Sans;
+  border: 1px solid #D5D8DE;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem; 
+}
+
+.submitButton {
+  font-family: Museo;
+  background: #2B1F2E;
+  color: #E9FD57;
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: 4px;
+  margin: 1rem auto 0;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  border: none;
+}
+
+.impactAreaWrapper {
+  border-top: 1px solid #AACAC8;
+  padding-bottom: 2px;
+  margin-bottom: 2px;
+}
+
+.impactArea {
+  padding: 1rem 0.5rem;
+  background-color: #E9FD57;
+}
+
+.emotionsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.emotion {
+  flex: 0 0 33%;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.label {
+  margin: 0.5rem 0;
+  text-transform: capitalize;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.error {
+  margin-bottom: 0.5rem;
+}
+
+.backButton {
+  font-family: Museo;
+  color: #2B1F2E;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 1px solid black;
+  margin: 1.5rem auto 0;
+  padding: 0.75rem 1rem;
+}
+
+.section {
+  padding: 0rem 1rem 3rem;
+}

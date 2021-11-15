@@ -1,0 +1,35 @@
+.header {
+  background-color: #AACAC8;
+  padding: 3rem 1rem 1.5rem;
+}
+
+.header h1 {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.header p {
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  line-height: 1.75rem;
+}
+
+.header a {
+  text-decoration: underline;
+}
+
+.breadcrumbs {
+  font-family: Museo Sans;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.breadcrumbs a {
+  text-decoration: underline;
+  color: #2D4E4B;
+}
+
+.breadcrumbs .highlight {
+  color: #2A2828;
+}
+

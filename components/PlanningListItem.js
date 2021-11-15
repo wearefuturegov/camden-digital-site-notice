@@ -28,7 +28,7 @@ const PlanningListItem = (props) => {
               </div>
             }
 
-            <h2 className={styles.heading}>{ development.development_description }</h2>
+            <h2 className={styles.heading}>{ development.siteNoticeName }</h2>
             <div className={styles.location}>
               <div className={styles.locationMarkerWrapper}>
                 <Image src="/icons/location-marker.svg" alt="Distance" width={16} height={25} />

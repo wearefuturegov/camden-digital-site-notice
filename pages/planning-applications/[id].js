@@ -134,20 +134,23 @@ export default function PlanningApplication(props) {
               <h2>How could this affect you?</h2>
               <p className={styles.subtitle}>This development could impact your local community in the following ways</p>
 
-              { cmsData.showHousing &&
+              { cmsData.showHousing && cmsData.housing &&
                 <ImpactArea header='New homes' image='housing'>
                   <ImpactStat
                     value={cmsData.housing.residentialUnits.toLocaleString()}
                     label={`new home${cmsData.housing.residentialUnits == 1 ? '' : 's'}`}
                   />
-                  <ImpactStat
-                    value={(cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString() + '%'}
-                    label='affordable housing'
-                  />
+
+                  { cmsData.housing.affordableResidentialUnits &&
+                    <ImpactStat
+                      value={(cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString() + '%'}
+                      label='affordable housing'
+                    />
+                  }
                 </ImpactArea>
               }
 
-              { cmsData.showHealthcare &&
+              { cmsData.showHealthcare && cmsData.healthcareDemand &&
                 <ImpactArea header='Healthcare' image='healthcare'>
                   <ImpactStat
                     value={cmsData.healthcareDemand.toLocaleString() + '%'}
@@ -156,7 +159,7 @@ export default function PlanningApplication(props) {
                 </ImpactArea>
               }
 
-              { cmsData.showOpenSpace &&
+              { cmsData.showOpenSpace && cmsData.openSpaceArea &&
                 <ImpactArea header='Open spaces' image='open-spaces'>
                   <ImpactStat
                     value={cmsData.openSpaceArea.toLocaleString()}
@@ -165,7 +168,7 @@ export default function PlanningApplication(props) {
                 </ImpactArea>
               }
 
-              { cmsData.showJobs &&
+              { cmsData.showJobs && cmsData.jobs &&
                 <ImpactArea header='New jobs' image='jobs'>
                   <ImpactStat
                     value={[cmsData.jobs.min.toLocaleString(), cmsData.jobs.max.toLocaleString()].join(' - ')}
@@ -174,7 +177,7 @@ export default function PlanningApplication(props) {
                 </ImpactArea>
               }
 
-              { cmsData.showCarbon &&
+              { cmsData.showCarbon && cmsData.carbonEmissions &&
                 <ImpactArea header='Carbon emissions' image='co2' >
                   <ImpactStat
                     value={cmsData.carbonEmissions.toLocaleString() + '%'}
@@ -183,7 +186,7 @@ export default function PlanningApplication(props) {
                 </ImpactArea>
               }
 
-              { cmsData.showAccess &&
+              { cmsData.showAccess && cmsData.access &&
                 <ImpactArea header='Pedestrian and vehicle access' image='access' >
                   <p className={styles.impactCopy}>{cmsData.access}</p>
                 </ImpactArea>

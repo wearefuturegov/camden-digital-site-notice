@@ -3,7 +3,8 @@ import CamdenLogo from '../components/CamdenLogo'
 import PlanningList from '../components/PlanningList'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react';
-import Script from 'next/script'
+import client, { getClient } from "@lib/sanity"
+import { groq } from "next-sanity"
 
 const limit = 50;
 const distance = 500;
@@ -35,7 +36,6 @@ export async function getServerSideProps(context) {
     orderQuery = `distance_in_meters(location, 'POINT (${postcodeData.result.longitude} ${postcodeData.result.latitude})')`
   }
 
-
   const res = await fetch(`${process.env.API_URL}.json?$limit=${limit}&$where=${whereQuery}&$order=${orderQuery}`)
   const data = await res.json()
 
@@ -45,9 +45,27 @@ export async function getServerSideProps(context) {
     }
   }
 
+  const ids = data.map(development => `'${development.application_number}'`);
+  const query = groq`
+    *[_type == "planning-application" && applicationNumber in [${ids}]] {
+      ...
+    }
+  `;
+
+  const cmsData = await getClient().fetch(query);
+
+  const developments = data.map(development => {
+    const siteNotice = cmsData.find(el => el.applicationNumber == development.application_number);
+
+    return {
+      ...development,
+      siteNoticeName: siteNotice ? siteNotice.name : development.development_description
+    }
+  });
+
   return {
     props: {
-      developments: data,
+      developments: developments,
       currentPostcode: postcode ? postcode.postcode : '',
       currentLocation: postcode ? { latitude: postcode.latitude, longitude: postcode.longitude } : null
     }
@@ -56,17 +74,14 @@ export async function getServerSideProps(context) {
 
 export default function Home(props) {
   const { developments, error, currentPostcode, currentLocation } = props;
-
   const [postcode, setPostcode] = useState(currentPostcode);
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Camden Planning</title>
+        <title>Digital Site Notice | Camden Planning</title>
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
-
-      <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
 
       <main className={styles.main}>
 
@@ -96,19 +111,6 @@ export default function Home(props) {
         </section>
       </main>
 
-      <Script
-        id='netlify-auth'
-        dangerouslySetInnerHTML={{
-          __html: `if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-              if (!user) {
-                window.netlifyIdentity.on("login", () => {
-                  document.location.href = "/admin/";
-                });
-              }
-            })
-          }`
-        }} />
     </div>
   )
 }

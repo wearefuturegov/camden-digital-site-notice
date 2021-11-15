@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer'
 
 export default function handler(req, res) {
   if (req.method === 'POST') {
-    const { applicationNumber, feedbackEmotion, feedback } = req.body;
+    const { applicationNumber, feedbackEmotion, feedback, impactFeedback } = req.body;
     console.log(req.body);
 
     const transporter = nodemailer.createTransport({
@@ -13,6 +13,8 @@ export default function handler(req, res) {
       }
     });
 
+    const impactFeedbackHTML = impactFeedback ? impactFeedback.map(area => area.feedback ? `<h3>${area.name}</h3><p>${area.feedback}</p>` : null ).join('') : '';
+
     const options = {
       from: 'Camden Digital Site Notice',
       to: process.env.GMAIL_USER,
@@ -20,7 +22,9 @@ export default function handler(req, res) {
       html: `<h1>New feedback for planning application ${applicationNumber}</h1>
             <h2>Feeling</h2>
             <p>${feedbackEmotion}</p>
-            ${ feedback ? `<h2>Feedback</h2><p>${feedback}</p>` : ''}`
+            <h2>Feedback</h2>
+            <p>${feedback}</p>
+            ${ impactFeedbackHTML }`
     }
 
     transporter.sendMail(options, (error) => {

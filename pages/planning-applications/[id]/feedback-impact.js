@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { getClient } from "@lib/sanity";
+import { groq } from "next-sanity";
 import Link from 'next/link'
 import CamdenLogo from '../../../components/CamdenLogo'
 import BreadcrumbArrow from '../../../components/BreadcrumbArrow'
 import styles from '../../../styles/Feedback.module.css'
-import client, { getClient } from "@lib/sanity";
-import { groq } from "next-sanity";
 import ImpactStat from '../../../components/ImpactStat'
 import ImpactFeedback from '../../../components/ImpactFeedback'
 import Footer from '../../../components/Footer'
@@ -21,8 +21,6 @@ export async function getServerSideProps(context) {
   `;
   const cmsData = await getClient().fetch(query);
 
-  console.log(cmsData)
-
   return {
     props: {
       appNumber,
@@ -31,14 +29,10 @@ export async function getServerSideProps(context) {
   }
 }
 
-const buildFeedback = (area, feedback) => {
-  return `${area}: ${feedback}`
-}
-
 export default function Feedback(props) {
   const { appNumber, cmsData } = props;
   const router = useRouter()
-  const { id } = router.query
+  const { id, feeling, feedback } = router.query
 
   const [housingFeedback, setHousingFeedback] = useState('');
   const [healthcareFeedback, setHealthcareFeedback] = useState('');
@@ -46,22 +40,58 @@ export default function Feedback(props) {
   const [jobsFeedback, setJobsFeedback] = useState('');
   const [co2Feedback, setCo2Feedback] = useState('');
   const [accessFeedback, setAccessFeedback] = useState('');
+  const [error, setError] = useState()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(housingFeedback)
 
-    let data = {
-      subject: `New feedback for planning application ${appNumber}`,
-      message: `New feedback for planning application ${appNumber}`
+    const areasForFeedback = [
+      {
+        name: 'New homes',
+        feedback: housingFeedback
+      },
+      {
+        name: 'Healthcare',
+        feedback: healthcareFeedback
+      },
+      {
+        name: 'Open space',
+        feedback: openSpaceFeedback
+      },
+      {
+        name: 'New jobs',
+        feedback: jobsFeedback
+      },
+      {
+        name: 'Carbon emissions',
+        feedback: co2Feedback
+      },
+      {
+        name: 'Pedestrian and vehicle access',
+        feedback: accessFeedback
+      }
+    ];
+
+    const response = await fetch('/api/feedback', {
+         method: 'POST',
+         headers: {
+          'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({
+           applicationNumber: appNumber,
+           feedbackEmotion: feeling,
+           feedback: feedback,
+           impactFeedback: areasForFeedback
+         })
+    });
+
+    if (response.ok) {
+      router.push(`/planning-applications/${id}/thank-you`);
+    } else {
+      console.log(response);
+      // TODO better error handling
+      setError('Sorry, something went wrong submitting your feedback');
     }
-
-    if (housingFeedback) { data.message += buildFeedback('New homes', housingFeedback) }
-    if (healthcareFeedback) { data.message += buildFeedback('Healthcare', healthcareFeedback) }
-    if (openSpaceFeedback) { data.message += buildFeedback('Open space', openSpaceFeedback) }
-    if (jobsFeedback) { data.message += buildFeedback('Jobs', jobsFeedback) }
-
-    console.log(data)
   }
 
   return (
@@ -175,10 +205,13 @@ export default function Feedback(props) {
                   <p className={styles.impactCopy}>{cmsData.access}</p>
                 </ImpactFeedback>
               }
+
+          { error && <p className={styles.error}>{error}</p> }
+
           <input className={styles.submitButton} type='submit' value='Submit your feedback' />
         </form>
 
-        <Link href={`/planning-applications/${id}/feedback`} >
+        <Link href={`/planning-applications/${id}/feedback?feeling=${feeling}&feedback=${feedback}`} >
           <a>
             <div className={styles.backButton}>
               Back

@@ -42,8 +42,9 @@ export default createSchema({
         },
         {
           title: 'Height',
+          description: 'Enter the maximum height in storeys',
           name: 'height',
-          type: 'string'
+          type: 'number'
         },
         {
           title: 'Estimated construction time',
@@ -71,13 +72,19 @@ export default createSchema({
               name: 'affordableResidentialUnits',
               type: 'number'
             },
-            {
-              title: 'Additional healthcare demand',
-              description: 'As a percentage',
-              name: 'healthcareDemand',
-              type: 'number'
-            },
           ]
+        },
+        {
+          title: 'Healthcare impact',
+          name: 'showHealthcare',
+          type: 'boolean'
+        },
+        {
+          title: 'Additional healthcare demand',
+          description: 'As a percentage',
+          name: 'healthcareDemand',
+          type: 'number',
+          hidden: ({document}) => !document?.showHealthcare,
         },
         {
           title: 'Open space impact',
@@ -85,28 +92,10 @@ export default createSchema({
           type: 'boolean'
         },
         {
-          title: 'Open space',
-          name: 'openSpace',
-          type: 'object',
+          title: 'Open space area in square metres',
+          name: 'openSpaceArea',
+          type: 'number',
           hidden: ({document}) => !document?.showOpenSpace,
-          fields: [
-            {
-              title: 'Area in square metres',
-              name: 'area',
-              type: 'number'
-            },
-            {
-              title: 'Access type',
-              name: 'accessType',
-              type: 'string',
-              options: {
-                list: [
-                  {title: 'Restricted', value: 'restricted'},
-                  {title: 'Unrestricted', value: 'unrestricted'}
-                ]
-              }
-            }
-          ]
         },
         {
           title: 'Jobs impact',

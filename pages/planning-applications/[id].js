@@ -48,8 +48,8 @@ export default function PlanningApplication(props) {
   const { development, cmsData } = props;
   console.log(cmsData);
 
-  const showImpactSection = !!cmsData && (cmsData.showHousing || cmsData.showOpenSpace ||
-    cmsData.showJobs || cmsData.showCarbon);
+  const showImpactSection = !!cmsData && (cmsData.showHousing || cmsData.showHealthcare ||
+    cmsData.showOpenSpace || cmsData.showJobs || cmsData.showCarbon);
 
   const imageProps = useNextSanityImage(
     client,
@@ -101,10 +101,9 @@ export default function PlanningApplication(props) {
           </div>
 
           <div className={styles.applicationDetails}>
-            <h3 className={styles.descriptionHeaderSmall}>Application type</h3>
-            <p>
-              <span>{ development.application_type }</span>
-            </p>
+            <ApplicationDetail
+              heading='Application type'
+              value={development.application_type} />
 
             { cmsData?.proposedLandUse &&
               <ApplicationDetail
@@ -115,12 +114,12 @@ export default function PlanningApplication(props) {
             { cmsData?.height &&
               <ApplicationDetail
                 heading='Height'
-                value={cmsData.height} />
+                value={`Maximum ${cmsData.height} storey${cmsData.height == 1 ? '' : 's'}`} />
             }
 
             { cmsData?.constructionTime &&
               <ApplicationDetail
-                heading='Construction time'
+                heading="Applicant's estimated construction time"
                 value={cmsData.constructionTime} />
             }
           </div>
@@ -146,23 +145,19 @@ export default function PlanningApplication(props) {
                 </ImpactArea>
               }
 
-              { cmsData.showHousing &&
+              { cmsData.showHealthcare &&
                 <ImpactArea header='Healthcare' image='healthcare'>
                   <ImpactStat
-                    value={cmsData.housing.healthcareDemand.toLocaleString() + '%'}
+                    value={cmsData.healthcareDemand.toLocaleString() + '%'}
                     label='additional demand on GPs and hospitals'
                   />
                 </ImpactArea>
               }
 
               { cmsData.showOpenSpace &&
-                <ImpactArea
-                  header={`${ cmsData.openSpace.accessType == 'unrestricted' ? 'Public' : 'Private'} open spaces`}
-                  image='open-spaces'
-                >
-
+                <ImpactArea header='Open spaces' image='open-spaces'>
                   <ImpactStat
-                    value={cmsData.openSpace.area.toLocaleString()}
+                    value={cmsData.openSpaceArea.toLocaleString()}
                     label='square metres'
                   />
                 </ImpactArea>

@@ -215,11 +215,8 @@ export default function PlanningApplication(props) {
       </main>
 
       { development.comment && <FeedbackCTA id={id} /> }
-      <Footer />
 
-      <a href={development.full_application.url} target='_blank' rel='noreferrer'>
-        <small>DEBUG: View in Camden&apos;s Planning Explorer</small>
-      </a>
+      <Footer />
     </>
   )
 }

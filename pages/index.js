@@ -9,12 +9,12 @@ import { groq } from "next-sanity"
 const limit = 50;
 const distance = 500;
 const ignoredSystemStatus = ['Final Decision', 'Withdrawn'];
-const ignoredApplicationTypes = ['Notification of Intended Works to Tree(s) in a Conservation Area'];
+const applicationTypes = ['Full Planning Permission', 'Outline Planning Permission', 'Variation or Removal of Condition(s)', 'Approval of Reserved Matters'];
 
 const arrayToSoqlString = (arr) => arr.map(s => JSON.stringify(s)).join()
 
 export async function getServerSideProps(context) {
-  let whereQuery = `system_status not in(${arrayToSoqlString(ignoredSystemStatus)}) and decision_type is null and application_type not in(${arrayToSoqlString(ignoredApplicationTypes)})`;
+  let whereQuery = `system_status not in(${arrayToSoqlString(ignoredSystemStatus)}) and decision_type is null and application_type in(${arrayToSoqlString(applicationTypes)})`;
   let orderQuery = `registered_date DESC, last_uploaded DESC`;
   let postcode;
 

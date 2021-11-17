@@ -4,6 +4,8 @@ import Head from 'next/head'
 import CamdenLogo from '../../../components/CamdenLogo'
 import BreadcrumbArrow from '../../../components/BreadcrumbArrow'
 import PlanningAlertSignup from '../../../components/PlanningAlertSignup'
+import Divider from '../../../components/Divider'
+import Share from '../../../components/Share'
 import Footer from '../../../components/Footer'
 import styles from '../../../styles/ThankYou.module.css'
 
@@ -39,6 +41,11 @@ export default function ThankYou(props) {
       </section>
       
       <PlanningAlertSignup />
+
+      <Divider padded />
+
+      <Share />
+
       <Footer />
     </>
 

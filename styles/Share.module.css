@@ -1,18 +1,20 @@
 .container {
   padding: 2rem 0;
+  text-align: center;
+  font-size: 1.15rem;
 }
 
 .headerWrapper {
   position: relative;
   margin-bottom: 2rem;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .decoration {
   position: absolute;
   width: 12px;
   height: 65px;
-  background-color: #AACAC8;
+  background-color: #E9FD57;
 }
 
 .centered {
@@ -25,14 +27,11 @@
   margin-top: 0;
 }
 
-.button {
-  background: #2B1F2E;
-  color: #E9FD57;
-  font-size: 1.5rem;
-  text-align: center;
-  border-radius: 4px;
-  margin: 0 auto;
-  padding: 0.5rem 1rem;
-  width: 100%;
-  max-width: 300px;
+.shareIcons {
+  display: flex;
+  justify-content: center;
+}
+
+.shareIcon {
+  margin: 0 0.75rem;
 }

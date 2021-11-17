@@ -9,6 +9,7 @@ import ImpactArea from '../../components/ImpactArea'
 import ImpactStat from '../../components/ImpactStat'
 import PlanningAlertSignup from '../../components/PlanningAlertSignup'
 import FeedbackCTA from '../../components/FeedbackCTA'
+import Divider from '../../components/Divider'
 import Footer from '../../components/Footer'
 import client, { getClient } from "@lib/sanity"
 import { groq } from "next-sanity"
@@ -210,6 +211,8 @@ export default function PlanningApplication(props) {
           </div>
 
         </section>
+
+        <Divider />
 
         <PlanningAlertSignup />
       </main>

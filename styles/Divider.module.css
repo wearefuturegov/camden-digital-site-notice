@@ -1,0 +1,8 @@
+.divider {
+  border-top: 1px solid #AACAC8;
+}
+
+.dividerPadded {
+  border-top: 1px solid #AACAC8;
+  padding: 0 1rem;
+}

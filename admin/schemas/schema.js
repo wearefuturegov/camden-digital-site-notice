@@ -26,7 +26,7 @@ export default createSchema({
         },
         {
           title: 'Name of development',
-          description: 'Use a short title that describes this development',
+          description: 'Use a short name that is used to identify this development or the plot of land, e.g. The Shard or Murphy\'s Yard',
           name: 'name',
           type: 'string'
         },

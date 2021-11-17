@@ -121,7 +121,7 @@ export default function PlanningApplication(props) {
 
             { cmsData?.constructionTime &&
               <ApplicationDetail
-                heading="Applicant's estimated construction time"
+                heading="Estimated construction time"
                 value={cmsData.constructionTime} />
             }
           </div>

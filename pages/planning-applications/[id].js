@@ -53,10 +53,24 @@ export default function PlanningApplication(props) {
   const showImpactSection = !!cmsData && (cmsData.showHousing || cmsData.showHealthcare ||
     cmsData.showOpenSpace || cmsData.showJobs || cmsData.showCarbon);
 
+  // Fetch the props for the massings image from Sanity
   const imageProps = useNextSanityImage(
     client,
     cmsData?.massings
   );
+
+  const landUseClassLabels = {
+    classB: 'Industrial',
+    classC: 'Residential',
+    classE: 'Commercial',
+    classF: 'Community',
+    suiGeneris: 'Sui Generis'
+  }
+
+  let proposedLandUse = null;
+  if (cmsData) {
+    proposedLandUse = Object.keys(cmsData.proposedLandUse).map(key => cmsData.proposedLandUse[key] ? landUseClassLabels[key] : null).filter(Boolean).join(', ');
+  }
 
   return (
     <>
@@ -85,7 +99,6 @@ export default function PlanningApplication(props) {
               { development.development_address }
             </p>
           </div>
-
         </section>
 
         { cmsData?.massings &&
@@ -107,10 +120,10 @@ export default function PlanningApplication(props) {
               heading='Application type'
               value={development.application_type} />
 
-            { cmsData?.proposedLandUse &&
+            { proposedLandUse &&
               <ApplicationDetail
                 heading='How will the site be used'
-                value={cmsData.proposedLandUse} />
+                value={proposedLandUse} />
             }
 
             { cmsData?.height &&

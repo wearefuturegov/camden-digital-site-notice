@@ -7,6 +7,7 @@ import BreadcrumbArrow from '../../components/BreadcrumbArrow'
 import ApplicationDetail from '../../components/ApplicationDetail'
 import ImpactArea from '../../components/ImpactArea'
 import ImpactStat from '../../components/ImpactStat'
+import ApplicationTimeline from '../../components/ApplicationTimeline'
 import PlanningAlertSignup from '../../components/PlanningAlertSignup'
 import FeedbackCTA from '../../components/FeedbackCTA'
 import Footer from '../../components/Footer'
@@ -208,21 +209,11 @@ export default function PlanningApplication(props) {
           </div>
         }
 
-        <section className={styles.progress}>
+        <ApplicationTimeline
+          systemStatus={development.system_status}
+          decisionType={development.decision_type}
+        />
 
-          <h2>Where we are in the process</h2>
-          <div className={styles.timeline}>
-            <div className={styles.solidLine}></div>
-            <div className={styles.progressItem}>
-              <span className={styles.point}></span>
-              <p className={styles.status}>
-                { development.system_status }
-              </p>
-              { development.decision_type ? <p className={styles.statusDetail}>{development.decision_type}</p> : null }
-            </div>
-          </div>
-
-        </section>
 
         <PlanningAlertSignup />
       </main>

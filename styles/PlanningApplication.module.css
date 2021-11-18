@@ -78,67 +78,6 @@ section.header {
   margin-bottom: 2.5rem;
 }
 
-.progress {
-  padding: 0 1rem 0.5rem;
-  background: white;
-  color: #2B1F2E;
-}
-
-.progress h2 {
-  color: #EC6331;
-  font-size: 1.75rem;
-  font-weight: 400;
-  margin: 2rem 0 1rem;
-}
-
-.progress a {
-  text-decoration: underline;
-}
-
-.timeline {
-  margin-bottom: 2rem;
-}
-
-.solidLine {
-  margin-left: 1rem;
-  height: 25px;
-  border-left: 2px solid #ec6331;
-  padding-left: 1.5rem;
-}
-
-.point {
-  border-radius: 100px;
-  border: 7px solid #ec6331;
-  display: inline-block;
-  height: 21px;
-  width: 21px;
-  position: absolute;
-  top: 0px;
-  left: -10px;
-}
-
-.progressItem {
-  position: relative;
-  font-family: 'Museo';
-  margin-left: 1rem;
-}
-
-.status {
-  color: #EC6331;
-  font-weight: 600;
-  font-size: 1.25rem;
-  margin: 0;
-  padding-left: 1.5rem;
-  line-height: 21px;
-}
-
-.statusDetail {
-  border-left: 1px dashed #2B1F2E;
-  padding-left: 1.5rem;
-  padding-bottom: 1.5rem;
-  margin-top: 0.25rem;
-}
-
 section.impact {
   border-bottom: 1px solid #AACAC8;
   padding: 2rem 0.5rem 4rem;

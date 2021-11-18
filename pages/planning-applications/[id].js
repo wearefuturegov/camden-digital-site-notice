@@ -4,7 +4,7 @@ import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
 import CamdenLogo from '../../components/CamdenLogo'
 import BreadcrumbArrow from '../../components/BreadcrumbArrow'
-import ApplicationDetail from '../../components/ApplicationDetail'
+import About from '../../components/About'
 import ImpactArea from '../../components/ImpactArea'
 import ImpactStat from '../../components/ImpactStat'
 import ApplicationTimeline from '../../components/ApplicationTimeline'
@@ -60,19 +60,6 @@ export default function PlanningApplication(props) {
     cmsData?.massings
   );
 
-  const landUseClassLabels = {
-    classB: 'Industrial',
-    classC: 'Residential',
-    classE: 'Commercial',
-    classF: 'Community',
-    suiGeneris: 'Sui Generis'
-  }
-
-  let proposedLandUse = null;
-  if (cmsData) {
-    proposedLandUse = Object.keys(cmsData.proposedLandUse).map(key => cmsData.proposedLandUse[key] ? landUseClassLabels[key] : null).filter(Boolean).join(', ');
-  }
-
   return (
     <>
       <Head>
@@ -108,38 +95,13 @@ export default function PlanningApplication(props) {
           </div>
         }
 
-        <section className={styles.greenSection}>
-          <div className={styles.description}>
-            <h2 className={styles.descriptionHeader}>About this development</h2>
-            <p>
-              { development.development_description }
-            </p>
-          </div>
-
-          <div className={styles.applicationDetails}>
-            <ApplicationDetail
-              heading='Application type'
-              value={development.application_type} />
-
-            { proposedLandUse &&
-              <ApplicationDetail
-                heading='How will the site be used'
-                value={proposedLandUse} />
-            }
-
-            { cmsData?.height &&
-              <ApplicationDetail
-                heading='Height'
-                value={`Maximum ${cmsData.height} storey${cmsData.height == 1 ? '' : 's'}`} />
-            }
-
-            { cmsData?.constructionTime &&
-              <ApplicationDetail
-                heading="Estimated construction time"
-                value={cmsData.constructionTime} />
-            }
-          </div>
-        </section>
+        <About
+          description={development.development_description}
+          applicationType={development.application_type}
+          height={cmsData?.height}
+          constructionTime={cmsData?.constructionTime}
+          proposedLandUse={cmsData?.proposedLandUse}
+        />
 
         { showImpactSection &&
           <div>
@@ -213,7 +175,6 @@ export default function PlanningApplication(props) {
           systemStatus={development.system_status}
           decisionType={development.decision_type}
         />
-
 
         <PlanningAlertSignup />
       </main>

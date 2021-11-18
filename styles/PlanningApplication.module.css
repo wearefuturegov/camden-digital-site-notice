@@ -45,39 +45,6 @@ section.header {
   height: auto;
 }
 
-.greenSection {
-  background-color: #2D4E4B;
-  color: white;
-  padding: 0 1rem 3rem;
-}
-
-.greenSection a {
-  color: #E9FD57;
-  text-decoration: underline;
-}
-
-.description {
-  border-bottom: 1px dashed #E9FD57;
-  margin-bottom: 2.5rem;
-}
-
-.descriptionHeader {
-  color: #E9FD57;
-  font-weight: 400;
-  font-size: 1.75rem;
-  margin: 1.5rem 0 1.5rem;
-}
-
-.description p {
-  font-size: 1.25rem;
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-.applicationDetails {
-  margin-bottom: 2.5rem;
-}
-
 section.impact {
   border-bottom: 1px solid #AACAC8;
   padding: 2rem 0.5rem 4rem;

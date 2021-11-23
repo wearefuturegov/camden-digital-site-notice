@@ -4,9 +4,10 @@ import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
 import CamdenLogo from '../../components/CamdenLogo'
 import BreadcrumbArrow from '../../components/BreadcrumbArrow'
-import ApplicationDetail from '../../components/ApplicationDetail'
+import About from '../../components/About'
 import ImpactArea from '../../components/ImpactArea'
 import ImpactStat from '../../components/ImpactStat'
+import ApplicationTimeline from '../../components/ApplicationTimeline'
 import PlanningAlertSignup from '../../components/PlanningAlertSignup'
 import FeedbackCTA from '../../components/FeedbackCTA'
 import Divider from '../../components/Divider'
@@ -54,6 +55,7 @@ export default function PlanningApplication(props) {
   const showImpactSection = !!cmsData && (cmsData.showHousing || cmsData.showHealthcare ||
     cmsData.showOpenSpace || cmsData.showJobs || cmsData.showCarbon);
 
+  // Fetch the props for the massings image from Sanity
   const imageProps = useNextSanityImage(
     client,
     cmsData?.massings
@@ -86,7 +88,6 @@ export default function PlanningApplication(props) {
               { development.development_address }
             </p>
           </div>
-
         </section>
 
         { cmsData?.massings &&
@@ -95,38 +96,13 @@ export default function PlanningApplication(props) {
           </div>
         }
 
-        <section className={styles.greenSection}>
-          <div className={styles.description}>
-            <h2 className={styles.descriptionHeader}>About this development</h2>
-            <p>
-              { development.development_description }
-            </p>
-          </div>
-
-          <div className={styles.applicationDetails}>
-            <ApplicationDetail
-              heading='Application type'
-              value={development.application_type} />
-
-            { cmsData?.proposedLandUse &&
-              <ApplicationDetail
-                heading='How will the site be used'
-                value={cmsData.proposedLandUse} />
-            }
-
-            { cmsData?.height &&
-              <ApplicationDetail
-                heading='Height'
-                value={`Maximum ${cmsData.height} storey${cmsData.height == 1 ? '' : 's'}`} />
-            }
-
-            { cmsData?.constructionTime &&
-              <ApplicationDetail
-                heading="Estimated construction time"
-                value={cmsData.constructionTime} />
-            }
-          </div>
-        </section>
+        <About
+          description={development.development_description}
+          applicationType={development.application_type}
+          height={cmsData?.height}
+          constructionTime={cmsData?.constructionTime}
+          proposedLandUse={cmsData?.proposedLandUse}
+        />
 
         { showImpactSection &&
           <div>
@@ -196,21 +172,10 @@ export default function PlanningApplication(props) {
           </div>
         }
 
-        <section className={styles.progress}>
-
-          <h2>Where we are in the process</h2>
-          <div className={styles.timeline}>
-            <div className={styles.solidLine}></div>
-            <div className={styles.progressItem}>
-              <span className={styles.point}></span>
-              <p className={styles.status}>
-                { development.system_status }
-              </p>
-              { development.decision_type ? <p className={styles.statusDetail}>{development.decision_type}</p> : null }
-            </div>
-          </div>
-
-        </section>
+        <ApplicationTimeline
+          systemStatus={development.system_status}
+          decisionType={development.decision_type}
+        />
 
         <Divider />
 
@@ -218,11 +183,8 @@ export default function PlanningApplication(props) {
       </main>
 
       { development.comment && <FeedbackCTA id={id} /> }
-      <Footer />
 
-      <a href={development.full_application.url} target='_blank' rel='noreferrer'>
-        <small>DEBUG: View in Camden&apos;s Planning Explorer</small>
-      </a>
+      <Footer />
     </>
   )
 }

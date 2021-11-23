@@ -2,12 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
-import CamdenLogo from '../../components/CamdenLogo'
-import BreadcrumbArrow from '../../components/BreadcrumbArrow'
 import About from '../../components/About'
 import ImpactArea from '../../components/ImpactArea'
 import ImpactStat from '../../components/ImpactStat'
 import ApplicationTimeline from '../../components/ApplicationTimeline'
+import PlanningApplicationHeader from '../../components/PlanningApplicationHeader'
 import PlanningAlertSignup from '../../components/PlanningAlertSignup'
 import FeedbackCTA from '../../components/FeedbackCTA'
 import Divider from '../../components/Divider'
@@ -68,18 +67,10 @@ export default function PlanningApplication(props) {
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
 
+      <PlanningApplicationHeader />
+
       <main className={styles.main}>
         <section className={styles.header}>
-          <CamdenLogo colour='white' />
-
-          <div className={styles.breadcrumbs}>
-            <Link href='/'>
-              <a>Planning Applications</a>
-            </Link>
-            <BreadcrumbArrow />
-            <span className={styles.highlight}>Overview</span>
-          </div>
-
           <div>
             <h1 className={styles.title}>
               { cmsData?.name || development.application_type }

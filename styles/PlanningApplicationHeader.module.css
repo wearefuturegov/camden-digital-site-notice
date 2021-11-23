@@ -1,0 +1,24 @@
+.pageHeader {
+  background-color: #2D4E4B;
+  color: white;
+  padding: 2rem 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.share {
+  align-self: flex-end;
+}
+
+.breadcrumbs {
+  font-size: 16px;
+}
+
+.breadcrumbs a {
+  font-family: 'Museo Sans';
+  text-decoration: underline;
+}
+
+.breadcrumbs .highlight {
+  color: #E9FD57;
+}

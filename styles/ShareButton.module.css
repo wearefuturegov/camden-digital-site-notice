@@ -1,0 +1,8 @@
+.share {
+  display: flex;
+  color: #E9FD57;
+}
+
+.share span {
+  margin-left: 0.5rem;
+}

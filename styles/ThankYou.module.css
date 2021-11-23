@@ -33,3 +33,15 @@
   color: #2A2828;
 }
 
+.shareContainer {
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 1.15rem;
+}
+
+.shareContainer .decoration {
+  position: absolute;
+  width: 12px;
+  height: 65px;
+  background-color: #E9FD57;
+}

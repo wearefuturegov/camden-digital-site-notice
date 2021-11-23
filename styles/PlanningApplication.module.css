@@ -11,7 +11,7 @@
 section.header {
   background-color: #2D4E4B;
   color: white;
-  padding: 3rem 1rem 0.5rem;
+  padding: 0rem 1rem 0.5rem;
 }
 
 .title {
@@ -21,20 +21,9 @@ section.header {
   margin-bottom: 1rem;
 }
 
-.breadcrumbs {
-  font-size: 16px;
-}
-
-.breadcrumbs a {
-  font-family: 'Museo Sans';
-  text-decoration: underline;
-}
-
-.breadcrumbs .highlight {
-  color: #E9FD57;
-}
-
 .address {
+  font-family: 'Museo';
+  text-decoration: underline;
   font-weight: 400;
   font-size: 20px;
 }

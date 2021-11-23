@@ -1,20 +1,8 @@
 .container {
-  padding: 2rem 0;
+  position: relative;
+  padding: 0 1rem;
   text-align: center;
   font-size: 1.15rem;
-}
-
-.headerWrapper {
-  position: relative;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
-}
-
-.decoration {
-  position: absolute;
-  width: 12px;
-  height: 65px;
-  background-color: #E9FD57;
 }
 
 .centered {

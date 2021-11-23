@@ -44,7 +44,10 @@ export default function ThankYou(props) {
 
       <Divider padded />
 
-      <Share />
+      <section className={styles.shareContainer}>
+        <div className={styles.decoration}></div>
+        <Share />
+      </section>
 
       <Footer />
     </>

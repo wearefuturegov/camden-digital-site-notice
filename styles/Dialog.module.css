@@ -1,0 +1,43 @@
+.dialogClosed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  transform: translateY(-100%);
+  transition: 0.5s all;
+}
+
+.dialogOpen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  transition: 0.5s all;
+}
+
+.inner {
+  background-color: white;
+  color: #2A2828;
+  width: 100%;
+  padding: 2rem 0.5rem 2rem;
+}
+
+.decoration {
+  position: absolute;
+  width: 12px;
+  height: 65px;
+  left: 0;
+  background-color: #E9FD57;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  float: right;
+}

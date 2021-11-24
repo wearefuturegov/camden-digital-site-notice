@@ -1,7 +1,13 @@
 .header {
   background-color: #3A293E;
   color: white;
-  padding: 3rem 1rem 1.5rem;
+  padding: 2rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.share {
+  align-self: flex-end;
 }
 
 .header h1 {

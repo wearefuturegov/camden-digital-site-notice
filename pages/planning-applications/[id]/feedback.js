@@ -39,8 +39,13 @@ export default function Feedback(props) {
   const [feedback, setFeedback] = useState(router.query.feedback)
   const [error, setError] = useState()
 
-  const goToImpact = !!cmsData && (cmsData.showHousing || cmsData.showOpenSpace ||
-    cmsData.showJobs || cmsData.showCarbon);
+  const goToImpact = !!cmsData && (
+    cmsData.showHousing && cmsData.housing ||
+    cmsData.showOpenSpace && cmsData.openSpaceArea ||
+    cmsData.showJobs && cmsData.jobs ||
+    cmsData.showCarbon && cmsData.carbonEmissions ||
+    cmsData.showAccess && cmsData.acess
+  );
 
   const emotions = ['Love', 'Happy', 'Meh', 'Concerned', 'Angry'];
 

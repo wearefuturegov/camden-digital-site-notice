@@ -41,3 +41,26 @@
   padding: 0.5rem 1rem;
   float: right;
 }
+
+.overlayOpen {
+  position: absolute;
+  height: 100%;
+  background: black;
+  opacity: 0.5;
+  z-index: 90;
+  left: 0;
+  right: 0;
+  transition: 0.5s background;
+}
+
+.overlayClosed {
+  position: absolute;
+  height: 100%;
+  background: black;
+  opacity: 0.5;
+  z-index: -99;
+  left: 0;
+  right: 0;
+  background: transparent;
+  transition: 0.5s all;
+}

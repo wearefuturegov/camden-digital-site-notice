@@ -24,6 +24,7 @@ export default function Dialog({openComponent, children}) {
           { children }
         </div>
       </div>
+      <div onClick={handleClose} className={showDialog ? styles.overlayOpen : styles.overlayClosed }></div>
     </>
   )
 }

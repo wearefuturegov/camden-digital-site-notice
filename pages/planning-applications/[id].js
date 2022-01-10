@@ -147,7 +147,7 @@ export default function PlanningApplication(props) {
               { cmsData.showJobs && cmsData.jobs &&
                 <ImpactArea header='New jobs' image='jobs'>
                   <ImpactStat
-                    value={[cmsData.jobs.min.toLocaleString(), cmsData.jobs.max.toLocaleString()].join(' - ')}
+                    value={[cmsData.jobs.min?.toLocaleString(), cmsData.jobs.max?.toLocaleString()].filter(n => n).join(' - ')}
                     label='new roles'
                   />
                 </ImpactArea>

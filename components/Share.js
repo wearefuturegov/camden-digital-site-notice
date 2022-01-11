@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styles from '../styles/Share.module.css'
 import Image from 'next/image'
 
@@ -27,6 +28,10 @@ const Share = (props) => {
     </div>
 
   )
+}
+
+Share.propTypes = {
+  applicationNumber: PropTypes.string.isRequired
 }
 
 export default Share;

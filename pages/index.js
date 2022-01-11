@@ -7,18 +7,34 @@ import client, { getClient } from "@lib/sanity"
 import { groq } from "next-sanity"
 
 const limit = 50;
-const distance = 500;
-const ignoredSystemStatus = ['Final Decision', 'Withdrawn'];
-const applicationTypes = ['Full Planning Permission', 'Outline Planning Permission', 'Variation or Removal of Condition(s)', 'Approval of Reserved Matters'];
+const distance = 1000;
 
-const arrayToSoqlString = (arr) => arr.map(s => JSON.stringify(s)).join()
+// Helper method to convert a JS array to a string for a SOQL query
+const arrayToSoqlString = (arr) => "'" + arr.toString().replace(/,/g , "','") + "'"
 
 export async function getServerSideProps(context) {
-  let whereQuery = `system_status not in(${arrayToSoqlString(ignoredSystemStatus)}) and decision_type is null and application_type in(${arrayToSoqlString(applicationTypes)})`;
-  let orderQuery = `registered_date DESC, last_uploaded DESC`;
   let postcode;
 
+  // First, fetch the data from the CMS
+  const query = groq`
+    *[_type == "planning-application"] {
+      ...
+    }
+  `;
+
+  const cmsData = await getClient().fetch(query);
+
+
+  // Then fetch the matching data from Camden's API
+  const ids = cmsData.map(development => development.applicationNumber);
+
+  let whereQuery = `application_number in(${arrayToSoqlString(ids)})`;
+  let orderQuery = `registered_date DESC, last_uploaded DESC`;
+
+  // If the user has searched by postcode, we need to tweak the request to
+  // Camden's API to filter by location.
   if (context.query.postcode) {
+    // Verify that it's a real postcode and get its geolocation
     const postcodeRes = await fetch(`https://api.postcodes.io/postcodes/${context.query.postcode}`)
     const postcodeData = await postcodeRes.json()
 
@@ -32,9 +48,13 @@ export async function getServerSideProps(context) {
     }
 
     postcode = postcodeData.result;
-    whereQuery += ` and within_circle(location, ${postcodeData.result.latitude}, ${postcodeData.result.longitude}, ${distance})`;
+    // TBD whether we only want to order by location or also filter out
+    // developments that are too far away. For now there won't be too many site
+    // notices, so leaving this out.
+    // whereQuery += ` and within_circle(location, ${postcodeData.result.latitude}, ${postcodeData.result.longitude}, ${distance})`;
     orderQuery = `distance_in_meters(location, 'POINT (${postcodeData.result.longitude} ${postcodeData.result.latitude})')`
   }
+
 
   const res = await fetch(`${process.env.API_URL}.json?$limit=${limit}&$where=${whereQuery}&$order=${orderQuery}`)
   const data = await res.json()
@@ -45,15 +65,9 @@ export async function getServerSideProps(context) {
     }
   }
 
-  const ids = data.map(development => `'${development.application_number}'`);
-  const query = groq`
-    *[_type == "planning-application" && applicationNumber in [${ids}]] {
-      ...
-    }
-  `;
-
-  const cmsData = await getClient().fetch(query);
-
+  // Build up the array of developments from the CMS data and the data from
+  // Camden's API, mapping from Camden's API so we know we're only showing
+  // developments that exist in M3 and the Planning Explorer
   const developments = data.map(development => {
     const siteNotice = cmsData.find(el => el.applicationNumber == development.application_number);
 
@@ -107,7 +121,7 @@ export default function Home(props) {
         </div>
 
         <section className={styles.results}>
-          { developments && <PlanningList developments={developments} currentLocation={currentLocation} /> }
+          { developments.length > 0 ? <PlanningList developments={developments} currentLocation={currentLocation} /> : <p>No results</p>}
         </section>
       </main>
 

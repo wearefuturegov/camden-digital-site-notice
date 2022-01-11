@@ -120,7 +120,7 @@ export default function Feedback(props) {
             like.
           </p>
 
-              { cmsData.showHousing &&
+              { cmsData.showHousing && cmsData.housing &&
                 <ImpactFeedback
                   header='New homes'
                   image='housing'
@@ -138,7 +138,7 @@ export default function Feedback(props) {
                 </ImpactFeedback>
               }
 
-              { cmsData.showHealthcare &&
+              { cmsData.showHealthcare && cmsData.healthcareDemand &&
                 <ImpactFeedback
                   header='Healthcare'
                   image='healthcare'
@@ -151,7 +151,7 @@ export default function Feedback(props) {
                 </ImpactFeedback>
               }
 
-              { cmsData.showOpenSpace &&
+              { cmsData.showOpenSpace && cmsData.openSpaceArea &&
                 <ImpactFeedback
                   header='Open spaces'
                   image='open-spaces'
@@ -164,20 +164,20 @@ export default function Feedback(props) {
                 </ImpactFeedback>
               }
 
-              { cmsData.showJobs &&
+              { cmsData.showJobs && cmsData.jobs &&
                 <ImpactFeedback
                   header='New jobs'
                   image='jobs'
                   onChange={setJobsFeedback}
                 >
                   <ImpactStat
-                    value={[cmsData.jobs.min.toLocaleString(), cmsData.jobs.max.toLocaleString()].join(' - ')}
+                    value={[cmsData.jobs.min?.toLocaleString(), cmsData.jobs.max?.toLocaleString()].filter(n => n).join(' - ')}
                     label='new roles'
                   />
                 </ImpactFeedback>
               }
 
-              { cmsData.showCarbon &&
+              { cmsData.showCarbon && cmsData.carbonEmissions &&
                 <ImpactFeedback
                   header='Carbon emissions'
                   image='co2'
@@ -190,7 +190,7 @@ export default function Feedback(props) {
                 </ImpactFeedback>
               }
 
-              { cmsData.showAccess &&
+              { cmsData.showAccess && cmsData.access &&
                 <ImpactFeedback
                   header='Pedestrian and vehicle access'
                   image='access'

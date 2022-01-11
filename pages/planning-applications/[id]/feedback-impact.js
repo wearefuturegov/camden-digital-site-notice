@@ -171,7 +171,7 @@ export default function Feedback(props) {
                   onChange={setJobsFeedback}
                 >
                   <ImpactStat
-                    value={[cmsData.jobs.min.toLocaleString(), cmsData.jobs.max.toLocaleString()].join(' - ')}
+                    value={[cmsData.jobs.min?.toLocaleString(), cmsData.jobs.max?.toLocaleString()].filter(n => n).join(' - ')}
                     label='new roles'
                   />
                 </ImpactFeedback>

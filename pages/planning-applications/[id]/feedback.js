@@ -37,6 +37,7 @@ export default function Feedback(props) {
 
   const [feedbackEmotion, setFeedbackEmotion] = useState(router.query.feeling)
   const [feedback, setFeedback] = useState(router.query.feedback)
+  const [postcode, setPostcode] = useState(router.query.postcode)
   const [error, setError] = useState()
 
   const goToImpact = !!cmsData && (
@@ -128,6 +129,17 @@ export default function Feedback(props) {
             className={styles.textInput}
             value={feedback}
             onChange={(e)=>setFeedback(e.target.value)} />
+
+          <p className={styles.paragraph}>If the comment above relates to an issue that will affect you personally (e.g. the development will overshadow your property or affect your privacy) we need your postcode, because we can only formally explore comments comming from immediate neighbours of the development.</p>
+
+          <label className={styles.postcodeLabel}>
+            Enter your postcode
+            <input
+              placeholder='Postcode'
+              className={styles.textInput}
+              value={postcode}
+              onChange={(e)=>setPostcode(e.target.value)} />
+          </label>
 
           { error && <p className={styles.error}>{error}</p> }
 

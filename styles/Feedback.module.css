@@ -16,10 +16,20 @@
 .textInput {
   display: block;
   font-family: Museo Sans;
+  font-size: 1rem;
   border: 1px solid #D5D8DE;
   width: 100%;
   padding: 0.5rem;
   margin-top: 0.5rem; 
+  border-radius: 4px;
+}
+
+.paragraph {
+  margin: 1.5rem 0;
+}
+
+.postcodeLabel {
+  font-size: 1.15rem;
 }
 
 .submitButton {

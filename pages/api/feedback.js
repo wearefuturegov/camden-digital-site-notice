@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer'
 
 export default function handler(req, res) {
   if (req.method === 'POST') {
-    const { applicationNumber, feedbackEmotion, feedback, impactFeedback } = req.body;
+    const { applicationNumber, feedbackEmotion, feedback, impactFeedback, postcode } = req.body;
     console.log(req.body);
 
     const transporter = nodemailer.createTransport({
@@ -24,7 +24,9 @@ export default function handler(req, res) {
             <p>${feedbackEmotion}</p>
             <h2>Feedback</h2>
             <p>${feedback}</p>
-            ${ impactFeedbackHTML }`
+            ${ impactFeedbackHTML }
+            <h2>Postcode</h2>
+            <p>${postcode ? postcode : 'Not provided'}</p>`
     }
 
     transporter.sendMail(options, (error) => {

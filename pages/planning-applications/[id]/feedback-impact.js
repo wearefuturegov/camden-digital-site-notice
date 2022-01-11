@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
 export default function Feedback(props) {
   const { appNumber, cmsData } = props;
   const router = useRouter()
-  const { id, feeling, feedback } = router.query
+  const { id, feeling, feedback, postcode } = router.query
 
   const [housingFeedback, setHousingFeedback] = useState('');
   const [healthcareFeedback, setHealthcareFeedback] = useState('');
@@ -81,7 +81,8 @@ export default function Feedback(props) {
            applicationNumber: appNumber,
            feedbackEmotion: feeling,
            feedback: feedback,
-           impactFeedback: areasForFeedback
+           impactFeedback: areasForFeedback,
+           postcode: postcode
          })
     });
 
@@ -205,7 +206,7 @@ export default function Feedback(props) {
           <input className={styles.submitButton} type='submit' value='Submit your feedback' />
         </form>
 
-        <Link href={`/planning-applications/${id}/feedback?feeling=${feeling}&feedback=${feedback}`} >
+        <Link href={`/planning-applications/${id}/feedback?feeling=${feeling}&feedback=${feedback}&postcode=${postcode}`} >
           <a>
             <div className={styles.backButton}>
               Back

@@ -61,7 +61,7 @@ export default function Feedback(props) {
       // Go to the next set of feedback questions
       router.push({
         pathname: '/planning-applications/[id]/feedback-impact',
-        query: { id: id, feeling: feedbackEmotion, feedback: feedback }
+        query: { id: id, feeling: feedbackEmotion, feedback: feedback, postcode: postcode }
       });
       return
     }
@@ -74,7 +74,8 @@ export default function Feedback(props) {
          body: JSON.stringify({
            applicationNumber: appNumber,
            feedbackEmotion: feedbackEmotion,
-           feedback: feedback
+           feedback: feedback,
+           postcode: postcode
          })
     });
 

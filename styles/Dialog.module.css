@@ -2,6 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   z-index: 99;
   transform: translateY(-100%);
   transition: 0.5s all;
@@ -11,6 +12,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   z-index: 99;
   transition: 0.5s all;
 }
@@ -48,6 +50,7 @@
   background: black;
   opacity: 0.5;
   z-index: 90;
+  top: 0;
   left: 0;
   right: 0;
   transition: 0.5s background;
@@ -61,6 +64,7 @@
   z-index: -99;
   left: 0;
   right: 0;
+  bottom: 0;
   background: transparent;
   transition: 0.5s all;
 }

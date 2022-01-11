@@ -101,7 +101,7 @@ export default function Feedback(props) {
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
 
-      <FeedbackHeader>
+      <FeedbackHeader applicationNumber={id} >
         <h1>Tell us what you think</h1>
         <p>Your feedback helps us improve developments so they meet the needs of people in Camden. It&apos;s important you let us know what you think.</p>
       </FeedbackHeader>

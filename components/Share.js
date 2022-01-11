@@ -1,21 +1,24 @@
 import styles from '../styles/Share.module.css'
 import Image from 'next/image'
 
-const Share = () => {
+const Share = (props) => {
+  const shareUrl = encodeURIComponent(`https://camden-digital-site-notice.netlify.app/planning-applications/${props.applicationNumber}`);
+  const shareMessage = encodeURIComponent('Check out this Camden planning application');
+
+  const twitterLink = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareMessage}`;
+  const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+
   return (
     <div className={styles.container}>
       <h2 className={styles.header}>Share with your&nbsp;community</h2>
 
       <div className={styles.shareIcons}>
-        <div className={styles.shareIcon}>
-          <Image src="/icons/sharing/twitter.svg" alt="Share on Twitter" width={52} height={52} />
-        </div>
-        <div className={styles.shareIcon}>
+        <a className={styles.shareIcon} href={twitterLink} target='_blank' rel='noreferrer'>
+            <Image src="/icons/sharing/twitter.svg" alt="Share on Twitter" width={52} height={52} />
+        </a>
+        <a className={styles.shareIcon} href={fbLink} target='_blank' rel='noreferrer'>
           <Image src="/icons/sharing/facebook.svg" alt="Share on Facebook" width={52} height={52} />
-        </div>
-        <div className={styles.shareIcon}>
-          <Image src="/icons/sharing/instagram.svg" alt="Share on Instagram" width={52} height={52} />
-        </div>
+        </a>
       </div>
 
       <p>

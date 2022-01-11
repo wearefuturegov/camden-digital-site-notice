@@ -7,12 +7,12 @@ import Share from '../components/Share'
 import ShareButton from '../components/ShareButton'
 import styles from '../styles/PlanningApplicationHeader.module.css'
 
-export default function PlanningApplicationHeader() {
+export default function PlanningApplicationHeader(props) {
   return (
     <header className={styles.pageHeader}>
       <div className={styles.share}>
         <Dialog openComponent={<ShareButton />} >
-          <Share />
+          <Share applicationNumber={props.applicationNumber} />
         </Dialog>
       </div>
 

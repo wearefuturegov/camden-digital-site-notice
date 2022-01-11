@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../styles/FeedbackHeader.module.css'
 
-export default function Header({ children }) {
+export default function Header(props, { children }) {
   const router = useRouter()
   const { id } = router.query
 
@@ -15,7 +15,7 @@ export default function Header({ children }) {
     <section className={styles.header}>
       <div className={styles.share}>
         <Dialog openComponent={<ShareButton />} >
-          <Share />
+          <Share applicationNumber={props.applicationNumber} />
         </Dialog>
       </div>
 

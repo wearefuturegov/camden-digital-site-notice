@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import { useState } from 'react';
 import client, { getClient } from "@lib/sanity"
 import { groq } from "next-sanity"
+import BetaBanner from '../components/BetaBanner'
 
 const limit = 50;
 const distance = 1000;
@@ -96,6 +97,8 @@ export default function Home(props) {
         <title>Digital Site Notice | Camden Planning</title>
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
+
+      <BetaBanner />
 
       <main className={styles.main}>
 

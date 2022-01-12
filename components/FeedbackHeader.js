@@ -1,3 +1,4 @@
+import BetaBanner from '../components/BetaBanner'
 import CamdenLogo from '../components/CamdenLogo'
 import BreadcrumbArrow from '../components/BreadcrumbArrow'
 import Dialog from '../components/Dialog'
@@ -12,29 +13,33 @@ export default function Header(props, { children }) {
   const { id } = router.query
 
   return (
-    <section className={styles.header}>
-      <div className={styles.share}>
-        <Dialog openComponent={<ShareButton />} >
-          <Share applicationNumber={props.applicationNumber} />
-        </Dialog>
-      </div>
+    <>
+      <BetaBanner />
 
-      <CamdenLogo colour='white' />
+      <section className={styles.header}>
+        <div className={styles.share}>
+          <Dialog openComponent={<ShareButton />} >
+            <Share applicationNumber={props.applicationNumber} />
+          </Dialog>
+        </div>
 
-      <div className={styles.breadcrumbs}>
-        <Link href='/'>
-          <a>Planning Applications</a>
-        </Link>
-        <BreadcrumbArrow />
-        <Link href={`/planning-applications/${id}`}>
-          <a>Overview</a>
-        </Link>
-        <BreadcrumbArrow />
-        <span className={styles.highlight}>Submit your feedback</span>
-      </div>
+        <CamdenLogo colour='white' />
 
-      { children }
+        <div className={styles.breadcrumbs}>
+          <Link href='/'>
+            <a>Planning Applications</a>
+          </Link>
+          <BreadcrumbArrow />
+          <Link href={`/planning-applications/${id}`}>
+            <a>Overview</a>
+          </Link>
+          <BreadcrumbArrow />
+          <span className={styles.highlight}>Submit your feedback</span>
+        </div>
 
-    </section>
+        { children }
+
+      </section>
+    </>
   );
 }

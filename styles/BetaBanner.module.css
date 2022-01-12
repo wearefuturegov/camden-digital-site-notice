@@ -1,0 +1,18 @@
+.banner {
+  padding: 0rem 1rem;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.tag {
+  font-family: Museo;
+  text-transform: uppercase;
+  color: #E9FD57;
+  background-color: #2B1F2E;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+}

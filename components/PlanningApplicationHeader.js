@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import BetaBanner from '../components/BetaBanner'
 import CamdenLogo from '../components/CamdenLogo'
 import BreadcrumbArrow from '../components/BreadcrumbArrow'

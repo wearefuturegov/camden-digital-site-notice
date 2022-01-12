@@ -3,7 +3,7 @@ import CamdenLogo from '../components/CamdenLogo'
 import PlanningList from '../components/PlanningList'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react';
-import client, { getClient } from "@lib/sanity"
+import { getClient } from "@lib/sanity"
 import { groq } from "next-sanity"
 import BetaBanner from '../components/BetaBanner'
 

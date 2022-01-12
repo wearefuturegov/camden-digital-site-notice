@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
 import styles from '../../styles/PlanningApplication.module.css'
 import About from '../../components/About'
 import ImpactArea from '../../components/ImpactArea'

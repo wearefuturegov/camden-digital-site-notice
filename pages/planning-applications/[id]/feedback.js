@@ -29,7 +29,6 @@ export async function getServerSideProps(context) {
   }
 }
 
-
 export default function Feedback(props) {
   const { appNumber, cmsData } = props;
   const router = useRouter()

@@ -5,7 +5,8 @@ export default function BetaBanner() {
     <div className={styles.banner}>
       <p className={styles.content}>
         <strong className={styles.tag}>Beta</strong>
-        <span>This is a new service – your feedback will help us to improve it.</span>
+        <span>
+          This is a new service – your <a className={styles.link} href={process.env.NEXT_PUBLIC_FEEDBACK_LINK}>feedback</a> will help us to improve it.</span>
       </p>
     </div>
   )

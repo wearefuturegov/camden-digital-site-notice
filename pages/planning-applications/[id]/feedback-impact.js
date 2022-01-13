@@ -178,15 +178,15 @@ export default function Feedback(props) {
                 </ImpactFeedback>
               }
 
-              { cmsData.showCarbon && cmsData.carbonEmissions &&
+              { cmsData.showCarbon &&
                 <ImpactFeedback
                   header='Carbon emissions'
                   image='co2'
                   onChange={setCo2Feedback}
                 >
                   <ImpactStat
-                    value={cmsData.carbonEmissions.toLocaleString() + '%'}
-                    label='more CO2 emissions'
+                    value={cmsData.carbonEmissions?.toLocaleString() + '%'}
+                    label='below legal requirements'
                   />
                 </ImpactFeedback>
               }

@@ -145,11 +145,11 @@ export default function PlanningApplication(props) {
                 </ImpactArea>
               }
 
-              { cmsData.showCarbon && cmsData.carbonEmissions &&
+              { cmsData.showCarbon &&
                 <ImpactArea header='Carbon emissions' image='co2' >
                   <ImpactStat
-                    value={cmsData.carbonEmissions.toLocaleString() + '%'}
-                    label='more CO2 emissions'
+                    value={cmsData.carbonEmissions?.toLocaleString() + '%'}
+                    label='below legal requirements'
                   />
                 </ImpactArea>
               }

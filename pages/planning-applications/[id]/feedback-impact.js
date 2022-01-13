@@ -152,14 +152,14 @@ export default function Feedback(props) {
                 </ImpactFeedback>
               }
 
-              { cmsData.showOpenSpace && cmsData.openSpaceArea &&
+              { cmsData.showOpenSpace &&
                 <ImpactFeedback
                   header='Open spaces'
                   image='open-spaces'
                   onChange={setOpenSpaceFeedback}
                 >
                   <ImpactStat
-                    value={cmsData.openSpaceArea.toLocaleString()}
+                    value={cmsData.openSpaceArea?.toLocaleString()}
                     label='square metres'
                   />
                 </ImpactFeedback>

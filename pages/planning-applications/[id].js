@@ -126,10 +126,10 @@ export default function PlanningApplication(props) {
                 </ImpactArea>
               }
 
-              { cmsData.showOpenSpace && cmsData.openSpaceArea &&
+              { cmsData.showOpenSpace &&
                 <ImpactArea header='Open spaces' image='open-spaces'>
                   <ImpactStat
-                    value={cmsData.openSpaceArea.toLocaleString()}
+                    value={cmsData.openSpaceArea?.toLocaleString()}
                     label='square metres'
                   />
                 </ImpactArea>

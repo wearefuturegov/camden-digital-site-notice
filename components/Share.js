@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import styles from '../styles/Share.module.css'
 import Image from 'next/image'
 
+// Share section with links to share a planning application on social media.
+// Can be used on its own on a page, or as the content to go inside a dialog.
 const Share = (props) => {
   const shareUrl = encodeURIComponent(`https://camden-digital-site-notice.netlify.app/planning-applications/${props.applicationNumber}`);
   const shareMessage = encodeURIComponent('Check out this Camden planning application');

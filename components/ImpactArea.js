@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from '../styles/ImpactArea.module.css'
 
-function ImpactFeedback({ header, image, children }) {
+function ImpactArea({ header, image, children }) {
 
   return (
     <div className={styles.container} >
@@ -20,4 +20,4 @@ function ImpactFeedback({ header, image, children }) {
   )
 }
 
-export default ImpactFeedback
+export default ImpactArea

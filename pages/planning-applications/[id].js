@@ -5,6 +5,7 @@ import About from '../../components/About'
 import ImpactArea from '../../components/ImpactArea'
 import ImpactStat from '../../components/ImpactStat'
 import ApplicationTimeline from '../../components/ApplicationTimeline'
+import ApplicationDocumentsLink from '../../components/ApplicationDocumentsLink'
 import PlanningApplicationHeader from '../../components/PlanningApplicationHeader'
 import PlanningAlertSignup from '../../components/PlanningAlertSignup'
 import FeedbackCTA from '../../components/FeedbackCTA'
@@ -170,6 +171,10 @@ export default function PlanningApplication(props) {
         <Divider />
 
         <PlanningAlertSignup />
+
+        <Divider />
+
+        <ApplicationDocumentsLink applicationNumber={development.application_number} />
       </main>
 
       { development.comment && <FeedbackCTA id={id} /> }

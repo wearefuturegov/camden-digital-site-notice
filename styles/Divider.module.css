@@ -1,8 +1,13 @@
 .divider {
-  border-top: 1px solid #AACAC8;
+  border-top: 1px dashed #AACAC8;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+
 }
 
 .dividerPadded {
-  border-top: 1px solid #AACAC8;
+  border-top: 1px dashed #AACAC8;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   padding: 0 1rem;
 }

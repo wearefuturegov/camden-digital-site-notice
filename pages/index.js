@@ -72,9 +72,12 @@ export async function getServerSideProps(context) {
   const developments = data.map(development => {
     const siteNotice = cmsData.find(el => el.applicationNumber == development.application_number);
 
+    // Skip if there's no CMS data
+    if (!siteNotice) { return }
+
     return {
       ...development,
-      siteNoticeName: siteNotice ? siteNotice.name : development.development_description
+      siteNoticeName: siteNotice.name ? siteNotice.name : development.development_description
     }
   });
 

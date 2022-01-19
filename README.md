@@ -37,3 +37,9 @@ To deploy changes to Sanity, do
 ```
 cd admin && sanity deploy
 ```
+
+You may need to login via the Sanity CLI if you haven't already. To do this, run:
+
+```
+sanity login
+```

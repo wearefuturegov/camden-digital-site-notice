@@ -6,9 +6,7 @@ import distanceInMiles from '../utils/geolocationHelpers'
 const PlanningListItem = (props) => {
   const { development, currentLocation } = props;
 
-  // The app numbers contain forward slashes, so we replace those with underscores
-  // here so it's URL compatible
-  const appId = development.application_number.replace(/\//g, "-")
+  const appId = development.pk;
 
   const distance = currentLocation ? distanceInMiles(currentLocation, development.location) : null;
 

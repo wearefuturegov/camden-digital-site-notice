@@ -5,7 +5,7 @@ import Image from 'next/image'
 // Share section with links to share a planning application on social media.
 // Can be used on its own on a page, or as the content to go inside a dialog.
 const Share = (props) => {
-  const shareUrl = encodeURIComponent(`https://camden-digital-site-notice.netlify.app/planning-applications/${props.applicationNumber}`);
+  const shareUrl = encodeURIComponent(`https://camden-digital-site-notice.netlify.app/planning-applications/${props.applicationId}`);
   const shareMessage = encodeURIComponent('Check out this Camden planning application');
 
   const twitterLink = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareMessage}`;
@@ -33,7 +33,7 @@ const Share = (props) => {
 }
 
 Share.propTypes = {
-  applicationNumber: PropTypes.string.isRequired
+  applicationId: PropTypes.string.isRequired
 }
 
 export default Share;

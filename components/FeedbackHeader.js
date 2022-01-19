@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../styles/FeedbackHeader.module.css'
 
-export default function Header(props, { children }) {
+export default function Header({ children }) {
   const router = useRouter()
   const { id } = router.query
 
@@ -18,9 +18,11 @@ export default function Header(props, { children }) {
 
       <section className={styles.header}>
         <div className={styles.share}>
-          <Dialog openComponent={<ShareButton />} >
-            <Share applicationNumber={props.applicationNumber} />
-          </Dialog>
+          <div className={styles.shareButton}>
+            <Dialog openComponent={<ShareButton />} >
+              <Share applicationId={id} />
+            </Dialog>
+          </div>
         </div>
 
         <CamdenLogo colour='white' />

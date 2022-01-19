@@ -11,8 +11,10 @@ import Footer from '../../../components/Footer'
 import styles from '../../../styles/Feedback.module.css'
 
 export async function getServerSideProps(context) {
-  // Put the app number back into the way Camden store it
-  const appNumber = context.query.id.replace(/-/g, '/').toUpperCase();
+  const res = await fetch(`${process.env.API_URL}.json?pk=${context.query.id}`)
+  const apiData = await res.json()
+
+  const appNumber = apiData[0].application_number;
 
   const query = groq`
     *[_type == "planning-application" && applicationNumber == "${appNumber}"] | order(_createdAt desc) [0] {
@@ -102,7 +104,7 @@ export default function Feedback(props) {
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
 
-      <FeedbackHeader applicationNumber={id} >
+      <FeedbackHeader>
         <h1>Tell us what you think</h1>
         <p>Your feedback helps us improve developments so they meet the needs of people in Camden. It&apos;s important you let us know what you think.</p>
       </FeedbackHeader>

@@ -49,7 +49,7 @@ export default function ThankYou(props) {
 
       <section className={styles.shareContainer}>
         <div className={styles.decoration}></div>
-        <Share applicationNumber={id} />
+        <Share applicationId={id} />
       </section>
 
       <Footer />

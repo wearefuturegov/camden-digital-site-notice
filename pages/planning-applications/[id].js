@@ -16,15 +16,13 @@ import { groq } from "next-sanity"
 import { useNextSanityImage } from 'next-sanity-image'
 
 export async function getServerSideProps(context) {
-  // Put the app number back into the way Camden store it
-  const appNumber = context.query.id.replace(/-/g, '/').toUpperCase();
-
-  const res = await fetch(`${process.env.API_URL}.json?application_number=${appNumber}`)
+  const id = context.query.id;
+  const res = await fetch(`${process.env.API_URL}.json?pk=${id}`)
   const apiData = await res.json()
   console.log(apiData)
 
   const query = groq`
-    *[_type == "planning-application" && applicationNumber == "${appNumber}"] | order(_createdAt desc) [0] {
+    *[_type == "planning-application" && applicationNumber == "${apiData[0].application_number}"] | order(_createdAt desc) [0] {
       ...
     }
   `;
@@ -40,7 +38,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      id: context.query.id,
+      id: id,
       development: apiData[0],
       cmsData: cmsData
     }
@@ -49,6 +47,7 @@ export async function getServerSideProps(context) {
 
 export default function PlanningApplication(props) {
   const { id, development, cmsData } = props;
+  const appNumber = development.application_number;
   console.log(cmsData);
 
   const showImpactSection = !!cmsData && (cmsData.showHousing || cmsData.showHealthcare ||
@@ -63,11 +62,11 @@ export default function PlanningApplication(props) {
   return (
     <>
       <Head>
-        <title>Digital Site Notice for planning application {development.application_number} | Camden Planning</title>
+        <title>Digital Site Notice for planning application {appNumber} | Camden Planning</title>
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
 
-      <PlanningApplicationHeader applicationNumber={id} />
+      <PlanningApplicationHeader applicationId={id} />
 
       <main className={styles.main}>
         <section className={styles.header}>
@@ -174,7 +173,7 @@ export default function PlanningApplication(props) {
 
         <Divider />
 
-        <ApplicationDocumentsLink applicationNumber={development.application_number} />
+        <ApplicationDocumentsLink applicationNumber={appNumber} />
       </main>
 
       { development.comment && <FeedbackCTA id={id} /> }

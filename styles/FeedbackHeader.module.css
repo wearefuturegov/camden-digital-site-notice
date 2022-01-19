@@ -2,11 +2,14 @@
   background-color: #3A293E;
   color: white;
   padding: 2rem 1rem 1.5rem;
+}
+
+.share {
   display: flex;
   flex-direction: column;
 }
 
-.share {
+.shareButton {
   align-self: flex-end;
 }
 
@@ -17,7 +20,7 @@
 }
 
 .header p {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1.75rem;
   font-weight: 400;
 }

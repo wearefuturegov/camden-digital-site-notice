@@ -15,7 +15,7 @@ export default function PlanningApplicationHeader(props) {
       <header className={styles.pageHeader}>
         <div className={styles.share}>
           <Dialog openComponent={<ShareButton />} >
-            <Share applicationNumber={props.applicationNumber} />
+            <Share applicationId={props.applicationId} />
           </Dialog>
         </div>
 

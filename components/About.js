@@ -23,6 +23,9 @@ const About = function(props) {
   let landUse = null;
   if (proposedLandUse) {
     landUse = Object.keys(proposedLandUse).map(key => proposedLandUse[key] ? landUseClassLabels[key] : null).filter(Boolean).join(', ');
+    if (proposedLandUse.suiGeneris && proposedLandUse.suiGenerisDetail) {
+      landUse += ` (${proposedLandUse.suiGenerisDetail})`;
+    }
   }
 
   // Find the app type explainer

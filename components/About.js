@@ -40,7 +40,7 @@ const About = function(props) {
           heading='Application type'
           value={`${applicationType}${ appTypeExplainer ? ' - ' + appTypeExplainer : '' }`} />
 
-        { proposedLandUse &&
+        { landUse &&
           <ApplicationDetail
             heading='How will the site be used'
             value={landUse} />

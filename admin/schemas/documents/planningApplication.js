@@ -2,6 +2,15 @@ const planningApplication = {
   title: 'Planning application',
   name: 'planning-application',
   type: 'document',
+  initialValue: {
+    proposedLandUse: {
+      classB: false,
+      classC: false,
+      classE: false,
+      classF: false,
+      suiGeneris: false
+    }
+  },
   fields: [
     {
       title: 'Application number',
@@ -67,6 +76,14 @@ const planningApplication = {
             layout: 'checkbox'
           }
         },
+        {
+          title: 'SG - Sui Generis Detail',
+          description: 'Please specify the use class for Sui Generis',
+          name: 'suiGenerisDetail',
+          type: 'string',
+          hidden: ({document}) => !document?.proposedLandUse.suiGeneris,
+          validation: Rule => Rule.custom((field, context) => (context.document.proposedLandUse.suiGeneris && field === undefined) ? "This field must not be empty." : true),
+        },
       ]
     },
     {
@@ -92,12 +109,12 @@ const planningApplication = {
       hidden: ({document}) => !document?.showHousing,
       fields: [
         {
-          title: 'New residential units',
+          title: 'New residential homes',
           name: 'residentialUnits',
-          type: 'number'
+          type: 'number',
         },
         {
-          title: 'Affordable residential units',
+          title: 'Affordable residential homes',
           name: 'affordableResidentialUnits',
           type: 'number'
         },
@@ -114,6 +131,7 @@ const planningApplication = {
       name: 'healthcareDemand',
       type: 'number',
       hidden: ({document}) => !document?.showHealthcare,
+      validation: Rule => Rule.custom((field, context) => (context.document.showHealthcare && field === undefined) ? "This field must not be empty." : true),
     },
     {
       title: 'Open space impact',
@@ -125,6 +143,7 @@ const planningApplication = {
       name: 'openSpaceArea',
       type: 'number',
       hidden: ({document}) => !document?.showOpenSpace,
+      validation: Rule => Rule.custom((field, context) => (context.document.showOpenSpace && field === undefined) ? "This field must not be empty." : true),
     },
     {
       title: 'Jobs impact',
@@ -159,6 +178,7 @@ const planningApplication = {
       name: 'carbonEmissions',
       type: 'number',
       hidden: ({document}) => !document?.showCarbon,
+      validation: Rule => Rule.custom((field, context) => (context.document.showCarbon && field === undefined) ? "This field must not be empty." : true),
     },
     {
       title: 'Pedestrian and vehicle access',
@@ -170,6 +190,7 @@ const planningApplication = {
       name: 'access',
       type: 'text',
       hidden: ({document}) => !document?.showAccess,
+      validation: Rule => Rule.custom((field, context) => (context.document.showAccess && field === undefined) ? "This field must not be empty." : true),
     },
   ],
   orderings: [

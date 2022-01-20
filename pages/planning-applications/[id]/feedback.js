@@ -6,6 +6,7 @@ import Head from 'next/head'
 import FeedbackHeader from '../../../components/FeedbackHeader'
 import FeedbackEmotion from '../../../components/FeedbackEmotion'
 import Footer from '../../../components/Footer'
+import FeedbackExplainer from '../../../components/explainers/FeedbackExplainer'
 import styles from '../../../styles/Feedback.module.css'
 
 export async function getServerSideProps(context) {
@@ -97,6 +98,9 @@ export default function Feedback(props) {
       <FeedbackHeader>
         <h1>Tell us what you think</h1>
         <p>Your feedback helps us improve developments so they meet the needs of people in Camden. It&apos;s important you let us know what you think.</p>
+
+        <FeedbackExplainer />
+
         { goToImpact &&
           <p>First, we&apos;re going to ask you how you feel the development will affect you. On the next page, we&apos;ll ask you how you think it could have a positive impact in your local area.</p>
         }

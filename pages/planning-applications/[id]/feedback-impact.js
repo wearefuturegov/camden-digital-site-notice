@@ -5,6 +5,7 @@ import { groq } from "next-sanity";
 import Link from 'next/link'
 import Head from 'next/head'
 import FeedbackHeader from '../../../components/FeedbackHeader'
+import FeedbackExplainer from '../../../components/explainers/FeedbackExplainer'
 import ImpactStat from '../../../components/ImpactStat'
 import ImpactFeedback from '../../../components/ImpactFeedback'
 import Footer from '../../../components/Footer'
@@ -107,6 +108,8 @@ export default function Feedback(props) {
       <FeedbackHeader>
         <h1>Tell us what you think</h1>
         <p>Your feedback helps us improve developments so they meet the needs of people in Camden. It&apos;s important you let us know what you think.</p>
+
+        <FeedbackExplainer />
       </FeedbackHeader>
 
       <div>

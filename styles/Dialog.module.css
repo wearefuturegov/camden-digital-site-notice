@@ -6,6 +6,8 @@
   z-index: 99;
   transform: translateY(-100%);
   transition: 0.5s all;
+  max-height: 100vh;
+  overflow-y: scroll;
 }
 
 .dialogOpen {
@@ -15,17 +17,21 @@
   right: 0;
   z-index: 99;
   transition: 0.5s all;
+  max-height: 100vh;
+  overflow-y: scroll;
 }
 
 .inner {
   background-color: white;
   color: #2A2828;
   width: 100%;
-  padding: 2rem 0.5rem 2rem;
+  padding: 2rem;
+  /* Min-height based on the decoration height + padding */
+  min-height: calc(65px + 4rem);
 }
 
 .decoration {
-  position: absolute;
+  position: fixed;
   width: 12px;
   height: 65px;
   left: 0;
@@ -33,7 +39,7 @@
 }
 
 .closeButton {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   background: transparent;
@@ -67,4 +73,21 @@
   bottom: 0;
   background: transparent;
   transition: 0.5s all;
+}
+
+.inner h2 {
+  font-family: Museo;
+  font-weight: normal;
+  font-size: 1.75rem;
+  margin-top: 0;
+}
+
+.inner h3 {
+  font-size: 1.35rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.inner p, .inner h3 {
+  font-family: Museo Sans;
 }

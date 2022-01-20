@@ -1,0 +1,17 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  color: #E9FD57;
+  margin-bottom: 1rem;
+}
+
+.questionMark {
+  background-color: #E9FD57;
+  color: #2D4E4B;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  margin-right: 0.5rem;
+  text-align: center;
+}

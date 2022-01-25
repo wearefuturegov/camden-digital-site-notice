@@ -89,6 +89,7 @@ export default function PlanningApplication(props) {
         <About
           description={development.development_description}
           applicationType={development.application_type}
+          applicationNumber={development.application_number}
           height={cmsData?.height}
           constructionTime={cmsData?.constructionTime}
           proposedLandUse={cmsData?.proposedLandUse}

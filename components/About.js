@@ -17,7 +17,8 @@ const applicationTypeExplainers = {
 }
 
 const About = function(props) {
-  const { description, applicationType, proposedLandUse, height, constructionTime } = props;
+  const { description, applicationType, applicationNumber, proposedLandUse,
+    height, constructionTime } = props;
 
   // Turn the land use classes into something non-planner friendly
   let landUse = null;
@@ -42,6 +43,10 @@ const About = function(props) {
         <ApplicationDetail
           heading='Application type'
           value={`${applicationType}${ appTypeExplainer ? ' - ' + appTypeExplainer : '' }`} />
+
+        <ApplicationDetail
+          heading='Application reference'
+          value={applicationNumber} />
 
         { landUse &&
           <ApplicationDetail

@@ -1,4 +1,5 @@
 import ApplicationDetail from './ApplicationDetail'
+import ApplicationTypesExplainer from './explainers/ApplicationTypesExplainer'
 import styles from '../styles/About.module.css'
 
 const landUseClassLabels = {
@@ -40,30 +41,31 @@ const About = function(props) {
       </div>
 
       <div className={styles.applicationDetails}>
-        <ApplicationDetail
-          heading='Application type'
-          value={`${applicationType}${ appTypeExplainer ? ' - ' + appTypeExplainer : '' }`} />
+        <ApplicationDetail heading='Application type'>
+          <p>{`${applicationType}${ appTypeExplainer ? ' - ' + appTypeExplainer : '' }`}</p>
+          <ApplicationTypesExplainer />
+        </ApplicationDetail>
 
-        <ApplicationDetail
-          heading='Application reference'
-          value={applicationNumber} />
+        <ApplicationDetail heading='Application reference'>
+          <p>{applicationNumber}</p>
+        </ApplicationDetail>
 
         { landUse &&
-          <ApplicationDetail
-            heading='How will the site be used'
-            value={landUse} />
+          <ApplicationDetail heading='How will the site be used'>
+            <p>{landUse}</p>
+          </ApplicationDetail>
         }
 
         { height &&
-          <ApplicationDetail
-            heading='Height'
-            value={`Maximum ${height} storey${height == 1 ? '' : 's'}`} />
+          <ApplicationDetail heading='Height'>
+            <p>{`Maximum ${height} storey${height == 1 ? '' : 's'}`}</p>
+          </ApplicationDetail>
         }
 
         { constructionTime &&
-          <ApplicationDetail
-            heading="Estimated construction time"
-            value={constructionTime} />
+          <ApplicationDetail heading='Estimated construction time'>
+            <p>{constructionTime}</p>
+          </ApplicationDetail>
         }
       </div>
     </section>

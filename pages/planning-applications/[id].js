@@ -4,6 +4,7 @@ import styles from '../../styles/PlanningApplication.module.css'
 import About from '../../components/About'
 import ImpactArea from '../../components/ImpactArea'
 import ImpactStat from '../../components/ImpactStat'
+import HomesExplainer from '../../components/explainers/HomesExplainer'
 import ApplicationTimeline from '../../components/ApplicationTimeline'
 import ApplicationDocumentsLink from '../../components/ApplicationDocumentsLink'
 import PlanningApplicationHeader from '../../components/PlanningApplicationHeader'
@@ -115,6 +116,8 @@ export default function PlanningApplication(props) {
                       label='affordable housing'
                     />
                   }
+
+                  <HomesExplainer hasLightBg hasMarginTop />
                 </ImpactArea>
               }
 

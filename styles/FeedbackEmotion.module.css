@@ -7,6 +7,12 @@
   cursor: pointer;
 }
 
+@media (min-width: 768px) {
+  .emotion {
+    flex: auto;
+  }
+}
+
 .label {
   margin: 0.5rem 0;
   text-transform: capitalize;

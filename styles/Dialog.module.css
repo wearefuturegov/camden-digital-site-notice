@@ -21,6 +21,15 @@
   overflow-y: scroll;
 }
 
+.button {
+  background: transparent;
+  font-family: unset;
+  font-size: unset;
+  padding: unset;
+  margin: unset;
+  border: none;
+}
+
 .inner {
   background-color: white;
   color: #2A2828;

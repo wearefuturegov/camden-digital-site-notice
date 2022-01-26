@@ -6,7 +6,9 @@ import CamdenLogo from '../../../components/CamdenLogo'
 import BreadcrumbArrow from '../../../components/BreadcrumbArrow'
 import PlanningAlertSignup from '../../../components/PlanningAlertSignup'
 import Divider from '../../../components/Divider'
+import Dialog from '../../../components/Dialog'
 import Share from '../../../components/Share'
+import ShareButton from '../../../components/ShareButton'
 import Footer from '../../../components/Footer'
 import styles from '../../../styles/ThankYou.module.css'
 
@@ -24,6 +26,14 @@ export default function ThankYou(props) {
       <BetaBanner />
 
       <section className={styles.header}>
+        <div className={styles.share}>
+          <div className={styles.shareButton}>
+            <Dialog openComponent={<ShareButton isGreen />} >
+              <Share applicationId={id} />
+            </Dialog>
+          </div>
+        </div>
+
         <CamdenLogo colour='black' />
 
         <div className={styles.breadcrumbs}>

@@ -1,4 +1,5 @@
 import sendgrid from '@sendgrid/mail'
+import { GoogleSpreadsheet } from 'google-spreadsheet'
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -24,6 +25,33 @@ export default async function handler(req, res) {
       ${ impactFeedbackHTML }
       <h2>Postcode</h2>
       <p>${postcode ? postcode : 'Not provided'}</p>`
+    }
+
+    let values = [[applicationNumber, feedbackEmotion, feedback, postcode]];
+    let resource = { values };
+
+    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
+
+    try {
+      await doc.useServiceAccountAuth({
+        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        private_key: process.env.GOOGLE_PRIVATE_KEY,
+      });
+      doc.values.append({
+        spreadsheetId,
+        range,
+        valueInputOption,
+        resource,
+      }, (err, result) => {
+        if (err) {
+          // Handle error.
+          console.log(err);
+        } else {
+          console.log(`${result.updates.updatedCells} cells appended.`);
+        }
+      });
+    } catch (err) {
+      console.log(err)
     }
 
     try {

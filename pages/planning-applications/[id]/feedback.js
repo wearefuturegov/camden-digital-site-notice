@@ -134,7 +134,7 @@ export default function Feedback(props) {
             value={feedback}
             onChange={(e)=>setFeedback(e.target.value)} />
 
-          <p className={styles.paragraph}>If the comment above relates to an issue that will affect you personally (e.g. the development will overshadow your property or affect your privacy) we need your postcode, because we can only formally explore comments comming from immediate neighbours of the development.</p>
+          <p className={styles.paragraph}>If the comment above relates to an issue that will affect you personally (e.g. the development will overshadow your property or affect your privacy) we need your postcode, because we can only formally explore comments coming from immediate neighbours of the development.</p>
 
           <label className={styles.postcodeLabel}>
             Enter your postcode

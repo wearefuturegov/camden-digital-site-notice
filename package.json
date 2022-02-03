@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.6.0",
+    "google-spreadsheet": "^3.2.0",
+    "googleapis": "39",
     "next": "11.1.2",
     "next-sanity": "^0.4.0",
     "next-sanity-image": "^3.1.7",

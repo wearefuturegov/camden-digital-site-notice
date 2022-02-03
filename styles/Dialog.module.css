@@ -28,6 +28,7 @@
   padding: unset;
   margin: unset;
   border: none;
+  width: auto;
 }
 
 .inner {

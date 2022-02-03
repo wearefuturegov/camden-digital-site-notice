@@ -19,7 +19,7 @@ export default function ThankYou(props) {
   return (
     <>
       <Head>
-        <title>Thank you for the feedback | Camden Planning</title>
+        <title>Thank you for your feedback | Camden Planning</title>
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
 
@@ -48,9 +48,8 @@ export default function ThankYou(props) {
           <span className={styles.highlight}>Submit your feedback</span>
         </div>
 
-        <h1 className={styles.heading}>Thank you, we&apos;re listening</h1>
-        <p>
-        Did you know you can have an even bigger impact by getting involved in <a href="https://www.camden.gov.uk/camden-local-plan1" className={styles.footerItem} target='_blank' rel='noreferrer'>Camden&apos;s Local Plan</a>?</p>
+        <h1 className={styles.heading}>Thank you for your feedback</h1>
+        <p>You can find out more about planning policies and developments in Camden by reading the <a href="https://www.camden.gov.uk/camden-local-plan1" className={styles.footerItem} target='_blank' rel='noreferrer'>Camden Local Plan</a>.</p>
       </section>
       
       <PlanningAlertSignup />

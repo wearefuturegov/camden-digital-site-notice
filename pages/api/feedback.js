@@ -6,30 +6,32 @@ export default async function handler(req, res) {
     const { applicationNumber, feedbackEmotion, feedback, impactFeedback, postcode } = req.body;
     console.log(req.body);
 
-    // Send the feedback to a Google spreadsheet
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
+    // Send the feedback to a Google spreadsheet if a sheet ID is present
+    if (process.env.GOOGLE_SHEET_ID) {
+      const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
 
-    try {
-      await doc.useServiceAccountAuth({
-        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY,
-      });
+      try {
+        await doc.useServiceAccountAuth({
+          client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+          private_key: process.env.GOOGLE_PRIVATE_KEY,
+        });
 
-      await doc.loadInfo(); // loads document properties and worksheets
-      const sheet = doc.sheetsByIndex[0];
+        await doc.loadInfo(); // loads document properties and worksheets
+        const sheet = doc.sheetsByIndex[0];
 
-      let row = {
-        'Application number': applicationNumber,
-        'User postcode': postcode,
-        'Feedback emotion': feedbackEmotion,
-        'General feedback': feedback
-      };
+        let row = {
+          'Application number': applicationNumber,
+          'User postcode': postcode,
+          'Feedback emotion': feedbackEmotion,
+          'General feedback': feedback
+        };
 
-      impactFeedback.forEach(area => row[area.name] = area.feedback);
+        impactFeedback.forEach(area => row[area.name] = area.feedback);
 
-      await sheet.addRow(row);
-    } catch (err) {
-      console.log(err)
+        await sheet.addRow(row);
+      } catch (err) {
+        console.log(err)
+      }
     }
 
     // Send an email containing the feedback

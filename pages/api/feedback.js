@@ -6,30 +6,7 @@ export default async function handler(req, res) {
     const { applicationNumber, feedbackEmotion, feedback, impactFeedback, postcode } = req.body;
     console.log(req.body);
 
-    sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-
-    const impactFeedbackHTML = impactFeedback ? impactFeedback.map(area => area.feedback ? `<h3>${area.name}</h3><p>${area.feedback}</p>` : null ).join('') : '';
-
-    const message = {
-      to: process.env.FEEDBACK_TO_EMAIL,
-      from: {
-        email: process.env.FEEDBACK_FROM_EMAIL,
-        name: 'Camden Digital Site Notice',
-      },
-      subject: `New feedback for planning application ${applicationNumber}`,
-      html: `<h1>New feedback for planning application ${applicationNumber}</h1>
-      <h2>Feeling</h2>
-      <p>${feedbackEmotion}</p>
-      <h2>Feedback</h2>
-      <p>${feedback ? feedback : 'Not provided'}</p>
-      ${ impactFeedbackHTML }
-      <h2>Postcode</h2>
-      <p>${postcode ? postcode : 'Not provided'}</p>`
-    }
-
-    let values = [[applicationNumber, feedbackEmotion, feedback, postcode]];
-    let resource = { values };
-
+    // Send the feedback to a Google spreadsheet
     const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
 
     try {
@@ -53,6 +30,28 @@ export default async function handler(req, res) {
       await sheet.addRow(row);
     } catch (err) {
       console.log(err)
+    }
+
+    // Send an email containing the feedback
+    sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+
+    const impactFeedbackHTML = impactFeedback ? impactFeedback.map(area => area.feedback ? `<h3>${area.name}</h3><p>${area.feedback}</p>` : null ).join('') : '';
+
+    const message = {
+      to: process.env.FEEDBACK_TO_EMAIL,
+      from: {
+        email: process.env.FEEDBACK_FROM_EMAIL,
+        name: 'Camden Digital Site Notice',
+      },
+      subject: `New feedback for planning application ${applicationNumber}`,
+      html: `<h1>New feedback for planning application ${applicationNumber}</h1>
+      <h2>Feeling</h2>
+      <p>${feedbackEmotion}</p>
+      <h2>Feedback</h2>
+      <p>${feedback ? feedback : 'Not provided'}</p>
+      ${ impactFeedbackHTML }
+      <h2>Postcode</h2>
+      <p>${postcode ? postcode : 'Not provided'}</p>`
     }
 
     try {

@@ -37,19 +37,20 @@ export default async function handler(req, res) {
         client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
         private_key: process.env.GOOGLE_PRIVATE_KEY,
       });
-      doc.values.append({
-        spreadsheetId,
-        range,
-        valueInputOption,
-        resource,
-      }, (err, result) => {
-        if (err) {
-          // Handle error.
-          console.log(err);
-        } else {
-          console.log(`${result.updates.updatedCells} cells appended.`);
-        }
-      });
+
+      await doc.loadInfo(); // loads document properties and worksheets
+      const sheet = doc.sheetsByIndex[0];
+
+      let row = {
+        'Application number': applicationNumber,
+        'User postcode': postcode,
+        'Feedback emotion': feedbackEmotion,
+        'General feedback': feedback
+      };
+
+      impactFeedback.forEach(area => row[area.name] = area.feedback);
+
+      await sheet.addRow(row);
     } catch (err) {
       console.log(err)
     }

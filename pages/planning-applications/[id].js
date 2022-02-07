@@ -5,6 +5,9 @@ import About from '../../components/About'
 import ImpactArea from '../../components/ImpactArea'
 import ImpactStat from '../../components/ImpactStat'
 import HomesExplainer from '../../components/explainers/HomesExplainer'
+import OpenSpaceExplainer from '../../components/explainers/OpenSpaceExplainer'
+import JobsExplainer from '../../components/explainers/JobsExplainer'
+import CarbonExplainer from '../../components/explainers/CarbonExplainer'
 import ApplicationTimeline from '../../components/ApplicationTimeline'
 import ApplicationDocumentsLink from '../../components/ApplicationDocumentsLink'
 import PlanningApplicationHeader from '../../components/PlanningApplicationHeader'
@@ -136,6 +139,7 @@ export default function PlanningApplication(props) {
                     value={cmsData.openSpaceArea?.toLocaleString()}
                     label='square metres'
                   />
+                  <OpenSpaceExplainer hasLightBg hasMarginTop />
                 </ImpactArea>
               }
 
@@ -145,6 +149,7 @@ export default function PlanningApplication(props) {
                     value={[cmsData.jobs.min?.toLocaleString(), cmsData.jobs.max?.toLocaleString()].filter(n => n).join(' - ')}
                     label='new roles'
                   />
+                  <JobsExplainer hasLightBg hasMarginTop />
                 </ImpactArea>
               }
 
@@ -154,6 +159,7 @@ export default function PlanningApplication(props) {
                     value={cmsData.carbonEmissions?.toLocaleString() + '%'}
                     label='below legal requirements'
                   />
+                  <CarbonExplainer hasLightBg hasMarginTop />
                 </ImpactArea>
               }
 

@@ -143,7 +143,7 @@ export default function PlanningApplication(props) {
                 </ImpactArea>
               }
 
-              { cmsData.showJobs && cmsData.jobs &&
+              { cmsData.showJobs &&
                 <ImpactArea header='New jobs' image='jobs'>
                   <ImpactStat
                     value={[cmsData.jobs.min?.toLocaleString(), cmsData.jobs.max?.toLocaleString()].filter(n => n).join(' - ')}

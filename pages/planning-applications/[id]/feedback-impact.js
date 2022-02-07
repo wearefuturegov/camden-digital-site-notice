@@ -6,6 +6,10 @@ import Link from 'next/link'
 import Head from 'next/head'
 import FeedbackHeader from '../../../components/FeedbackHeader'
 import FeedbackExplainer from '../../../components/explainers/FeedbackExplainer'
+import HomesExplainer from '../../../components/explainers/HomesExplainer'
+import OpenSpaceExplainer from '../../../components/explainers/OpenSpaceExplainer'
+import JobsExplainer from '../../../components/explainers/JobsExplainer'
+import CarbonExplainer from '../../../components/explainers/CarbonExplainer'
 import ImpactStat from '../../../components/ImpactStat'
 import ImpactFeedback from '../../../components/ImpactFeedback'
 import Footer from '../../../components/Footer'
@@ -141,6 +145,8 @@ export default function Feedback(props) {
                     value={(cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString() + '%'}
                     label='affordable housing'
                   />
+
+                  <HomesExplainer hasLightBg hasMarginTop />
                 </ImpactFeedback>
               }
 
@@ -167,10 +173,11 @@ export default function Feedback(props) {
                     value={cmsData.openSpaceArea?.toLocaleString()}
                     label='square metres'
                   />
+                  <OpenSpaceExplainer hasLightBg hasMarginTop />
                 </ImpactFeedback>
               }
 
-              { cmsData.showJobs && cmsData.jobs &&
+              { cmsData.showJobs &&
                 <ImpactFeedback
                   header='New jobs'
                   image='jobs'
@@ -180,6 +187,7 @@ export default function Feedback(props) {
                     value={[cmsData.jobs.min?.toLocaleString(), cmsData.jobs.max?.toLocaleString()].filter(n => n).join(' - ')}
                     label='new roles'
                   />
+                  <JobsExplainer hasLightBg hasMarginTop />
                 </ImpactFeedback>
               }
 
@@ -193,6 +201,7 @@ export default function Feedback(props) {
                     value={cmsData.carbonEmissions?.toLocaleString() + '%'}
                     label='below legal requirements'
                   />
+                  <CarbonExplainer hasLightBg hasMarginTop />
                 </ImpactFeedback>
               }
 

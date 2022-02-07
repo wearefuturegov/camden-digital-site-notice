@@ -142,7 +142,7 @@ export default function Feedback(props) {
                   />
 
                   <ImpactStat
-                    value={(cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString() + '%'}
+                    value={Math.round((cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString()) + '%'}
                     label='affordable housing'
                   />
 

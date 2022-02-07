@@ -6,8 +6,12 @@ import Dialog from '../components/Dialog'
 import Share from '../components/Share'
 import ShareButton from '../components/ShareButton'
 import styles from '../styles/PlanningApplicationHeader.module.css'
+import { useRouter } from 'next/router'
 
-export default function PlanningApplicationHeader(props) {
+export default function PlanningApplicationHeader() {
+  const router = useRouter()
+  const { id } = router.query
+
   return (
     <>
       <BetaBanner />
@@ -15,7 +19,7 @@ export default function PlanningApplicationHeader(props) {
       <header className={styles.pageHeader}>
         <div className={styles.share}>
           <Dialog openComponent={<ShareButton />} >
-            <Share applicationId={props.applicationId} />
+            <Share applicationId={id} />
           </Dialog>
         </div>
 

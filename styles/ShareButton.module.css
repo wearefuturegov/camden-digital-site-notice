@@ -3,6 +3,10 @@
   color: #E9FD57;
 }
 
+.share.isGreen {
+  color: #2D4E4B;
+}
+
 .share span {
   margin-left: 0.5rem;
 }

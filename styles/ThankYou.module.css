@@ -1,6 +1,6 @@
 .header {
   background-color: #AACAC8;
-  padding: 3rem 1rem 1.5rem;
+  padding: 2rem 1rem 1.5rem;
 }
 
 .header h1 {
@@ -14,8 +14,17 @@
   line-height: 1.75rem;
 }
 
-.header a {
+.header p a {
   text-decoration: underline;
+}
+
+.share {
+  display: flex;
+  flex-direction: column;
+}
+
+.shareButton {
+  align-self: flex-end;
 }
 
 .breadcrumbs {

@@ -67,7 +67,7 @@ export default function PlanningApplication(props) {
         <meta name="description" content="Camden Digital Site Notice" />
       </Head>
 
-      <PlanningApplicationHeader applicationId={id} />
+      <PlanningApplicationHeader />
 
       <main className={styles.main}>
         <section className={styles.header}>

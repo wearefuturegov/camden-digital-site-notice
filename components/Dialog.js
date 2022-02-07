@@ -9,9 +9,9 @@ export default function Dialog({openComponent, children}) {
 
   return (
     <>
-      <a onClick={handleOpen}>
+      <button onClick={handleOpen} className={styles.button}>
         {openComponent}
-      </a>
+      </button>
 
       <div className={showDialog ? styles.dialogOpen : styles.dialogClosed}>
         <div className={styles.inner}>

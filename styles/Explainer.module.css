@@ -15,3 +15,20 @@
   margin-right: 0.5rem;
   text-align: center;
 }
+
+.content {
+  font-size: 1.15rem;
+  line-height: 1.75rem;
+}
+
+.content a {
+  color: #198278;
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .content {
+    margin: 0 auto;
+    max-width: 810px;
+  }
+}

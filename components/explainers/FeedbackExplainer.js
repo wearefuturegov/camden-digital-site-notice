@@ -1,38 +1,77 @@
 import Explainer from '../Explainer'
 
 export default function FeedbackExplainer() {
-  return <Explainer buttonText='How to write good feedback'>
-    <h2>How to write good&nbsp;feedback?</h2>
+  return <Explainer buttonText='Why is your feedback important'>
+    <h2>Why is your feedback important</h2>
 
-    <h3>Influencing the finer details</h3>
     <p>
-      By the time a development has reached application stage, the developer has probably already bought the land and drawn up plans. Now it&apos;s about the details. Residents knowledge about local need can help planners decide things like type of housing or what materials are appropriate.
+      We ask for feedback on developments for a few different reasons. Understanding why we want your input can help you write better feedback and influence a proposed development in your area.
     </p>
 
-    <h3>Eyes and ears on the ground</h3>
+    <ul>
+      <li>
+        <b>To influence the details</b>
+        <p>
+          Residents&apos; knowledge about local needs can help planners decide things like provision of public open space, cycling facilities, land use priorities, scale, design and or what materials are appropriate for a scheme.
+        </p>
+      </li>
+
+      <li>
+        <b>To be our eyes and ears on the ground</b>
+        <p>
+          Residents have in-depth knowledge about their local area and often highlight on-the-ground details - like how a public view could be affected or that a mature tree was left out of a developer&apos;s plans. 
+        </p>
+      </li>
+
+      <li>
+        <b>To make sure we balance our priorities</b>
+        <p>
+          A single development is unlikely to fulfil all the priorities for the local area. It&apos;s useful to be able to demonstrate which priorities are important to residents, so they can push developers to be more ambitious with their targets. Telling us what your priorities are can help planners make that decision.
+        </p>
+      </li>
+    </ul>
+
+
+    <h3>What happens to my comments?</h3>
     <p>
-      Residents have in-depth knowledge about their local area and often highlight on-the-ground details that planners weren&apos;t aware of, like how a view could be affected or how a tree was left out of a developer&apos;s plans. 
-      This is especially helpful now that planners aren&apos;t as likely to visit sites in person due to covid. Photos can be useful. 
+      As part of the negotiation, the case officer can take into consideration all comments which are ‘material considerations’ to the proposed development. These include (but aren&apos;t limited to):
     </p>
 
-    <h3>Provide back up on what&apos;s important</h3>
+    <ul>
+      <li>overlooking/loss of privacy</li>
+      <li>loss of light or overshadowing</li>
+      <li>traffic parking</li>
+      <li>highway safety</li>
+      <li>noise from new uses or plant equipment</li>
+      <li>effect on listed building and conservation area</li>
+      <li>scale of buildings and structures</li>
+      <li>layout and density of building</li>
+      <li>design, appearance and materials</li>
+      <li>disabled persons&apos; access</li>
+      <li>previous planning decisions (including appeal decisions)</li>
+      <li>trees and nature conservation</li>
+    </ul>
+
     <p>
-      Planners need bargaining power when negotiating with planners. It&apos;s useful to be able to demonstrate the certain priorities are important to residents so they can push developers to be more ambitious with their targets.
+      Issues such as loss of private view or negative impact on property values, or civil matters like ‘right to light’, party walls and property damage are not considered ‘material planning considerations’.
     </p>
 
-    <h3>Is this development good for the area?</h3>
     <p>
-      For Major Developments, planners make a judgement on whether the development is good for the area. This is based on whether the building is compliant with planning legislation and regulations and how well the development contributes to the priorities set out in the local plan and the national planning framework.
+      The case officer will summarise their findings in the officer&apos;s report and/or decision notice.
+    </p>
+    <p>
+      We won&apos;t acknowledge receipt of your comments, or get in touch with you directly about the issues you&apos;ve raised. You can check the officer&apos;s report or decision notice to see if your, and other, comments have been logged.
     </p>
 
-    <h3>What are the priorities?</h3>
+    <h3>How we handle your data</h3>
     <p>
-      A single development is unlikely to fulfill all the priorities for the local area. The planner decides which priorities matter most and then negotiates with the developer on targets.
+      Your comments will also be made available online for the public to see. We&apos;ll include your name and address, but we won’t display your telephone number or email address.
     </p>
-
-    <h3>Should this development be approved now?</h3>
     <p>
-      A planning committee made up of elected councillors makes the final decision about whether a development is allowed to go ahead. Widespread objection from the public can slow down the decision.
+      We&apos;ll make sure any other personal or sensitive information is removed where needed, in line with the <a href='https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/key-definitions/what-is-personal-data/' target='_blank' rel='noreferrer'>General Data Protection Regulation</a> (GDPR). If you have concerns about any data you have sent being published, <a href='https://www.camden.gov.uk/contact-the-planning-advice-and-information-service' target='_blank' rel='noreferrer'>contact the Planning Advice and Information Service</a>.
+    </p>
+    <p>
+      Read our <a href='https://www.camden.gov.uk/data-protection-privacy-and-cookies' target='_blank' rel='noreferrer'>corporate privacy statement</a> and our <a href='https://www.camden.gov.uk/documents/20142/2247044/Privacy+Notice_regenerationandplanning+-+updated+May19.pdf/23506373-1b95-2cc5-55b2-55897cfe4b42' target='_blank' rel='noreferrer'>planning service privacy statement</a> for more information.
     </p>
   </Explainer>
 }

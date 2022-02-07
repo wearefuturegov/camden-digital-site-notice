@@ -14,7 +14,9 @@ export default function Explainer(props) {
 
   return (
     <Dialog openComponent={button}>
-      {props.children}
+      <div className={styles.content}>
+        {props.children}
+      </div>
     </Dialog>
   )
 }

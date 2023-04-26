@@ -2,7 +2,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, change env.example to env.local
+Populate fields with given env variables
+
+Run the development server:
 
 ```bash
 yarn dev

@@ -12,27 +12,25 @@ export default function PlanningApplicationHeader() {
   const router = useRouter()
   const { id } = router.query
 
-  return (
-    <>
-      <BetaBanner />
+  return <>
+    <BetaBanner />
 
-      <header className={styles.pageHeader}>
-        <div className={styles.share}>
-          <Dialog openComponent={<ShareButton />} >
-            <Share applicationId={id} />
-          </Dialog>
-        </div>
+    <header className={styles.pageHeader}>
+      <div className={styles.share}>
+        <Dialog openComponent={<ShareButton />} >
+          <Share applicationId={id} />
+        </Dialog>
+      </div>
 
-        <CamdenLogo colour='white' />
+      <CamdenLogo colour='white' />
 
-        <div className={styles.breadcrumbs}>
-          <Link href='/'>
-            <a>Planning Applications</a>
-          </Link>
-          <BreadcrumbArrow />
-          <span className={styles.highlight}>Overview</span>
-        </div>
-      </header>
-    </>
-  )
+      <div className={styles.breadcrumbs}>
+        <Link href='/'>
+          Planning Applications
+        </Link>
+        <BreadcrumbArrow />
+        <span className={styles.highlight}>Overview</span>
+      </div>
+    </header>
+  </>;
 }

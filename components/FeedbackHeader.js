@@ -12,36 +12,34 @@ export default function Header({ children }) {
   const router = useRouter()
   const { id } = router.query
 
-  return (
-    <>
-      <BetaBanner />
+  return <>
+    <BetaBanner />
 
-      <section className={styles.header}>
-        <div className={styles.share}>
-          <div className={styles.shareButton}>
-            <Dialog openComponent={<ShareButton />} >
-              <Share applicationId={id} />
-            </Dialog>
-          </div>
+    <section className={styles.header}>
+      <div className={styles.share}>
+        <div className={styles.shareButton}>
+          <Dialog openComponent={<ShareButton />} >
+            <Share applicationId={id} />
+          </Dialog>
         </div>
+      </div>
 
-        <CamdenLogo colour='white' />
+      <CamdenLogo colour='white' />
 
-        <div className={styles.breadcrumbs}>
-          <Link href='/'>
-            <a>Planning Applications</a>
-          </Link>
-          <BreadcrumbArrow />
-          <Link href={`/planning-applications/${id}`}>
-            <a>Overview</a>
-          </Link>
-          <BreadcrumbArrow />
-          <span className={styles.highlight}>Submit your feedback</span>
-        </div>
+      <div className={styles.breadcrumbs}>
+        <Link href='/'>
+          Planning Applications
+        </Link>
+        <BreadcrumbArrow />
+        <Link href={`/planning-applications/${id}`}>
+          Overview
+        </Link>
+        <BreadcrumbArrow />
+        <span className={styles.highlight}>Submit your feedback</span>
+      </div>
 
-        { children }
+      { children }
 
-      </section>
-    </>
-  );
+    </section>
+  </>;
 }

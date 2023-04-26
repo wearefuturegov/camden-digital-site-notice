@@ -102,135 +102,132 @@ export default function Feedback(props) {
     }
   }
 
-  return (
-    <>
-      <Head>
-        <title>Give feedback for planning application {appNumber} | Camden Planning</title>
-        <meta name="description" content="Camden Digital Site Notice" />
-      </Head>
+  return <>
+    <Head>
+      <title>Give feedback for planning application {appNumber} | Camden Planning</title>
+      <meta name="description" content="Camden Digital Site Notice" />
+    </Head>
 
-      <FeedbackHeader>
-        <h1>Tell us what you think</h1>
-        <p>Your feedback helps us improve developments so they meet the needs of people in Camden. It&apos;s important you let us know what you think.</p>
+    <FeedbackHeader>
+      <h1>Tell us what you think</h1>
+      <p>Your feedback helps us improve developments so they meet the needs of people in Camden. It&apos;s important you let us know what you think.</p>
 
-        <FeedbackExplainer />
-      </FeedbackHeader>
+      <FeedbackExplainer />
+    </FeedbackHeader>
 
-      <div>
-        <p className={styles.questionNumber}>Question 2/2</p>
-      </div>
+    <div>
+      <p className={styles.questionNumber}>Question 2/2</p>
+    </div>
 
-      <section className={styles.section}>
+    <section className={styles.section}>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <h1 className={styles.question}>What does your community need most?</h1>
-          <p>
-            This development could have an impact in the following ways.
-            Let us know which ones you care about. You can choose as many as you
-            like.
-          </p>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h1 className={styles.question}>What does your community need most?</h1>
+        <p>
+          This development could have an impact in the following ways.
+          Let us know which ones you care about. You can choose as many as you
+          like.
+        </p>
 
-              { cmsData.showHousing && cmsData.housing &&
-                <ImpactFeedback
-                  header='New homes'
-                  image='housing'
-                  onChange={setHousingFeedback}
-                >
-                  <ImpactStat
-                    value={cmsData.housing.residentialUnits.toLocaleString()}
-                    label='new homes'
-                  />
+            { cmsData.showHousing && cmsData.housing &&
+              <ImpactFeedback
+                header='New homes'
+                image='housing'
+                onChange={setHousingFeedback}
+              >
+                <ImpactStat
+                  value={cmsData.housing.residentialUnits.toLocaleString()}
+                  label='new homes'
+                />
 
-                  <ImpactStat
-                    value={Math.round((cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString()) + '%'}
-                    label='affordable housing'
-                  />
+                <ImpactStat
+                  value={Math.round((cmsData.housing.affordableResidentialUnits / cmsData.housing.residentialUnits * 100).toLocaleString()) + '%'}
+                  label='affordable housing'
+                />
 
-                  <HomesExplainer hasLightBg hasMarginTop />
-                </ImpactFeedback>
-              }
+                <HomesExplainer hasLightBg hasMarginTop />
+              </ImpactFeedback>
+            }
 
-              { cmsData.showHealthcare && cmsData.healthcareDemand &&
-                <ImpactFeedback
-                  header='Healthcare'
-                  image='healthcare'
-                  onChange={setHealthcareFeedback}
-                >
-                  <ImpactStat
-                    value={cmsData.healthcareDemand.toLocaleString() + '%'}
-                    label='additional demand on GPs and hospitals'
-                  />
-                </ImpactFeedback>
-              }
+            { cmsData.showHealthcare && cmsData.healthcareDemand &&
+              <ImpactFeedback
+                header='Healthcare'
+                image='healthcare'
+                onChange={setHealthcareFeedback}
+              >
+                <ImpactStat
+                  value={cmsData.healthcareDemand.toLocaleString() + '%'}
+                  label='additional demand on GPs and hospitals'
+                />
+              </ImpactFeedback>
+            }
 
-              { cmsData.showOpenSpace &&
-                <ImpactFeedback
-                  header='Open spaces'
-                  image='open-spaces'
-                  onChange={setOpenSpaceFeedback}
-                >
-                  <ImpactStat
-                    value={cmsData.openSpaceArea?.toLocaleString()}
-                    label='square metres'
-                  />
-                  <OpenSpaceExplainer hasLightBg hasMarginTop />
-                </ImpactFeedback>
-              }
+            { cmsData.showOpenSpace &&
+              <ImpactFeedback
+                header='Open spaces'
+                image='open-spaces'
+                onChange={setOpenSpaceFeedback}
+              >
+                <ImpactStat
+                  value={cmsData.openSpaceArea?.toLocaleString()}
+                  label='square metres'
+                />
+                <OpenSpaceExplainer hasLightBg hasMarginTop />
+              </ImpactFeedback>
+            }
 
-              { cmsData.showJobs &&
-                <ImpactFeedback
-                  header='New jobs'
-                  image='jobs'
-                  onChange={setJobsFeedback}
-                >
-                  <ImpactStat
-                    value={[cmsData.jobs.min?.toLocaleString(), cmsData.jobs.max?.toLocaleString()].filter(n => n).join(' - ')}
-                    label='new roles'
-                  />
-                  <JobsExplainer hasLightBg hasMarginTop />
-                </ImpactFeedback>
-              }
+            { cmsData.showJobs &&
+              <ImpactFeedback
+                header='New jobs'
+                image='jobs'
+                onChange={setJobsFeedback}
+              >
+                <ImpactStat
+                  value={[cmsData.jobs.min?.toLocaleString(), cmsData.jobs.max?.toLocaleString()].filter(n => n).join(' - ')}
+                  label='new roles'
+                />
+                <JobsExplainer hasLightBg hasMarginTop />
+              </ImpactFeedback>
+            }
 
-              { cmsData.showCarbon &&
-                <ImpactFeedback
-                  header='Carbon emissions'
-                  image='co2'
-                  onChange={setCo2Feedback}
-                >
-                  <ImpactStat
-                    value={cmsData.carbonEmissions?.toLocaleString() + '%'}
-                    label='below legal requirements'
-                  />
-                  <CarbonExplainer hasLightBg hasMarginTop />
-                </ImpactFeedback>
-              }
+            { cmsData.showCarbon &&
+              <ImpactFeedback
+                header='Carbon emissions'
+                image='co2'
+                onChange={setCo2Feedback}
+              >
+                <ImpactStat
+                  value={cmsData.carbonEmissions?.toLocaleString() + '%'}
+                  label='below legal requirements'
+                />
+                <CarbonExplainer hasLightBg hasMarginTop />
+              </ImpactFeedback>
+            }
 
-              { cmsData.showAccess && cmsData.access &&
-                <ImpactFeedback
-                  header='Pedestrian and vehicle access'
-                  image='access'
-                  onChange={setAccessFeedback}
-                >
-                  <p className={styles.impactCopy}>{cmsData.access}</p>
-                </ImpactFeedback>
-              }
+            { cmsData.showAccess && cmsData.access &&
+              <ImpactFeedback
+                header='Pedestrian and vehicle access'
+                image='access'
+                onChange={setAccessFeedback}
+              >
+                <p className={styles.impactCopy}>{cmsData.access}</p>
+              </ImpactFeedback>
+            }
 
-          { error && <p className={styles.error}>{error}</p> }
+        { error && <p className={styles.error}>{error}</p> }
 
-          <input className={styles.submitButton} type='submit' value='Submit your feedback' />
-        </form>
+        <input className={styles.submitButton} type='submit' value='Submit your feedback' />
+      </form>
 
-        <Link href={`/planning-applications/${id}/feedback?feeling=${feeling}&feedback=${feedback}&postcode=${postcode}`} >
-          <a>
-            <div className={styles.backButton}>
-              Back
-            </div>
-          </a>
-        </Link>
-      </section>
+      <Link href={`/planning-applications/${id}/feedback?feeling=${feeling}&feedback=${feedback}&postcode=${postcode}`} >
 
-      <Footer />
-    </>
+        <div className={styles.backButton}>
+          Back
+        </div>
 
-  )
+      </Link>
+    </section>
+
+    <Footer />
+  </>;
 }

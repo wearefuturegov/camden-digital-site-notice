@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Script from 'next/script'
 import CamdenLogo from '../components/CamdenLogo'
 import PlanningList from '../components/PlanningList'
 import styles from '../styles/Home.module.css'
@@ -94,6 +95,49 @@ export default function Home(props) {
   const { developments, error, currentPostcode, currentLocation } = props;
   const [postcode, setPostcode] = useState(currentPostcode);
 
+  const cookieScript = `
+    var config = ${JSON.stringify({
+    apiKey: 'API_KEY',
+    product: 'community',
+    consentCookieExpiry: 90,
+    encodeCookie: false,
+    sameSiteCookie: true,           // if false, cookie set as SameSite=None;secure;
+    sameSiteValue: 'Strict',        // either 'Strict', 'Lax', or 'None'
+    subDomains: true,
+    optionalCookies: [
+      {
+        name: 'analytics',
+        label: 'Analytics',
+        description: '',
+        cookies: [],
+        onAccept: function () {},
+        onRevoke: function () {},
+      },
+      {
+        name: 'marketing',
+        label: 'Marketing',
+        description: '',
+        cookies: [],
+        onAccept: function () {},
+        onRevoke: function () {},
+      },
+      {
+        name: 'preferences',
+        label: 'Preferences',
+        description: '',
+        cookies: [],
+        onAccept: function () {},
+        onRevoke: function () {},
+      },
+    ],
+    position: 'RIGHT',
+    theme: 'LIGHT',
+  })};
+
+  CookieControl.load(config);
+`;
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -102,7 +146,7 @@ export default function Home(props) {
       </Head>
 
       <BetaBanner />
-
+      <Script src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.x.min.js" type="text/javascript" />
       <main className={styles.main}>
 
         <div className={styles.searchWrapper}>

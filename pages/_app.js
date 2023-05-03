@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import * as gtag from '../lib/gtag';
-import CookieBanner from '../components/CookieBanner';
+
 
 function MyApp({ Component, pageProps }) {
   return (

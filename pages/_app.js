@@ -1,17 +1,15 @@
-import Script from 'next/script'
-import '../styles/globals.css'
-import * as gtag from '../lib/gtag'
+import '../styles/globals.css';
+import * as gtag from '../lib/gtag';
+import CookieBanner from '../components/CookieBanner';
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Script
-        strategy="afterInteractive"
+      <script
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        strategy="afterInteractive" async
       />
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
+      <script
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
@@ -23,10 +21,58 @@ function MyApp({ Component, pageProps }) {
             });
           `,
         }}
+        strategy="afterInteractive"
       />
-      <Component {...pageProps} />
+      
+      <div id="root">
+        <Component {...pageProps} />
+      </div>
+      <script
+        src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.x.min.js"
+        strategy="afterInteractive" async
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            var config = {
+              apiKey: 'API_KEY',
+              product: 'community',
+              optionalCookies: [
+                {
+                  name: 'analytics',
+                  label: 'Analytics',
+                  description: 'Analytical cookies help us to improve our website by collecting and reporting information on its usage.',
+                  cookies: [],
+                  onAccept : function(){},
+                  onRevoke: function(){}
+                },{
+                  name: 'marketing',
+                  label: 'Marketing',
+                  description: '',
+                  cookies: [],
+                  onAccept : function(){}, //Add Google analytics
+                  onRevoke: function(){} // Disable Google analytics
+                },{
+                  name: 'preferences',
+                  label: 'Preferences',
+                  description: '',
+                  cookies: [],
+                  onAccept : function(){},
+                  onRevoke: function(){}
+                }
+              ],
+              position: 'RIGHT',
+              theme: 'DARK'
+            };
+            window.addEventListener('load', function () {
+              window.CookieControl.load(config);
+            });
+          `,
+        }}
+        strategy="afterInteractive"
+      />
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

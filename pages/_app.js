@@ -5,18 +5,15 @@ import { useEffect } from "react";
 import { useRouter } from 'next/router';
 import loadCookieControl from 'components/CookieControl';
 
-console.log("API Key:", process.env.NEXT_PUBLIC_API_KEY);
-
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
   useEffect(() => {
-    console.log('apiKey:', apiKey);
+    
     loadCookieControl(apiKey);
   }, [apiKey]);
  
-
   return (
     <>
       <Head>

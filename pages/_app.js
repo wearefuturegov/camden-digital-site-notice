@@ -14,16 +14,6 @@ function MyApp({ Component, pageProps }) {
  
   return (
     <>
-      <Head>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-WF28PJS"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          ></iframe>
-        </noscript>
-      </Head>
       <Component {...pageProps} />
     </>
   );

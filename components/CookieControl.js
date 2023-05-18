@@ -36,20 +36,6 @@ export default function loadCookieControl(apiKey) {
             'gtm.start': new Date().getTime()
           });
         }
-      },{
-        name: 'marketing',
-        label: 'Marketing',
-        description: '',
-        cookies: [],
-        onAccept : function(){}, // This function is not needed
-        onRevoke: function(){} // This function is not needed
-      },{
-        name: 'preferences',
-        label: 'Preferences',
-        description: '',
-        cookies: [],
-        onAccept : function(){},
-        onRevoke: function(){}
       }
     ],
     position: 'RIGHT',

@@ -2,13 +2,11 @@ import '../styles/globals.css';
 import * as gtag from '../lib/gtag';
 import Head from 'next/head';
 import { useEffect } from "react";
-import { useRouter } from 'next/router';
 import loadCookieControl from 'components/CookieControl';
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-  const apiKey = process.env.NEXT_PUBLIC_COOKIE_CONTROL_KEY;
 
+  const apiKey = process.env.NEXT_PUBLIC_COOKIE_CONTROL_KEY;
   useEffect(() => {
     
     loadCookieControl(apiKey);

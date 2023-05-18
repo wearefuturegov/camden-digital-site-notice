@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, in root directory, rename 'env.example' to 'env.local' and populate fields with given env variables
+First, in root directory, copy 'env.example' to 'env.local' and populate fields with given env variables
 
 
 

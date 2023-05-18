@@ -7,7 +7,7 @@ import loadCookieControl from 'components/CookieControl';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_COOKIE_CONTROL_KEY;
 
   useEffect(() => {
     

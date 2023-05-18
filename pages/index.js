@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Script from 'next/script'
 import CamdenLogo from '../components/CamdenLogo'
 import PlanningList from '../components/PlanningList'
 import styles from '../styles/Home.module.css'

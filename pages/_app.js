@@ -8,7 +8,6 @@ function MyApp({ Component, pageProps }) {
   const apiKey = process.env.NEXT_PUBLIC_COOKIE_CONTROL_KEY;
 
   useEffect(() => {
-    const head = document.getElementsByTagName('head')[0];
     loadCookieControl(apiKey);
   }, [apiKey]);
 
@@ -56,22 +55,21 @@ function MyApp({ Component, pageProps }) {
       theme: 'DARK'
     };
 
-    window.CookieControl.load(config);
+    const head = document.getElementsByTagName('head')[0];
+    const cookiecontrolScript = document.createElement('script');
+    cookiecontrolScript.src = 'https://cc.cdn.civiccomputing.com/9/cookieControl-9.x.min.js';
+    cookiecontrolScript.async = true;
+    cookiecontrolScript.onload = function initializeCookieControl() {
+      window.CookieControl.load(config);
+    };
+    head.appendChild(cookiecontrolScript);
   };
 
   return (
     <>
       <Head>
-        
+
       </Head>
-      
-      <Script
-        src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.x.min.js"
-        strategy="beforeInteractive"
-        onLoad={() => {
-          loadCookieControl(apiKey);
-        }}
-      />
 
       <Component {...pageProps} />
     </>

@@ -69,16 +69,3 @@ input {
   font-family: 'Museo Sans';
 }
 
-button.search-button {
-  font-family: 'Museo';
-  font-size: 1.5rem;
-  background: #2B1F2E;
-  border-radius: 4px;
-  color: #E9FD57;
-  border: none;
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  }
-
-

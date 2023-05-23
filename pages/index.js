@@ -121,7 +121,7 @@ export default function Home(props) {
               <label htmlFor='postcode' className={styles.searchLabel}>Enter your postcode</label>
               <input type='text' id='postcode' name='postcode' value={postcode} onChange={e => setPostcode(e.target.value)} className={styles.searchInput} />
               { error ? <p>{ error }</p> : null }
-              <button className='search-button'>Search</button>
+              <button className={styles.searchButton}>Search</button>
             </form>
           </div>
         </div>

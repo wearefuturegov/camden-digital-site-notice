@@ -7,9 +7,9 @@ import Script from 'next/script';
 function MyApp({ Component, pageProps }) {
   const apiKey = process.env.NEXT_PUBLIC_COOKIE_CONTROL_KEY;
 
-  useEffect(() => {
-    loadCookieControl(apiKey);
-  }, [apiKey]);
+  // useEffect(() => {
+  //   loadCookieControl(apiKey);
+  // }, [apiKey]);
 
   const loadCookieControl = (apiKey) => {
     const config = {
@@ -55,14 +55,7 @@ function MyApp({ Component, pageProps }) {
       theme: 'DARK'
     };
 
-    const head = document.getElementsByTagName('head')[0];
-    const cookiecontrolScript = document.createElement('script');
-    cookiecontrolScript.src = 'https://cc.cdn.civiccomputing.com/9/cookieControl-9.x.min.js';
-    cookiecontrolScript.async = true;
-    cookiecontrolScript.onload = function initializeCookieControl() {
-      window.CookieControl.load(config);
-    };
-    head.appendChild(cookiecontrolScript);
+    window.CookieControl.load(config);
   };
 
   return (
@@ -70,6 +63,13 @@ function MyApp({ Component, pageProps }) {
       <Head>
 
       </Head>
+
+      <Script
+        src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.x.min.js"
+        onLoad={() => {
+          loadCookieControl(apiKey);
+        }}
+      />
 
       <Component {...pageProps} />
     </>
